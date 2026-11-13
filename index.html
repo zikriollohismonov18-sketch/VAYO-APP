@@ -6,39 +6,37 @@
 <title>VAYO Marketplace</title>
 
 <style>
-*{
- box-sizing:border-box;
-}
+*{box-sizing:border-box}
+
 :root{
  --orange:#ff6500;
  --dark:#202b3b;
  --gray:#7c8798;
  --bg:#f5f6fa;
 }
+
 body{
  margin:0;
  background:var(--bg);
  color:var(--dark);
  font-family:Arial,sans-serif;
 }
+
 button,input,select,textarea{
  font:inherit;
 }
-button{
- cursor:pointer;
-}
-a{
- color:inherit;
- text-decoration:none;
-}
+
+button{cursor:pointer}
+
 header{
+ background:#fff;
+ padding:15px;
  position:sticky;
  top:0;
  z-index:100;
- padding:15px;
- color:white;
- background:linear-gradient(135deg,#ff6500,#ff9c45);
+ box-shadow:0 3px 15px #00000008;
 }
+
 .top{
  max-width:1200px;
  margin:auto;
@@ -46,96 +44,115 @@ header{
  align-items:center;
  justify-content:space-between;
 }
+
 .logo{
- font-size:32px;
+ font-size:34px;
  font-weight:900;
+ color:var(--orange);
+ letter-spacing:2px;
 }
+
 .logo small{
  display:block;
  font-size:10px;
  letter-spacing:2px;
 }
-.header-button{
- background:#ffffff25;
- color:white;
- border:0;
- padding:12px;
- border-radius:12px;
+
+.country{
+ background:#fff0e5;
+ padding:10px;
+ border-radius:20px;
+ font-size:12px;
 }
+
 .search{
+ display:flex;
  max-width:1200px;
  margin:15px auto 0;
- display:flex;
- background:white;
+ border:1px solid #eee;
+ background:#f5f6fa;
+ border-radius:14px;
  padding:5px;
- border-radius:13px;
 }
+
 .search input{
- flex:1;
  width:100%;
- min-width:0;
  border:0;
+ background:none;
  outline:none;
  padding:12px;
 }
+
 .search button{
- background:#fff0e5;
- color:var(--orange);
+ background:var(--orange);
+ color:white;
  border:0;
  border-radius:10px;
- padding:12px;
+ padding:12px 17px;
 }
+
 main{
  max-width:1200px;
  margin:auto;
- padding:15px 12px 110px;
+ padding:15px 12px 100px;
 }
+
 .hero{
- padding:25px;
- border-radius:24px;
- color:white;
- background:linear-gradient(135deg,#ff6500,#ff9c45);
  display:flex;
  align-items:center;
- justify-content:space-between;
- gap:15px;
+ background:linear-gradient(135deg,#ff6500,#ffac5c);
+ color:white;
+ border-radius:24px;
+ padding:25px;
+ overflow:hidden;
 }
+
+.hero-text{flex:1}
+
 .hero h1{
- margin:0 0 10px;
- font-size:30px;
+ font-size:35px;
+ margin:10px 0;
 }
+
 .hero p{
- line-height:1.6;
  font-size:14px;
+ line-height:1.6;
 }
-.hero-icon{
- font-size:75px;
+
+.hero svg{
+ width:45%;
+ max-width:330px;
 }
+
 .hero button{
- border:0;
  background:white;
  color:var(--orange);
- padding:12px 18px;
+ border:0;
+ padding:12px 15px;
  border-radius:12px;
  font-weight:bold;
 }
+
 .categories{
  display:flex;
  gap:10px;
  overflow:auto;
  padding:20px 0;
 }
+
 .category{
- white-space:nowrap;
  border:1px solid #eee;
- border-radius:25px;
  background:white;
  padding:12px 18px;
+ border-radius:30px;
+ white-space:nowrap;
 }
+
 .category.active{
  background:var(--orange);
  color:white;
 }
+
 .toolbar{
  display:flex;
  align-items:center;
@@ -143,332 +160,379 @@ main{
  gap:10px;
  margin:10px 0 18px;
 }
+
 .toolbar h2{
  margin:0;
- font-size:23px;
+ font-size:22px;
 }
+
 .toolbar select{
- border:1px solid #ddd;
- padding:10px;
- border-radius:10px;
  background:white;
- max-width:150px;
+ border:1px solid #ddd;
+ border-radius:10px;
+ padding:10px;
+ max-width:145px;
 }
+
 .products{
  display:grid;
  grid-template-columns:repeat(4,minmax(0,1fr));
  gap:15px;
 }
+
 .product{
  position:relative;
+ border-radius:20px;
  overflow:hidden;
  background:white;
- border-radius:18px;
  border:1px solid #eee;
+ box-shadow:0 4px 15px #00000008;
  display:flex;
  flex-direction:column;
- box-shadow:0 4px 15px #00000008;
 }
+
 .product img{
  width:100%;
  aspect-ratio:1;
  object-fit:cover;
  background:#eee;
+ cursor:pointer;
 }
+
 .placeholder{
  aspect-ratio:1;
  background:#fff0e5;
- display:flex;
- align-items:center;
- justify-content:center;
+ display:grid;
+ place-items:center;
  font-size:65px;
 }
+
 .favorite{
  position:absolute;
  right:10px;
  top:10px;
  border:0;
- border-radius:50%;
  background:white;
- width:36px;
- height:36px;
- font-size:20px;
+ border-radius:50%;
+ width:37px;
+ height:37px;
+ font-size:22px;
 }
+
 .info{
- padding:13px;
- flex:1;
+ padding:14px;
  display:flex;
  flex-direction:column;
+ flex:1;
 }
+
 .info h3{
- font-size:16px;
  margin:0 0 8px;
+ font-size:16px;
  overflow-wrap:anywhere;
 }
+
 .price{
  color:var(--orange);
  font-size:22px;
  font-weight:900;
  margin:8px 0;
 }
+
 .location{
  color:var(--gray);
  font-size:12px;
  margin:5px 0;
 }
+
 .stock{
- color:#249650;
+ color:#159447;
  font-size:12px;
- margin:5px 0 12px;
+ margin:8px 0;
 }
+
 .primary{
  display:block;
- width:100%;
- border:0;
- border-radius:11px;
  background:var(--orange);
  color:white;
+ border:0;
+ border-radius:12px;
  padding:13px;
+ width:100%;
  font-weight:bold;
- text-align:center;
 }
+
 .primary:disabled{
- background:#ccc;
+ background:#bbb;
+ cursor:not-allowed;
 }
-.add{
+
+.info .primary{
  margin-top:auto;
- font-size:13px;
 }
-.empty{
- background:white;
- border-radius:18px;
- text-align:center;
- padding:40px 20px;
- color:var(--gray);
-}
-.empty span{
- display:block;
- font-size:55px;
- margin-bottom:15px;
-}
+
 .business{
+ margin-top:25px;
  background:var(--dark);
  color:white;
- padding:24px;
- margin-top:25px;
  border-radius:22px;
+ padding:25px;
 }
+
 .business p{
- color:#d7deea;
- line-height:1.7;
- font-size:14px;
+ color:#d6dce6;
+ line-height:1.6;
 }
+
 .bottom{
  position:fixed;
  bottom:0;
  left:0;
  right:0;
+ z-index:200;
  background:white;
+ border-top:1px solid #eee;
  display:grid;
  grid-template-columns:repeat(5,1fr);
- padding:10px 3px;
- padding-bottom:max(10px,env(safe-area-inset-bottom));
- border-top:1px solid #eee;
- z-index:150;
+ padding:12px 4px;
+ padding-bottom:max(12px,env(safe-area-inset-bottom));
 }
-.bottom button,.bottom a{
- background:none;
+
+.bottom button{
  border:0;
+ background:none;
  color:var(--gray);
- font-size:10px;
  display:flex;
  flex-direction:column;
  align-items:center;
  gap:5px;
+ font-size:11px;
 }
-.bottom span{
- font-size:24px;
-}
+
+.bottom span{font-size:24px}
+
 .bottom .active{
  color:var(--orange);
  font-weight:bold;
 }
+
 dialog{
- width:min(500px,94%);
- max-height:90vh;
- overflow:auto;
  border:0;
  border-radius:22px;
  padding:22px;
+ width:min(500px,94%);
+ max-height:90vh;
+ overflow:auto;
  color:var(--dark);
 }
+
 dialog::backdrop{
  background:#0009;
 }
+
 .dialog-top{
  display:flex;
- justify-content:space-between;
  align-items:center;
- margin-bottom:20px;
+ justify-content:space-between;
+ gap:10px;
+ margin-bottom:15px;
 }
+
 .dialog-top h2{
- margin:0;
  font-size:22px;
+ margin:0;
 }
+
 .close{
+ background:#f1f2f5;
  border:0;
- background:#f0f2f5;
  border-radius:10px;
  padding:10px 14px;
 }
+
 label{
  display:block;
+ margin:15px 0 7px;
  font-weight:bold;
  font-size:13px;
- margin:15px 0 7px;
 }
+
 .field{
  width:100%;
- padding:13px;
  border:1px solid #ddd;
- border-radius:10px;
  background:white;
+ border-radius:11px;
+ padding:13px;
  outline:none;
 }
+
 .field:focus{
  border-color:var(--orange);
 }
+
 textarea{
  resize:vertical;
  min-height:100px;
 }
+
 .preview{
  display:grid;
  grid-template-columns:repeat(3,1fr);
  gap:8px;
- margin:12px 0;
+ margin:15px 0;
 }
+
 .preview img{
  width:100%;
  aspect-ratio:1;
  object-fit:cover;
  border-radius:10px;
 }
+
 .note{
- background:#fff2e5;
- color:#a65a13;
- padding:12px;
+ padding:13px;
+ background:#fff0e5;
+ color:#a45c15;
  border-radius:10px;
  font-size:12px;
  line-height:1.6;
  margin:15px 0;
 }
+
 .cart-item{
  display:flex;
  align-items:center;
  gap:12px;
- border-bottom:1px solid #eee;
  padding:14px 0;
+ border-bottom:1px solid #eee;
 }
+
 .cart-item img{
  width:65px;
  height:65px;
- border-radius:10px;
  object-fit:cover;
+ border-radius:10px;
 }
+
 .cart-info{
  flex:1;
  min-width:0;
-}
-.cart-info strong{
  overflow-wrap:anywhere;
 }
+
 .quantity{
  display:flex;
  align-items:center;
  gap:10px;
  margin-top:10px;
 }
+
 .quantity button{
+ border:0;
  background:#fff0e5;
  color:var(--orange);
- border:0;
  border-radius:8px;
- width:30px;
- height:30px;
+ width:32px;
+ height:32px;
 }
+
 .remove{
- color:#e53935;
- background:none;
  border:0;
- font-size:18px;
+ background:none;
+ color:#e53935;
+ font-size:20px;
 }
+
 .total{
  display:flex;
  justify-content:space-between;
+ padding:20px 0;
  font-size:20px;
  font-weight:bold;
- padding:20px 0;
 }
+
+.empty{
+ padding:35px;
+ text-align:center;
+ background:white;
+ border-radius:18px;
+ color:var(--gray);
+}
+
 .toast{
  position:fixed;
- bottom:90px;
  left:50%;
+ bottom:90px;
  transform:translateX(-50%);
  background:var(--dark);
  color:white;
- padding:14px 20px;
  border-radius:12px;
+ padding:14px 20px;
  z-index:999;
- text-align:center;
  max-width:90%;
+ text-align:center;
 }
+
 .hidden{
  display:none!important;
 }
+
 footer{
  text-align:center;
  color:var(--gray);
+ padding:25px;
  font-size:12px;
- padding:30px 0;
 }
+
 @media(max-width:850px){
  .products{
   grid-template-columns:repeat(3,minmax(0,1fr));
  }
 }
+
 @media(max-width:600px){
+
  .products{
   grid-template-columns:repeat(2,minmax(0,1fr));
   gap:10px;
  }
+
  .hero{
   padding:20px 15px;
  }
+
  .hero h1{
-  font-size:23px;
+  font-size:24px;
  }
- .hero-icon{
-  font-size:50px;
- }
+
  .hero p{
   font-size:12px;
  }
+
+ .hero button{
+  font-size:11px;
+ }
+
  .info{
   padding:11px;
  }
+
  .info h3{
   font-size:14px;
  }
+
  .price{
-  font-size:19px;
+  font-size:18px;
  }
- .add{
+
+ .info .primary{
   font-size:11px;
  }
+
  .toolbar h2{
-  font-size:19px;
+  font-size:18px;
  }
+
 }
 </style>
 </head>
@@ -476,102 +540,178 @@ footer{
 <body>
 
 <header>
+
  <div class="top">
-  <a href="./index.html" class="header-button">
-   ←
-  </a>
 
   <div class="logo">
    VAYO
    <small>MARKETPLACE</small>
   </div>
 
-  <button class="header-button" onclick="openCart()">
-   🛒 <span id="cartCount">0</span>
-  </button>
+  <div class="country">
+   🇹🇯 Тоҷикистон
+  </div>
+
  </div>
 
  <div class="search">
-  <input id="search" type="search"
+
+  <input id="search"
+   type="search"
    placeholder="Маҳсулотро ҷустуҷӯ кунед...">
 
   <button onclick="renderProducts()">
    🔍
   </button>
+
  </div>
+
 </header>
 
 <main>
 
- <section class="hero">
-  <div>
-   <h1>VAYO Marketplace</h1>
-   <p>
-    Харид ва фурӯши маҳсулот
-    дар Тоҷикистон.
-   </p>
+<section class="hero">
 
-   <button onclick="openAdd()">
-    + Маҳсулот илова кун
-   </button>
-  </div>
+ <div class="hero-text">
 
-  <div class="hero-icon">🛍️</div>
- </section>
+  <small>VAYO MARKETPLACE</small>
 
- <div class="categories" id="categories"></div>
-
- <section id="catalog">
-
-  <div class="toolbar">
-   <h2 id="catalogTitle">Маҳсулот</h2>
-
-   <select id="sort">
-    <option value="new">Навтарин</option>
-    <option value="cheap">Арзонтарин</option>
-    <option value="expensive">Қиматтарин</option>
-   </select>
-  </div>
-
-  <div class="products" id="products"></div>
-
-  <div id="empty" class="empty hidden">
-   <span>📦</span>
-   Маҳсулот ёфт нашуд.
-  </div>
-
- </section>
-
- <section class="business">
-  <h2>Бо VAYO тиҷорат кунед</h2>
+  <h1>Бозори VAYO</h1>
 
   <p>
-   Маҳсулоти худро ҷойгир кунед.
-   Комиссияи пешбинишудаи VAYO — 0%.
+   Харид ва фурӯши маҳсулот
+   дар Тоҷикистон.
   </p>
 
-  <button class="primary" onclick="openAdd()">
-   Фурӯшро оғоз кун
+  <button onclick="openAdd()">
+   + Эълон гузоштан
   </button>
- </section>
 
- <footer>
-  <strong>VAYO MARKETPLACE</strong>
-  <p>🇹🇯 Барои Тоҷикистон</p>
- </footer>
+ </div>
+
+ <svg viewBox="0 0 300 220">
+
+  <ellipse cx="150" cy="195"
+   rx="120" ry="13"
+   fill="#00000015"/>
+
+  <rect x="140" y="20"
+   width="105" height="175"
+   rx="18" fill="#202b3b"/>
+
+  <rect x="148" y="30"
+   width="89" height="153"
+   rx="10" fill="white"/>
+
+  <rect x="159" y="48"
+   width="67" height="60"
+   rx="10" fill="#ffe4cc"/>
+
+  <path d="M170 65 H179 L184 88
+   H211 L217 65 H179"
+   fill="none"
+   stroke="#ff6500"
+   stroke-width="5"/>
+
+  <circle cx="187" cy="96"
+   r="4" fill="#ff6500"/>
+
+  <circle cx="208" cy="96"
+   r="4" fill="#ff6500"/>
+
+  <rect x="159" y="120"
+   width="67" height="9"
+   rx="4" fill="#ddd"/>
+
+  <rect x="159" y="143"
+   width="67" height="25"
+   rx="8" fill="#ff6500"/>
+
+  <path d="M30 100 H130
+   L145 193 H15 Z"
+   fill="#ffce78"/>
+
+  <path d="M55 101 V78
+   Q80 45 105 78 V101"
+   stroke="#a65a00"
+   stroke-width="8"
+   fill="none"/>
+
+  <path d="M82 128 H157
+   L170 195 H70 Z"
+   fill="white"/>
+
+  <path d="M98 130 V114
+   Q120 90 142 114 V130"
+   fill="none"
+   stroke="#ff6500"
+   stroke-width="6"/>
+
+  <text x="120" y="174"
+   text-anchor="middle"
+   font-size="30"
+   font-weight="bold"
+   fill="#ff6500">V</text>
+
+ </svg>
+
+</section>
+
+<div class="categories" id="categories"></div>
+
+<div class="toolbar">
+
+ <h2 id="catalogTitle">Маҳсулот</h2>
+
+ <select id="sort">
+  <option value="new">Навтарин</option>
+  <option value="cheap">Арзонтарин</option>
+  <option value="expensive">Қиматтарин</option>
+ </select>
+
+</div>
+
+<div id="products" class="products"></div>
+
+<div id="empty" class="empty hidden">
+ 📦 Маҳсулот ёфт нашуд.
+</div>
+
+<section class="business">
+
+ <h2>Бо VAYO тиҷорат кунед</h2>
+
+ <p>
+  Маҳсулоти худро ройгон ҷойгир кунед.
+  Комиссияи пешбинишуда — 0%.
+ </p>
+
+ <button class="primary" onclick="openAdd()">
+  Фурӯшро оғоз кун
+ </button>
+
+</section>
+
+<footer>
+
+ <strong>VAYO MARKETPLACE</strong>
+
+ <p>🇹🇯 Барои Тоҷикистон</p>
+
+</footer>
 
 </main>
 
 <nav class="bottom">
 
- <a href="./index.html">
+ <button class="active" onclick="goHome()">
   <span>🏠</span>
   Асосӣ
- </a>
+ </button>
 
- <button class="active" onclick="showAll()">
-  <span>🛍️</span>
-  Бозор
+ <button onclick="focusSearch()">
+  <span>🔍</span>
+  Ҷустуҷӯ
  </button>
 
  <button onclick="openAdd()">
@@ -586,7 +726,7 @@ footer{
 
  <button onclick="openCart()">
   <span>🛒</span>
-  Сабад
+  Сабад (<b id="cartCount">0</b>)
  </button>
 
 </nav>
@@ -596,45 +736,45 @@ footer{
 <dialog id="addDialog">
 
  <div class="dialog-top">
-  <h2>Маҳсулоти нав</h2>
+
+  <h2>Эълони нав</h2>
 
   <button class="close"
    onclick="closeDialog('addDialog')">
    ✕
   </button>
+
  </div>
 
  <form id="productForm">
 
   <label>Номи маҳсулот</label>
 
-  <input class="field" id="productName"
-   maxlength="100"
-   placeholder="Мисол: iPhone 15"
-   required>
+  <input id="name" class="field"
+   maxlength="100" required>
 
   <label>Нарх (сомонӣ)</label>
 
-  <input class="field" id="productPrice"
-   type="number" min="0.01" step="0.01"
-   required>
+  <input id="price" class="field"
+   type="number" min="0.01"
+   step="0.01" required>
 
   <label>Категория</label>
 
-  <select class="field" id="productCategory">
+  <select id="category" class="field">
    <option>Либос</option>
    <option>Телефон</option>
    <option>Электроника</option>
+   <option>Пойафзол</option>
    <option>Мошин</option>
    <option>Хона</option>
-   <option>Пойафзол</option>
    <option>Кӯдакон</option>
    <option>Дигар</option>
   </select>
 
   <label>Шаҳр</label>
 
-  <select class="field" id="productCity">
+  <select id="city" class="field">
    <option>Душанбе</option>
    <option>Хуҷанд</option>
    <option>Бохтар</option>
@@ -644,52 +784,52 @@ footer{
    <option>Дигар</option>
   </select>
 
-  <label>Миқдори маҳсулот</label>
+  <label>Миқдор</label>
 
-  <input class="field" id="productStock"
-   type="number" min="1" max="10000"
-   value="1" required>
+  <input id="stock" class="field"
+   type="number" min="1"
+   max="10000" value="1" required>
 
   <label>Тавсифи маҳсулот</label>
 
-  <textarea class="field"
-   id="productDescription"
-   maxlength="2000"
-   placeholder="Маълумот дар бораи маҳсулот">
+  <textarea id="description"
+   class="field" maxlength="2000">
   </textarea>
 
-  <label>Расмҳо (то 10 адад)</label>
+  <label>Расмҳо — то 10 адад</label>
 
-  <input class="field" id="productImages"
+  <input id="images" class="field"
    type="file" accept="image/*" multiple>
 
-  <div class="preview" id="preview"></div>
+  <div id="preview" class="preview"></div>
 
   <div class="note">
-   Версияи аввал: маҳсулот дар ҳамин
-   браузер нигоҳ дошта мешавад.
+   Ҳоло маҳсулот танҳо дар браузери
+   шумо нигоҳ дошта мешавад.
   </div>
 
-  <button class="primary" type="submit"
-   id="publishButton">
-   Нашр кардани маҳсулот
+  <button class="primary"
+   id="publish" type="submit">
+   Нашр кардан
   </button>
 
  </form>
 
 </dialog>
 
-<!-- PRODUCT DETAILS -->
+<!-- DETAILS -->
 
 <dialog id="detailDialog">
 
  <div class="dialog-top">
-  <h2>Маълумоти маҳсулот</h2>
+
+  <h2>Маҳсулот</h2>
 
   <button class="close"
    onclick="closeDialog('detailDialog')">
    ✕
   </button>
+
  </div>
 
  <div id="detailContent"></div>
@@ -701,19 +841,24 @@ footer{
 <dialog id="cartDialog">
 
  <div class="dialog-top">
+
   <h2>Сабади ман</h2>
 
   <button class="close"
    onclick="closeDialog('cartDialog')">
    ✕
   </button>
+
  </div>
 
  <div id="cartItems"></div>
 
  <div class="total">
+
   <span>Ҳамагӣ:</span>
+
   <span id="cartTotal">0 сомонӣ</span>
+
  </div>
 
  <button class="primary"
@@ -729,52 +874,27 @@ footer{
 <dialog id="checkoutDialog">
 
  <div class="dialog-top">
+
   <h2>Фармоиш</h2>
 
   <button class="close"
    onclick="closeDialog('checkoutDialog')">
    ✕
   </button>
+
  </div>
 
  <div class="note">
-  Ин ҳоло фармоиши озмоишӣ мебошад.
+  Ин фармоиши озмоишӣ аст.
   Ба фурӯшанда фиристода намешавад.
  </div>
 
- <form id="checkoutForm">
+ <p id="checkoutTotal"></p>
 
-  <label>Номи шумо</label>
-
-  <input class="field" id="customerName"
-   required>
-
-  <label>Рақами телефон</label>
-
-  <input class="field" id="customerPhone"
-   type="tel"
-   placeholder="+992..."
-   required>
-
-  <label>Суроға</label>
-
-  <textarea class="field"
-   id="customerAddress"
-   required></textarea>
-
-  <label>Пардохт</label>
-
-  <select class="field">
-   <option>Нақдӣ ҳангоми қабул</option>
-  </select>
-
-  <p id="checkoutTotal"></p>
-
-  <button class="primary" type="submit">
-   Сабти фармоиши озмоишӣ
-  </button>
-
- </form>
+ <button class="primary"
+  onclick="submitOrder()">
+  Сабти фармоиши озмоишӣ
+ </button>
 
 </dialog>
 
@@ -795,11 +915,11 @@ function read(key){
 
  try{
 
-  const value = JSON.parse(
+  const data = JSON.parse(
    localStorage.getItem(key) || "[]"
   );
 
-  return Array.isArray(value) ? value : [];
+  return Array.isArray(data) ? data : [];
 
  }catch{
 
@@ -814,8 +934,7 @@ function save(key,value){
  try{
 
   localStorage.setItem(
-   key,
-   JSON.stringify(value)
+   key,JSON.stringify(value)
   );
 
   return true;
@@ -833,23 +952,25 @@ function save(key,value){
 let products = read(PRODUCT_KEY);
 let cart = read(CART_KEY);
 let favorites = read(FAVORITE_KEY);
-let selectedImages = [];
 
+let images = [];
 let activeCategory = "Ҳама";
 let onlyFavorites = false;
-let toastTimer;
 let imageTask = 0;
+let timer;
 
 const categories = [
+
  "Ҳама",
  "Либос",
  "Телефон",
  "Электроника",
+ "Пойафзол",
  "Мошин",
  "Хона",
- "Пойафзол",
  "Кӯдакон",
  "Дигар"
+
 ];
 
 function money(value){
@@ -859,15 +980,35 @@ function money(value){
 
 }
 
+function el(tag,className,text){
+
+ const node = document.createElement(tag);
+
+ if(className){
+
+  node.className = className;
+
+ }
+
+ if(text!==undefined){
+
+  node.textContent = text;
+
+ }
+
+ return node;
+
+}
+
 function toast(message){
 
  $("toast").textContent = message;
 
  $("toast").classList.remove("hidden");
 
- clearTimeout(toastTimer);
+ clearTimeout(timer);
 
- toastTimer = setTimeout(()=>{
+ timer = setTimeout(()=>{
 
   $("toast").classList.add("hidden");
 
@@ -881,63 +1022,17 @@ function closeDialog(id){
 
 }
 
-function element(tag,className,text){
-
- const node = document.createElement(tag);
-
- if(className)node.className = className;
-
- if(text !== undefined){
-
-  node.textContent = text;
-
- }
-
- return node;
-
-}
-
-function productImage(product){
-
- if(!product.images || !product.images[0]){
-
-  return element(
-   "div","placeholder","📦"
-  );
-
- }
-
- const img = document.createElement("img");
-
- img.src = product.images[0];
-
- img.alt = product.name;
-
- img.loading = "lazy";
-
- img.onerror = ()=>{
-
-  img.replaceWith(
-   element("div","placeholder","📦")
-  );
-
- };
-
- return img;
-
-}
-
 function renderCategories(){
 
  $("categories").replaceChildren();
 
  categories.forEach(category=>{
 
-  const button = element(
+  const button = el(
    "button","category",category
   );
 
-  if(category===activeCategory){
+  if(activeCategory===category){
 
    button.classList.add("active");
 
@@ -958,6 +1053,34 @@ function renderCategories(){
   $("categories").appendChild(button);
 
  });
+
+}
+
+function productImage(product){
+
+ if(!product.images?.length){
+
+  return el("div","placeholder","📦");
+
+ }
+
+ const img = document.createElement("img");
+
+ img.src = product.images[0];
+
+ img.alt = product.name;
+
+ img.loading = "lazy";
+
+ img.onerror = ()=>{
+
+  img.replaceWith(
+   el("div","placeholder","📦")
+  );
+
+ };
+
+ return img;
 
 }
 
@@ -1020,7 +1143,7 @@ function renderProducts(){
 
  list.forEach(product=>{
 
-  const card = element("article","product");
+  const card = el("article","product");
 
   const img = productImage(product);
 
@@ -1028,53 +1151,45 @@ function renderProducts(){
 
   card.appendChild(img);
 
-  const heart = element(
-   "button",
-   "favorite",
-   favorites.includes(product.id) ? "❤️" : "♡"
+  const heart = el(
+   "button","favorite",
+   favorites.includes(product.id)
+    ? "❤️" : "♡"
   );
 
   heart.onclick = ()=>toggleFavorite(product.id);
 
   card.appendChild(heart);
 
-  const info = element("div","info");
+  const info = el("div","info");
 
-  const title = element(
-   "h3","",product.name
-  );
+  const title = el("h3","",product.name);
 
   title.onclick = ()=>showDetails(product.id);
 
   info.appendChild(title);
 
   info.appendChild(
-   element("div","price",money(product.price))
+   el("div","price",money(product.price))
   );
 
   info.appendChild(
-   element("div","location","📍 "+product.city)
+   el("div","location","📍 "+product.city)
   );
 
   info.appendChild(
-   element(
-    "div",
-    "stock",
-    "Дар анбор: "+product.stock
-   )
+   el("div","stock","Дар анбор: "+product.stock)
   );
 
-  const add = element(
-   "button",
-   "primary add",
-   "🛒 Ба сабад"
+  const button = el(
+   "button","primary","🛒 Ба сабад"
   );
 
-  add.disabled = product.stock<=0;
+  button.disabled = product.stock<=0;
 
-  add.onclick = ()=>addToCart(product.id);
+  button.onclick = ()=>addToCart(product.id);
 
-  info.appendChild(add);
+  info.appendChild(button);
 
   card.appendChild(info);
 
@@ -1112,13 +1227,13 @@ function showFavorites(){
 
  renderProducts();
 
- $("catalog").scrollIntoView({
+ $("catalogTitle").scrollIntoView({
   behavior:"smooth"
  });
 
 }
 
-function showAll(){
+function goHome(){
 
  onlyFavorites = false;
 
@@ -1130,19 +1245,35 @@ function showAll(){
 
  renderProducts();
 
+ window.scrollTo({
+  top:0,
+  behavior:"smooth"
+ });
+
+}
+
+function focusSearch(){
+
+ window.scrollTo({
+  top:0,
+  behavior:"smooth"
+ });
+
+ $("search").focus();
+
 }
 
 function openAdd(){
 
  imageTask++;
 
- selectedImages = [];
+ images = [];
 
  $("productForm").reset();
 
  $("preview").replaceChildren();
 
- $("publishButton").disabled = false;
+ $("publish").disabled = false;
 
  $("addDialog").showModal();
 
@@ -1206,17 +1337,17 @@ function compressImage(file){
 
 }
 
-$("productImages").onchange = async event=>{
+$("images").onchange = async event=>{
 
  const task = ++imageTask;
 
  const files = [...event.target.files];
 
- selectedImages = [];
+ images = [];
 
  $("preview").replaceChildren();
 
- $("publishButton").disabled = true;
+ $("publish").disabled = true;
 
  if(files.length>10){
 
@@ -1224,7 +1355,7 @@ $("productImages").onchange = async event=>{
 
   event.target.value = "";
 
-  $("publishButton").disabled = false;
+  $("publish").disabled = false;
 
   return;
 
@@ -1232,29 +1363,29 @@ $("productImages").onchange = async event=>{
 
  try{
 
-  const images = [];
+  const result = [];
 
   for(const file of files){
 
    if(!file.type.startsWith("image/")){
 
-    continue;
+    throw new Error("Invalid image");
 
    }
 
    if(file.size>15*1024*1024){
 
-    throw new Error("Расм хеле калон аст.");
+    throw new Error("Image too large");
 
    }
 
-   images.push(await compressImage(file));
+   result.push(await compressImage(file));
 
   }
 
   if(task!==imageTask)return;
 
-  selectedImages = images;
+  images = result;
 
   images.forEach(src=>{
 
@@ -1274,7 +1405,7 @@ $("productImages").onchange = async event=>{
 
   if(task===imageTask){
 
-   $("publishButton").disabled = false;
+   $("publish").disabled = false;
 
   }
 
@@ -1286,15 +1417,15 @@ $("productForm").onsubmit = event=>{
 
  event.preventDefault();
 
- const price = Number($("productPrice").value);
+ const name = $("name").value.trim();
 
- const stock = Number($("productStock").value);
+ const price = Number($("price").value);
 
- const name = $("productName").value.trim();
+ const stock = Number($("stock").value);
 
  if(!name || !Number.isFinite(price)
   || price<=0 || !Number.isInteger(stock)
-  || stock<=0){
+  || stock<=0 || stock>10000){
 
   toast("Маълумотро дуруст ворид кунед.");
 
@@ -1312,13 +1443,13 @@ $("productForm").onsubmit = event=>{
 
   stock,
 
-  category:$("productCategory").value,
+  category:$("category").value,
 
-  city:$("productCity").value,
+  city:$("city").value,
 
-  description:$("productDescription").value.trim(),
+  description:$("description").value.trim(),
 
-  images:[...selectedImages],
+  images:[...images],
 
   created:Date.now()
 
@@ -1332,9 +1463,9 @@ $("productForm").onsubmit = event=>{
 
  closeDialog("addDialog");
 
- showAll();
+ goHome();
 
- toast("Маҳсулот дар браузер сабт шуд.");
+ toast("Маҳсулот сабт шуд!");
 
 };
 
@@ -1359,22 +1490,22 @@ function showDetails(id){
  root.appendChild(img);
 
  root.appendChild(
-  element("h2","",product.name)
+  el("h2","",product.name)
  );
 
  root.appendChild(
-  element("div","price",money(product.price))
+  el("div","price",money(product.price))
  );
 
  root.appendChild(
-  element("p","","📍 "+product.city)
+  el("p","","📍 "+product.city)
  );
 
  root.appendChild(
-  element("p","",product.description)
+  el("p","",product.description)
  );
 
- const gallery = element("div","preview");
+ const gallery = el("div","preview");
 
  (product.images||[]).slice(1).forEach(src=>{
 
@@ -1388,13 +1519,13 @@ function showDetails(id){
 
  root.appendChild(gallery);
 
- const button = element(
+ const button = el(
   "button","primary","Ба сабад илова кун"
  );
 
  button.disabled = product.stock<=0;
 
- button.onclick = ()=>addToCart(product.id);
+ button.onclick = ()=>addToCart(id);
 
  root.appendChild(button);
 
@@ -1402,7 +1533,7 @@ function showDetails(id){
 
 }
 
-function updateCartCount(){
+function updateCart(){
 
  $("cartCount").textContent = cart.reduce(
   (sum,item)=>sum+item.quantity,0
@@ -1452,7 +1583,7 @@ function addToCart(id){
 
  cart = next;
 
- updateCartCount();
+ updateCart();
 
  toast("Ба сабад илова шуд.");
 
@@ -1492,7 +1623,7 @@ function changeQuantity(id,amount){
 
   cart = next;
 
-  updateCartCount();
+  updateCart();
 
   renderCart();
 
@@ -1500,7 +1631,7 @@ function changeQuantity(id,amount){
 
 }
 
-function removeFromCart(id){
+function removeItem(id){
 
  const next = cart.filter(
   item=>item.id!==id
@@ -1510,7 +1641,7 @@ function removeFromCart(id){
 
   cart = next;
 
-  updateCartCount();
+  updateCart();
 
   renderCart();
 
@@ -1560,7 +1691,7 @@ function renderCart(){
  if(!cart.length){
 
   root.appendChild(
-   element("p","","Сабад холӣ аст.")
+   el("p","","Сабад холӣ аст.")
   );
 
  }
@@ -1571,9 +1702,9 @@ function renderCart(){
    p=>p.id===item.id
   );
 
-  const row = element("div","cart-item");
+  const row = el("div","cart-item");
 
-  if(product && product.images?.[0]){
+  if(product?.images?.[0]){
 
    const img = document.createElement("img");
 
@@ -1583,11 +1714,10 @@ function renderCart(){
 
   }
 
-  const info = element("div","cart-info");
+  const info = el("div","cart-info");
 
   info.appendChild(
-   element(
-    "strong","",
+   el("strong","",
     product ? product.name : "Дастрас нест"
    )
   );
@@ -1595,27 +1725,26 @@ function renderCart(){
   if(product){
 
    info.appendChild(
-    element(
-     "div","price",
+    el("div","price",
      money(product.price*item.quantity)
     )
    );
 
   }
 
-  const quantity = element("div","quantity");
+  const quantity = el("div","quantity");
 
-  const minus = element("button","","−");
+  const minus = el("button","","−");
 
   minus.onclick = ()=>changeQuantity(item.id,-1);
 
-  const plus = element("button","","+");
+  const plus = el("button","","+");
 
   plus.onclick = ()=>changeQuantity(item.id,1);
 
   quantity.append(
    minus,
-   element("span","",item.quantity),
+   el("span","",item.quantity),
    plus
   );
 
@@ -1623,11 +1752,9 @@ function renderCart(){
 
   row.appendChild(info);
 
-  const remove = element(
-   "button","remove","✕"
-  );
+  const remove = el("button","remove","✕");
 
-  remove.onclick = ()=>removeFromCart(item.id);
+  remove.onclick = ()=>removeItem(item.id);
 
   row.appendChild(remove);
 
@@ -1662,9 +1789,7 @@ function openCheckout(){
 
 }
 
-$("checkoutForm").onsubmit = event=>{
-
- event.preventDefault();
+function submitOrder(){
 
  if(!validCart()){
 
@@ -1712,23 +1837,19 @@ $("checkoutForm").onsubmit = event=>{
 
  if(!save(ORDER_KEY,[order,...orders]))return;
 
- // Маълумоти шахсӣ дар ин демо сабт намешавад.
-
  if(save(CART_KEY,[])){
 
   cart = [];
 
  }
 
- updateCartCount();
-
- $("checkoutForm").reset();
+ updateCart();
 
  $("checkoutDialog").close();
 
  toast("Фармоиши озмоишӣ сабт шуд.");
 
-};
+}
 
 $("search").oninput = renderProducts;
 
@@ -1738,9 +1859,9 @@ renderCategories();
 
 renderProducts();
 
-updateCartCount();
+updateCart();
 
 </script>
 
 </body>
-</html># VAYO-APP
+</html>
