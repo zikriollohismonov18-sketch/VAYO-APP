@@ -6,6 +6,7 @@
 <title>VAYO Marketplace</title>
 
 <style>
+
 *{box-sizing:border-box}
 
 :root{
@@ -36,16 +37,16 @@ button:disabled{
 }
 
 a{
- text-decoration:none;
  color:inherit;
+ text-decoration:none;
 }
 
 header{
  background:white;
+ padding:13px;
  position:sticky;
  top:0;
  z-index:100;
- padding:12px;
  box-shadow:0 2px 12px #0001;
 }
 
@@ -55,12 +56,12 @@ header{
  display:flex;
  align-items:center;
  justify-content:space-between;
- gap:12px;
+ gap:10px;
 }
 
 .logo{
  color:var(--orange);
- font-size:32px;
+ font-size:30px;
  font-weight:900;
 }
 
@@ -73,9 +74,9 @@ header{
 .icon-button{
  background:#f1f2f5;
  border:0;
- border-radius:12px;
  padding:12px;
- font-size:18px;
+ border-radius:12px;
+ font-size:19px;
 }
 
 main{
@@ -86,12 +87,12 @@ main{
 
 .search{
  display:flex;
- gap:10px;
  align-items:center;
+ gap:10px;
  background:white;
  border:2px solid var(--orange);
+ padding:13px;
  border-radius:25px;
- padding:12px 16px;
  margin-bottom:15px;
 }
 
@@ -105,8 +106,8 @@ main{
 .hero{
  background:linear-gradient(135deg,#ff6500,#ff9b35);
  color:white;
- border-radius:22px;
- padding:22px;
+ border-radius:23px;
+ padding:23px;
  display:flex;
  align-items:center;
  overflow:hidden;
@@ -118,24 +119,24 @@ main{
 
 .hero h1{
  font-size:30px;
- margin:8px 0;
+ margin:10px 0;
 }
 
 .hero p{
- font-size:14px;
- line-height:1.5;
+ font-size:13px;
+ line-height:1.6;
 }
 
 .hero svg{
- width:43%;
+ width:44%;
 }
 
 .hero button{
+ border:0;
  background:white;
  color:var(--orange);
- border:0;
- padding:12px;
  border-radius:12px;
+ padding:13px;
  font-weight:bold;
 }
 
@@ -143,16 +144,16 @@ main{
  display:flex;
  overflow:auto;
  gap:8px;
- padding:18px 0;
+ padding:17px 0;
  scrollbar-width:none;
 }
 
 .category{
  white-space:nowrap;
- border:1px solid #eee;
  background:white;
- padding:11px 16px;
+ border:1px solid #eee;
  border-radius:25px;
+ padding:11px 16px;
 }
 
 .category.active{
@@ -162,22 +163,22 @@ main{
 
 .section-head{
  display:flex;
- justify-content:space-between;
  align-items:center;
+ justify-content:space-between;
  gap:10px;
- margin:15px 0;
+ margin:12px 0;
 }
 
 .section-head h2{
- font-size:21px;
  margin:0;
+ font-size:20px;
 }
 
 .section-head select{
+ background:white;
  border:1px solid #ddd;
  border-radius:10px;
  padding:10px;
- background:white;
  max-width:45%;
 }
 
@@ -192,7 +193,6 @@ main{
  border-radius:15px;
  overflow:hidden;
  border:1px solid #eee;
- box-shadow:0 3px 12px #00000006;
 }
 
 .photo{
@@ -204,6 +204,7 @@ main{
  justify-content:center;
  cursor:pointer;
  overflow:hidden;
+ font-size:45px;
 }
 
 .photo img{
@@ -214,31 +215,31 @@ main{
 
 .favorite{
  position:absolute;
- right:8px;
  top:8px;
- background:white;
- border:0;
+ right:8px;
  width:35px;
  height:35px;
+ background:white;
+ border:0;
  border-radius:50%;
  font-size:22px;
  box-shadow:0 2px 10px #0002;
 }
 
 .favorite.active{
- color:#ef4444;
+ color:#e53935;
 }
 
 .discount{
  position:absolute;
- left:8px;
  top:8px;
+ left:8px;
  background:#e53935;
  color:white;
  font-size:13px;
  font-weight:bold;
- border-radius:7px;
  padding:7px;
+ border-radius:7px;
 }
 
 .product-info{
@@ -246,23 +247,23 @@ main{
 }
 
 .price{
+ color:var(--orange);
  font-size:22px;
  font-weight:900;
- color:var(--orange);
 }
 
 .old-price{
  color:#999;
- text-decoration:line-through;
  font-size:13px;
+ text-decoration:line-through;
  margin:5px 0;
 }
 
 .product-name{
  font-size:14px;
  font-weight:bold;
- min-height:36px;
  margin:8px 0;
+ min-height:35px;
  overflow-wrap:anywhere;
  cursor:pointer;
 }
@@ -274,23 +275,23 @@ main{
 }
 
 .timer{
- color:#e53935;
  background:#fff0ed;
- padding:7px;
+ color:#e53935;
  border-radius:7px;
+ padding:8px;
  font-size:11px;
  font-weight:bold;
  margin:8px 0;
 }
 
 .primary{
- width:100%;
- border:0;
- border-radius:11px;
  background:var(--orange);
  color:white;
+ border:0;
+ border-radius:11px;
  padding:13px;
  font-weight:bold;
+ width:100%;
 }
 
 .add-cart{
@@ -301,23 +302,23 @@ main{
 .empty{
  background:white;
  padding:45px 15px;
- border-radius:18px;
  text-align:center;
+ border-radius:18px;
  color:var(--gray);
 }
 
 .business{
  background:var(--dark);
  color:white;
- padding:22px;
+ padding:23px;
  border-radius:20px;
  margin-top:25px;
 }
 
 .business p{
+ color:#d6deea;
  font-size:14px;
  line-height:1.6;
- color:#d6deea;
 }
 
 .bottom{
@@ -326,22 +327,22 @@ main{
  left:0;
  right:0;
  z-index:200;
- display:grid;
- grid-template-columns:repeat(5,1fr);
  background:white;
  border-top:1px solid #eee;
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
  padding:12px 4px;
 }
 
 .bottom button{
+ background:none;
+ border:0;
  display:flex;
  flex-direction:column;
  align-items:center;
  gap:5px;
- background:none;
- border:0;
- color:var(--gray);
  font-size:11px;
+ color:var(--gray);
  position:relative;
 }
 
@@ -351,19 +352,18 @@ main{
 
 .bottom .active{
  color:var(--orange);
- font-weight:bold;
 }
 
 .bottom .plus{
- width:39px;
- height:39px;
  background:var(--orange);
  color:white;
+ width:39px;
+ height:39px;
  border-radius:50%;
  display:flex;
  align-items:center;
  justify-content:center;
- margin-top:-9px;
+ margin-top:-8px;
 }
 
 .count{
@@ -373,12 +373,12 @@ main{
  background:#e53935;
  color:white;
  font-size:10px;
- padding:3px 6px;
  border-radius:15px;
+ padding:3px 6px;
 }
 
 dialog{
- width:min(540px,95%);
+ width:min(550px,95%);
  max-height:90vh;
  overflow:auto;
  border:0;
@@ -400,15 +400,15 @@ dialog::backdrop{
 }
 
 .dialog-head h2{
- margin:0;
  font-size:21px;
+ margin:0;
 }
 
 .close{
  border:0;
  background:#eee;
- border-radius:10px;
  padding:10px 14px;
+ border-radius:10px;
 }
 
 label{
@@ -422,8 +422,8 @@ label{
  border:1px solid #ddd;
  border-radius:11px;
  margin:7px 0 15px;
- outline:none;
  background:white;
+ outline:none;
 }
 
 .field:focus{
@@ -431,8 +431,8 @@ label{
 }
 
 textarea{
+ min-height:90px;
  resize:vertical;
- min-height:85px;
 }
 
 .two{
@@ -470,41 +470,95 @@ textarea{
  accent-color:var(--orange);
 }
 
+/* IMAGE UPLOAD */
+
+.upload-box{
+ border:2px dashed #ff9b55;
+ background:#fff8f2;
+ border-radius:17px;
+ padding:20px;
+ text-align:center;
+ margin:10px 0;
+}
+
+.upload-box button{
+ border:0;
+ background:var(--orange);
+ color:white;
+ padding:13px 20px;
+ border-radius:12px;
+ font-weight:bold;
+}
+
+.upload-box p{
+ color:var(--gray);
+ font-size:12px;
+}
+
+.upload-icon{
+ font-size:40px;
+ margin-bottom:10px;
+}
+
 .preview{
  display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:8px;
- margin:10px 0 15px;
+ grid-template-columns:repeat(3,1fr);
+ gap:9px;
+ margin:15px 0;
 }
 
 .preview-item{
  position:relative;
+ aspect-ratio:1;
 }
 
-.preview img{
+.preview-item img{
  width:100%;
- aspect-ratio:1;
+ height:100%;
  object-fit:cover;
- border-radius:10px;
+ border-radius:12px;
 }
 
 .preview-item button{
  position:absolute;
- top:3px;
- right:3px;
+ top:5px;
+ right:5px;
  border:0;
- border-radius:50%;
- width:24px;
- height:24px;
  background:#e53935;
  color:white;
+ width:27px;
+ height:27px;
+ border-radius:50%;
+}
+
+.photo-number{
+ position:absolute;
+ bottom:5px;
+ left:5px;
+ background:#0009;
+ color:white;
+ font-size:11px;
+ padding:5px;
+ border-radius:5px;
+}
+
+.preview-empty{
+ border:1px dashed #ccc;
+ border-radius:12px;
+ aspect-ratio:1;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ color:#aaa;
+ font-size:27px;
+ background:#fafafa;
 }
 
 .notice{
  background:#fff1e4;
  color:#955000;
+ padding:13px;
  border-radius:12px;
- padding:12px;
  font-size:12px;
  line-height:1.6;
  margin:12px 0;
@@ -520,8 +574,8 @@ textarea{
 
 .thumbs{
  display:flex;
- gap:7px;
  overflow:auto;
+ gap:7px;
  margin:10px 0;
 }
 
@@ -538,8 +592,8 @@ textarea{
  background:#16a34a;
  color:white;
  text-align:center;
- border-radius:12px;
  padding:14px;
+ border-radius:12px;
  font-weight:bold;
  margin:10px 0;
 }
@@ -573,18 +627,18 @@ textarea{
 }
 
 .quantity button{
+ width:30px;
+ height:30px;
  border:0;
  background:#eee;
  border-radius:8px;
- width:30px;
- height:30px;
  font-weight:bold;
 }
 
 .remove{
+ border:0;
  background:#ffe5e5;
  color:#c62828;
- border:0;
  padding:10px;
  border-radius:9px;
 }
@@ -597,8 +651,8 @@ textarea{
 
 .order-item{
  background:#f5f6fa;
- border-radius:12px;
  padding:15px;
+ border-radius:12px;
  margin:10px 0;
  font-size:13px;
  line-height:1.7;
@@ -612,7 +666,7 @@ textarea{
  transform:translateX(-50%);
  background:#202b3b;
  color:white;
- padding:15px 20px;
+ padding:15px;
  border-radius:12px;
  z-index:5000;
  max-width:90%;
@@ -626,8 +680,8 @@ textarea{
 footer{
  text-align:center;
  padding:25px;
- font-size:12px;
  color:var(--gray);
+ font-size:12px;
 }
 
 @media(max-width:750px){
@@ -646,7 +700,7 @@ footer{
  }
 
  .price{
-  font-size:19px;
+  font-size:18px;
  }
 
  .product-info{
@@ -658,6 +712,7 @@ footer{
  }
 
 }
+
 </style>
 </head>
 
@@ -667,19 +722,19 @@ footer{
 
 <div class="header">
 
- <a class="icon-button"
- href="./index.html">←</a>
+<a href="./index.html"
+class="icon-button">←</a>
 
- <div class="logo">
- VAYO
- <small>MARKETPLACE</small>
- </div>
+<div class="logo">
+VAYO
+<small>MARKETPLACE</small>
+</div>
 
- <button class="icon-button"
- onclick="openOrders()">📋</button>
+<button class="icon-button"
+onclick="openOrders()">📋</button>
 
- <button class="icon-button"
- onclick="openCart()">🛒</button>
+<button class="icon-button"
+onclick="openCart()">🛒</button>
 
 </div>
 
@@ -689,11 +744,11 @@ footer{
 
 <div class="search">
 
- <span>🔍</span>
+<span>🔍</span>
 
- <input id="search"
- type="search"
- placeholder="Ҷустуҷӯи маҳсулот...">
+<input id="search"
+type="search"
+placeholder="Ҷустуҷӯи маҳсулот...">
 
 </div>
 
@@ -701,146 +756,145 @@ footer{
 
 <div class="hero-text">
 
- <small>🇹🇯 VAYO MARKETPLACE</small>
+<small>🇹🇯 VAYO MARKETPLACE</small>
 
- <h1>Тахфифҳои махсус!</h1>
+<h1>Тахфифҳои махсус!</h1>
 
- <p>
- Харид ва фурӯш дар Тоҷикистон.
- Комиссияи пешбинишуда 0%.
- </p>
+<p>
+Хариду фурӯш дар Тоҷикистон.
+Комиссияи пешбинишуда 0%.
+</p>
 
- <button onclick="openAdd()">
- + Эълон гузоштан
- </button>
+<button onclick="openAdd()">
++ Эълон гузоштан
+</button>
 
 </div>
 
 <svg viewBox="0 0 300 230">
 
- <ellipse cx="150" cy="205"
- rx="125" ry="12"
- fill="#9a440030"/>
+<ellipse cx="150" cy="205"
+rx="125" ry="12" fill="#9a440030"/>
 
- <rect x="140" y="20"
- width="110" height="180"
- rx="20" fill="#202b3b"/>
+<rect x="140" y="20"
+width="110" height="180"
+rx="20" fill="#202b3b"/>
 
- <rect x="150" y="32"
- width="90" height="155"
- rx="12" fill="white"/>
+<rect x="150" y="32"
+width="90" height="155"
+rx="12" fill="white"/>
 
- <rect x="160" y="48"
- width="70" height="65"
- rx="12" fill="#ffe2c2"/>
+<rect x="160" y="48"
+width="70" height="65"
+rx="12" fill="#ffe2c2"/>
 
- <text x="195" y="92"
- text-anchor="middle"
- font-size="35"
- font-weight="bold"
- fill="#ff6500">%</text>
+<text x="195" y="92"
+text-anchor="middle"
+font-size="35"
+font-weight="bold"
+fill="#ff6500">%</text>
 
- <rect x="160" y="125"
- width="70" height="10"
- rx="5" fill="#ddd"/>
+<rect x="160" y="125"
+width="70" height="10"
+rx="5" fill="#ddd"/>
 
- <rect x="160" y="150"
- width="70" height="25"
- rx="8" fill="#ff6500"/>
+<rect x="160" y="150"
+width="70" height="25"
+rx="8" fill="#ff6500"/>
 
- <path d="M25 100 H130
- L145 205 H10 Z"
- fill="#ffce68"/>
+<path d="M25 100 H130
+L145 205 H10 Z"
+fill="#ffce68"/>
 
- <path d="M50 102 V75
- Q78 42 105 75 V102"
- stroke="#a74c00"
- stroke-width="8"
- fill="none"/>
+<path d="M50 102 V75
+Q78 42 105 75 V102"
+stroke="#a74c00"
+stroke-width="8"
+fill="none"/>
 
- <path d="M85 135 H165
- L178 205 H72 Z"
- fill="white"/>
+<path d="M85 135 H165
+L178 205 H72 Z"
+fill="white"/>
 
- <path d="M100 136 V118
- Q125 90 150 118 V136"
- stroke="#ff6500"
- stroke-width="6"
- fill="none"/>
+<path d="M100 136 V118
+Q125 90 150 118 V136"
+stroke="#ff6500"
+stroke-width="6"
+fill="none"/>
 
- <text x="125" y="182"
- text-anchor="middle"
- font-size="32"
- font-weight="bold"
- fill="#ff6500">V</text>
+<text x="125" y="182"
+text-anchor="middle"
+font-size="32"
+font-weight="bold"
+fill="#ff6500">V</text>
 
- <rect x="220" y="155"
- width="65" height="50"
- rx="5" fill="#e9ae68"/>
+<rect x="220" y="155"
+width="65" height="50"
+rx="5" fill="#e9ae68"/>
 
- <rect x="245" y="155"
- width="15" height="50"
- fill="#ffe2a4"/>
+<rect x="245" y="155"
+width="15" height="50"
+fill="#ffe2a4"/>
 
 </svg>
 
 </section>
 
 <div class="categories"
- id="categories"></div>
+id="categories"></div>
 
 <div class="section-head">
 
- <h2 id="productTitle">
- Маҳсулот (0)
- </h2>
+<h2 id="productTitle">
+Маҳсулот (0)
+</h2>
 
- <select id="sort">
+<select id="sort">
 
- <option value="new">Навтарин</option>
- <option value="cheap">Арзонтарин</option>
- <option value="expensive">Қиматтарин</option>
- <option value="discount">Тахфифи калон</option>
+<option value="new">Навтарин</option>
+<option value="cheap">Арзонтарин</option>
+<option value="expensive">Қиматтарин</option>
+<option value="discount">Тахфифи калон</option>
 
- </select>
+</select>
 
 </div>
 
-<div class="products"
- id="products"></div>
+<div id="products"
+class="products"></div>
 
-<div class="empty hidden"
- id="empty">
+<div id="empty"
+class="empty">
 
- <div style="font-size:50px">📦</div>
+<div style="font-size:45px">📦</div>
 
- <p>Маҳсулот ёфт нашуд.</p>
+<p>Маҳсулот ҳоло нест.</p>
 
 </div>
 
 <section class="business">
 
- <h2>Бо VAYO тиҷорат кунед</h2>
+<h2>Бо VAYO тиҷорат кунед</h2>
 
- <p>
- Маҳсулот, расмҳо ва тахфифҳои
- худро ройгон ҷойгир кунед.
- </p>
+<p>
+Маҳсулоти худро ройгон
+ҷойгир кунед ва тахфиф гузоред.
+</p>
 
- <button class="primary"
- onclick="openAdd()">
+<button class="primary"
+onclick="openAdd()">
 
- Фурӯшро оғоз кун
+Фурӯшро оғоз кун
 
- </button>
+</button>
 
 </section>
 
 <footer>
 
- <strong>VAYO MARKETPLACE</strong>
+<strong>VAYO MARKETPLACE</strong>
 
- <p>🇹🇯 Барои Тоҷикистон</p>
+<p>🇹🇯 Барои Тоҷикистон</p>
 
 </footer>
 
@@ -850,32 +904,32 @@ footer{
 
 <nav class="bottom">
 
- <button class="active"
- onclick="showAll()">
- <span>🏠</span>
- Асосӣ
- </button>
+<button class="active"
+onclick="showAll()">
+<span>🏠</span>
+Асосӣ
+</button>
 
- <button onclick="focusSearch()">
- <span>🔍</span>
- Ҷустуҷӯ
- </button>
+<button onclick="focusSearch()">
+<span>🔍</span>
+Ҷустуҷӯ
+</button>
 
- <button onclick="openAdd()">
- <span class="plus">+</span>
- Эълон
- </button>
+<button onclick="openAdd()">
+<span class="plus">+</span>
+Эълон
+</button>
 
- <button onclick="showFavorites()">
- <span>♡</span>
- Дӯстдошта
- </button>
+<button onclick="showFavorites()">
+<span>♡</span>
+Дӯстдошта
+</button>
 
- <button onclick="openCart()">
- <span>🛒</span>
- <b class="count" id="cartCount">0</b>
- Сабад
- </button>
+<button onclick="openCart()">
+<span>🛒</span>
+<b id="cartCount" class="count">0</b>
+Сабад
+</button>
 
 </nav>
 
@@ -885,22 +939,57 @@ footer{
 
 <div class="dialog-head">
 
- <h2>Маҳсулоти нав</h2>
+<h2>Маҳсулоти нав</h2>
 
- <button class="close"
- onclick="closeDialog('addDialog')">✕</button>
+<button class="close"
+onclick="closeDialog('addDialog')">✕</button>
 
 </div>
 
 <form id="productForm">
 
+<label>📷 Аксҳои маҳсулот *</label>
+
+<div class="upload-box">
+
+<div class="upload-icon">📸</div>
+
+<button type="button"
+id="chooseImages">
+
++ Илова кардани акс
+
+</button>
+
+<p>
+Аз телефон ё компютер
+то 10 акс интихоб кунед.
+</p>
+
+<strong id="imageCount">
+0 / 10 акс
+</strong>
+
+<input id="images"
+type="file"
+accept="image/*"
+multiple
+hidden>
+
+</div>
+
+<div id="uploadStatus"></div>
+
+<div id="preview"
+class="preview"></div>
+
 <label>Номи маҳсулот *</label>
 
 <input id="name"
- class="field"
- maxlength="120"
- required
- placeholder="Мисол: Пойафзоли мардона">
+class="field"
+maxlength="120"
+required
+placeholder="Мисол: iPhone 15">
 
 <div class="two">
 
@@ -909,12 +998,12 @@ footer{
 <label>Нархи асосӣ (TJS) *</label>
 
 <input id="price"
- class="field"
- type="number"
- min="0.01"
- max="100000000"
- step="0.01"
- required>
+class="field"
+type="number"
+min="0.01"
+max="100000000"
+step="0.01"
+required>
 
 </div>
 
@@ -923,13 +1012,13 @@ footer{
 <label>Миқдор *</label>
 
 <input id="stock"
- class="field"
- type="number"
- min="1"
- max="100000"
- step="1"
- value="1"
- required>
+class="field"
+type="number"
+min="1"
+max="100000"
+step="1"
+value="1"
+required>
 
 </div>
 
@@ -938,40 +1027,44 @@ footer{
 <label class="check">
 
 <input type="checkbox"
- id="hasDiscount">
+id="hasDiscount">
 
 🔥 Тахфиф гузоштан
 
 </label>
 
 <div id="salePanel"
- class="sale-panel hidden">
+class="sale-panel hidden">
 
 <h3>Танзими тахфиф</h3>
 
 <label>Нархи тахфифӣ</label>
 
 <input id="salePrice"
- class="field"
- type="number"
- min="0.01"
- step="0.01"
- placeholder="150">
+class="field"
+type="number"
+min="0.01"
+step="0.01">
 
 <label>Оғози тахфиф</label>
 
 <input id="saleStart"
- class="field"
- type="datetime-local">
+class="field"
+type="datetime-local">
 
 <label>Анҷоми тахфиф</label>
 
 <input id="saleEnd"
- class="field"
- type="datetime-local">
+class="field"
+type="datetime-local">
+
+<p style="font-size:12px">
+Вақтро мувофиқи вақти Тоҷикистон
+ворид кунед.
+</p>
 
 <div id="discountPreview"
- class="notice">
+class="notice">
 
 Тахфиф: 0%
 
@@ -982,24 +1075,23 @@ footer{
 <label>Категория</label>
 
 <select id="category"
- class="field"></select>
+class="field"></select>
 
-<label>Номи мағоза ё фурӯшанда *</label>
+<label>Номи фурӯшанда ё мағоза *</label>
 
 <input id="sellerName"
- class="field"
- maxlength="100"
- required
- placeholder="Номи мағоза">
+class="field"
+maxlength="100"
+required>
 
 <label>Рақами телефони фурӯшанда *</label>
 
 <input id="phone"
- class="field"
- type="tel"
- maxlength="25"
- required
- placeholder="+992 900 00 00 00">
+class="field"
+type="tel"
+maxlength="25"
+placeholder="+992 900 00 00 00"
+required>
 
 <label>Шаҳр</label>
 
@@ -1023,16 +1115,14 @@ footer{
 <label>Суроғаи мағоза</label>
 
 <input id="address"
- class="field"
- maxlength="200"
- placeholder="Кӯча, бозор, рақами мағоза">
+class="field"
+maxlength="200">
 
 <label>Истеҳсолкунанда</label>
 
 <input id="brand"
- class="field"
- maxlength="100"
- placeholder="Samsung, Adidas...">
+class="field"
+maxlength="100">
 
 <label>Ҳолати маҳсулот</label>
 
@@ -1046,52 +1136,37 @@ footer{
 <label>Андозаҳо</label>
 
 <input id="sizes"
- class="field"
- maxlength="200"
- placeholder="39, 40, 41, 42, 43">
+class="field"
+maxlength="200"
+placeholder="39, 40, 41, 42">
 
 <label>Рангҳо</label>
 
 <input id="colors"
- class="field"
- maxlength="200"
- placeholder="Сиёҳ, сафед, кабуд">
+class="field"
+maxlength="200"
+placeholder="Сафед, сиёҳ, кабуд">
 
 <label>Маълумоти пурраи маҳсулот *</label>
 
 <textarea id="description"
- class="field"
- maxlength="3000"
- required
- placeholder="Сифат, мавод, хусусиятҳо, кафолат..."></textarea>
-
-<label>Расмҳои маҳсулот — то 10 акс</label>
-
-<input id="images"
- class="field"
- type="file"
- accept="image/*"
- multiple>
-
-<div id="imageCount">
-0 / 10 акс
-</div>
-
-<div class="preview"
- id="preview"></div>
+class="field"
+maxlength="3000"
+required
+placeholder="Сифат, мавод, хусусиятҳо, кафолат..."></textarea>
 
 <div class="notice">
 
-Рақами телефони фурӯшанда дар
-саҳифаи маҳсулот нишон дода мешавад.
-Ин версия маълумотро танҳо
-дар браузер нигоҳ медорад.
+Маълумот ва аксҳо дар ҳамин браузер
+нигоҳ дошта мешаванд.
+Рақами фурӯшанда дар саҳифаи
+маҳсулот нишон дода мешавад.
 
 </div>
 
-<button class="primary"
- id="publish"
- type="submit">
+<button id="publish"
+class="primary"
+type="submit">
 
 Нашри маҳсулот
 
@@ -1101,7 +1176,7 @@ footer{
 
 </dialog>
 
-<!-- PRODUCT DETAILS -->
+<!-- DETAILS -->
 
 <dialog id="detailDialog">
 
@@ -1161,7 +1236,7 @@ onclick="closeDialog('checkoutDialog')">✕</button>
 
 <form id="checkoutForm">
 
-<label>Ному насаби харидор *</label>
+<label>Ному насаб *</label>
 
 <input id="buyerName"
 class="field"
@@ -1174,16 +1249,15 @@ required>
 class="field"
 type="tel"
 maxlength="25"
-required
-placeholder="+992...">
+placeholder="+992..."
+required>
 
 <label>Шаҳр *</label>
 
 <input id="buyerCity"
 class="field"
 maxlength="100"
-required
-placeholder="Душанбе">
+required>
 
 <label>Кӯча *</label>
 
@@ -1217,7 +1291,7 @@ maxlength="30">
 
 </div>
 
-<label>Шарҳи иловагӣ</label>
+<label>Шарҳ барои расонанда</label>
 
 <textarea id="buyerNote"
 class="field"
@@ -1241,15 +1315,16 @@ id="checkoutTotal"></div>
 
 <div class="notice">
 
-Фармоиши озмоишӣ аст.
-Ба фурӯшандаи воқеӣ фиристода намешавад.
+Фармоиши озмоишӣ.
+Маълумот ба фурӯшандаи воқеӣ
+фиристода намешавад.
 
 </div>
 
 <button class="primary"
 type="submit">
 
-Тасдиқи фармоиши озмоишӣ
+Тасдиқи фармоиш
 
 </button>
 
@@ -1290,10 +1365,33 @@ class="toast hidden"></div>
 
 const $ = id => document.getElementById(id);
 
+const DB_NAME = "VAYO_MARKETPLACE_V3";
+
 const PRODUCT_KEY = "vayo_new_products_v1";
+
 const CART_KEY = "vayo_new_cart_v1";
+
 const FAVORITE_KEY = "vayo_new_favorites_v1";
+
 const ORDER_KEY = "vayo_new_orders_v1";
+
+let db = null;
+
+let products = [];
+
+let uploadedImages = [];
+
+let processingImages = false;
+
+let publishing = false;
+
+let selectedCategory = "Ҳама";
+
+let favoritesOnly = false;
+
+let toastTimer;
+
+let checkoutSnapshot = "";
 
 const categories = [
 
@@ -1312,22 +1410,70 @@ const categories = [
 
 ];
 
-let selectedCategory = "Ҳама";
-let favoritesOnly = false;
+/* HELPERS */
 
-let uploadedImages = [];
-let processingImages = false;
+function el(tag,text,className){
 
-let toastTimer;
-let imageVersion = 0;
-let checkoutSnapshot = "";
+ const node = document.createElement(tag);
+
+ if(text!==undefined){
+
+  node.textContent = text;
+
+ }
+
+ if(className){
+
+  node.className = className;
+
+ }
+
+ return node;
+
+}
+
+function money(value){
+
+ return Number(value).toLocaleString(
+
+  "ru-RU",
+
+  {maximumFractionDigits:2}
+
+ )+" TJS";
+
+}
+
+function toast(message){
+
+ $("toast").textContent = message;
+
+ $("toast").classList.remove("hidden");
+
+ clearTimeout(toastTimer);
+
+ toastTimer = setTimeout(()=>{
+
+  $("toast").classList.add("hidden");
+
+ },4000);
+
+}
+
+function closeDialog(id){
+
+ $(id).close();
+
+}
 
 function read(key){
 
  try{
 
   const data = JSON.parse(
+
    localStorage.getItem(key) || "[]"
+
   );
 
   return Array.isArray(data) ? data : [];
@@ -1345,14 +1491,16 @@ function save(key,data){
  try{
 
   localStorage.setItem(
+
    key,JSON.stringify(data)
+
   );
 
   return true;
 
  }catch{
 
-  toast("Хотираи браузер пур аст.");
+  toast("Маълумот сабт нашуд.");
 
   return false;
 
@@ -1360,84 +1508,540 @@ function save(key,data){
 
 }
 
-let products = read(PRODUCT_KEY);
 let cart = read(CART_KEY);
+
 let favorites = read(FAVORITE_KEY);
-
-function el(tag,text,className){
-
- const node = document.createElement(tag);
-
- if(text!==undefined){
-  node.textContent = text;
- }
-
- if(className){
-  node.className = className;
- }
-
- return node;
-
-}
-
-function money(value){
-
- return Number(value).toLocaleString(
-  "ru-RU",
-  {maximumFractionDigits:2}
- )+" TJS";
-
-}
-
-function toast(message){
-
- $("toast").textContent = message;
-
- $("toast").classList.remove("hidden");
-
- clearTimeout(toastTimer);
-
- toastTimer = setTimeout(()=>{
-
-  $("toast").classList.add("hidden");
-
- },3500);
-
-}
-
-function closeDialog(id){
-
- $(id).close();
-
-}
 
 function normalizePhone(value){
 
  let phone = String(value || "")
+
  .replace(/[\s()-]/g,"");
 
  if(/^00992\d{9}$/.test(phone)){
+
   phone = "+"+phone.slice(2);
+
  }
 
  if(/^992\d{9}$/.test(phone)){
+
   phone = "+"+phone;
+
  }
 
  if(/^\d{9}$/.test(phone)){
+
   phone = "+992"+phone;
+
  }
 
  return /^\+992\d{9}$/.test(phone)
+
  ? phone : null;
 
 }
 
-/* DISCOUNTS */
+/* INDEXEDDB DATABASE */
+
+function openDatabase(){
+
+ return new Promise((resolve,reject)=>{
+
+  if(!window.indexedDB){
+
+   reject(new Error("IndexedDB unavailable"));
+
+   return;
+
+  }
+
+  const request = indexedDB.open(
+
+   DB_NAME,1
+
+  );
+
+  request.onupgradeneeded = ()=>{
+
+   const database = request.result;
+
+   if(!database.objectStoreNames.contains("products")){
+
+    database.createObjectStore(
+
+     "products",
+
+     {keyPath:"id"}
+
+    );
+
+   }
+
+  };
+
+  request.onsuccess = ()=>{
+
+   resolve(request.result);
+
+  };
+
+  request.onerror = ()=>{
+
+   reject(request.error);
+
+  };
+
+  request.onblocked = ()=>{
+
+   reject(new Error("Database blocked"));
+
+  };
+
+ });
+
+}
+
+function loadProducts(){
+
+ return new Promise((resolve,reject)=>{
+
+  const transaction = db.transaction(
+
+   "products","readonly"
+
+  );
+
+  const request = transaction
+
+  .objectStore("products")
+
+  .getAll();
+
+  request.onsuccess = ()=>{
+
+   resolve(request.result || []);
+
+  };
+
+  request.onerror = ()=>{
+
+   reject(request.error);
+
+  };
+
+ });
+
+}
+
+function storeProduct(product){
+
+ return new Promise((resolve,reject)=>{
+
+  const transaction = db.transaction(
+
+   "products","readwrite"
+
+  );
+
+  transaction.objectStore("products")
+
+  .put(product);
+
+  transaction.oncomplete = ()=>resolve();
+
+  transaction.onerror = ()=>{
+
+   reject(transaction.error);
+
+  };
+
+  transaction.onabort = ()=>{
+
+   reject(transaction.error);
+
+  };
+
+ });
+
+}
+
+/* MIGRATE OLD PRODUCTS */
+
+async function migrateProducts(){
+
+ const oldProducts = read(PRODUCT_KEY);
+
+ if(!oldProducts.length)return;
+
+ const existing = new Set(
+
+  products.map(product=>product.id)
+
+ );
+
+ for(const product of oldProducts){
+
+  if(product.id && !existing.has(product.id)){
+
+   await storeProduct(product);
+
+   existing.add(product.id);
+
+  }
+
+ }
+
+ products = await loadProducts();
+
+}
+
+/* IMAGE UPLOAD */
+
+function openAdd(){
+
+ if(!db){
+
+  toast("Базаи маълумот ҳоло омода нест.");
+
+  return;
+
+ }
+
+ renderPreview();
+
+ $("addDialog").showModal();
+
+}
+
+$("chooseImages").onclick = ()=>{
+
+ if(processingImages)return;
+
+ if(uploadedImages.length>=10){
+
+  toast("Ҳадди аксар 10 акс.");
+
+  return;
+
+ }
+
+ $("images").click();
+
+};
+
+function compressImage(file){
+
+ return new Promise((resolve,reject)=>{
+
+  if(!file || file.size>30000000){
+
+   reject(new Error("File too large"));
+
+   return;
+
+  }
+
+  const reader = new FileReader();
+
+  reader.onerror = ()=>{
+
+   reject(new Error("File read error"));
+
+  };
+
+  reader.onload = ()=>{
+
+   const image = new Image();
+
+   image.onerror = ()=>{
+
+    reject(new Error("Unsupported image"));
+
+   };
+
+   image.onload = ()=>{
+
+    try{
+
+     const ratio = Math.min(
+
+      1,
+
+      1000/Math.max(
+
+       image.naturalWidth,
+
+       image.naturalHeight
+
+      )
+
+     );
+
+     const canvas = document.createElement("canvas");
+
+     canvas.width = Math.max(
+
+      1,
+
+      Math.round(image.naturalWidth*ratio)
+
+     );
+
+     canvas.height = Math.max(
+
+      1,
+
+      Math.round(image.naturalHeight*ratio)
+
+     );
+
+     const ctx = canvas.getContext("2d");
+
+     if(!ctx){
+
+      throw new Error("Canvas unavailable");
+
+     }
+
+     ctx.fillStyle = "#ffffff";
+
+     ctx.fillRect(
+
+      0,0,canvas.width,canvas.height
+
+     );
+
+     ctx.drawImage(
+
+      image,
+
+      0,0,
+
+      canvas.width,canvas.height
+
+     );
+
+     const result = canvas.toDataURL(
+
+      "image/jpeg",0.75
+
+     );
+
+     if(!result.startsWith("data:image/jpeg")){
+
+      throw new Error("Image conversion failed");
+
+     }
+
+     resolve(result);
+
+    }catch(error){
+
+     reject(error);
+
+    }
+
+   };
+
+   image.src = reader.result;
+
+  };
+
+  reader.readAsDataURL(file);
+
+ });
+
+}
+
+function renderPreview(){
+
+ const root = $("preview");
+
+ root.replaceChildren();
+
+ $("imageCount").textContent =
+
+ uploadedImages.length+" / 10 акс";
+
+ uploadedImages.forEach((source,index)=>{
+
+  const item = el(
+
+   "div",undefined,"preview-item"
+
+  );
+
+  const img = document.createElement("img");
+
+  img.src = source;
+
+  const remove = el("button","✕");
+
+  remove.type = "button";
+
+  remove.disabled = processingImages;
+
+  remove.onclick = ()=>{
+
+   uploadedImages.splice(index,1);
+
+   renderPreview();
+
+  };
+
+  const number = el(
+
+   "span",
+
+   index===0 ? "Асосӣ" : String(index+1),
+
+   "photo-number"
+
+  );
+
+  item.append(img,remove,number);
+
+  root.appendChild(item);
+
+ });
+
+ if(uploadedImages.length<10){
+
+  const add = el(
+
+   "button","+","preview-empty"
+
+  );
+
+  add.type = "button";
+
+  add.disabled = processingImages;
+
+  add.onclick = ()=>{
+
+   $("images").click();
+
+  };
+
+  root.appendChild(add);
+
+ }
+
+ $("chooseImages").disabled =
+
+ processingImages || uploadedImages.length>=10;
+
+}
+
+$("images").addEventListener(
+
+ "change",
+
+ async function(){
+
+  if(processingImages)return;
+
+  const files = Array.from(this.files);
+
+  this.value = "";
+
+  if(!files.length)return;
+
+  const remaining = 10-uploadedImages.length;
+
+  if(remaining<=0){
+
+   toast("Ҳадди аксар 10 акс.");
+
+   return;
+
+  }
+
+  processingImages = true;
+
+  $("publish").disabled = true;
+
+  $("chooseImages").disabled = true;
+
+  renderPreview();
+
+  let added = 0;
+
+  let failed = 0;
+
+  try{
+
+   const selected = files.slice(0,remaining);
+
+   for(let i=0;i<selected.length;i++){
+
+    $("uploadStatus").textContent =
+
+     "Акс "+(i+1)+" аз "+selected.length
+
+     +" хонда мешавад...";
+
+    try{
+
+     const source = await compressImage(
+
+      selected[i]
+
+     );
+
+     uploadedImages.push(source);
+
+     added++;
+
+     renderPreview();
+
+    }catch(error){
+
+     failed++;
+
+     console.error(error);
+
+    }
+
+   }
+
+   $("uploadStatus").textContent =
+
+    added+" акс илова шуд. "
+
+    +failed+" акс хонда нашуд.";
+
+   if(failed){
+
+    toast("Аксҳои хонданашударо ба JPG ё PNG табдил диҳед.");
+
+   }else{
+
+    toast(added+" акс илова шуд!");
+
+   }
+
+  }finally{
+
+   processingImages = false;
+
+   $("publish").disabled = false;
+
+   renderPreview();
+
+  }
+
+ }
+
+);
+
+/* DISCOUNT */
 
 function saleActive(product){
 
  const start = Date.parse(product.saleStart);
+
  const end = Date.parse(product.saleEnd);
 
  const now = Date.now();
@@ -1496,7 +2100,7 @@ function countdown(end){
 
  const secs = seconds%60;
 
- const pad = value => String(value).padStart(2,"0");
+ const pad = n=>String(n).padStart(2,"0");
 
  return (days ? days+" рӯз " : "")
 
@@ -1504,7 +2108,7 @@ function countdown(end){
 
 }
 
-$("hasDiscount").addEventListener("change",()=>{
+$("hasDiscount").onchange = ()=>{
 
  $("salePanel").classList.toggle(
 
@@ -1514,7 +2118,7 @@ $("hasDiscount").addEventListener("change",()=>{
 
  );
 
-});
+};
 
 function updateDiscountPreview(){
 
@@ -1538,23 +2142,15 @@ function updateDiscountPreview(){
 
   $("discountPreview").textContent =
 
-   "Нархи тахфифиро дуруст ворид кунед.";
+   "Нархи тахфифиро дуруст нависед.";
 
  }
 
 }
 
-$("price").addEventListener(
+$("price").oninput = updateDiscountPreview;
 
- "input",updateDiscountPreview
-
-);
-
-$("salePrice").addEventListener(
-
- "input",updateDiscountPreview
-
-);
+$("salePrice").oninput = updateDiscountPreview;
 
 /* CATEGORIES */
 
@@ -1610,7 +2206,209 @@ categories.slice(2).forEach(category=>{
 
 });
 
-/* IMAGES */
+/* PUBLISH */
+
+$("productForm").addEventListener(
+
+ "submit",
+
+ async event=>{
+
+  event.preventDefault();
+
+  if(processingImages || publishing)return;
+
+  if(!uploadedImages.length){
+
+   toast("Ҳадди ақал як акс илова кунед.");
+
+   return;
+
+  }
+
+  const name = $("name").value.trim();
+
+  const price = Number($("price").value);
+
+  const stock = Number($("stock").value);
+
+  const phone = normalizePhone($("phone").value);
+
+  if(!phone){
+
+   toast("Рақами телефон нодуруст аст.");
+
+   return;
+
+  }
+
+  if(!name
+
+  || !$("sellerName").value.trim()
+
+  || !$("description").value.trim()
+
+  || !Number.isFinite(price)
+
+  || price<=0
+
+  || !Number.isInteger(stock)
+
+  || stock<1){
+
+   toast("Маълумоти маҳсулотро санҷед.");
+
+   return;
+
+  }
+
+  let salePrice = null;
+
+  let saleStart = null;
+
+  let saleEnd = null;
+
+  if($("hasDiscount").checked){
+
+   salePrice = Number($("salePrice").value);
+
+   const start = new Date(
+
+    $("saleStart").value+"+05:00"
+
+   );
+
+   const end = new Date(
+
+    $("saleEnd").value+"+05:00"
+
+   );
+
+   if(!Number.isFinite(salePrice)
+
+   || salePrice<=0
+
+   || salePrice>=price){
+
+    toast("Нархи тахфифӣ нодуруст аст.");
+
+    return;
+
+   }
+
+   if(!Number.isFinite(start.getTime())
+
+   || !Number.isFinite(end.getTime())
+
+   || end<=start
+
+   || end.getTime()<=Date.now()){
+
+    toast("Муҳлати тахфиф нодуруст аст.");
+
+    return;
+
+   }
+
+   saleStart = start.toISOString();
+
+   saleEnd = end.toISOString();
+
+  }
+
+  const product = {
+
+   id:crypto.randomUUID(),
+
+   name,
+
+   price,
+
+   stock,
+
+   salePrice,
+
+   saleStart,
+
+   saleEnd,
+
+   category:$("category").value,
+
+   sellerName:$("sellerName").value.trim(),
+
+   phone,
+
+   city:$("city").value,
+
+   address:$("address").value.trim(),
+
+   brand:$("brand").value.trim(),
+
+   condition:$("condition").value,
+
+   sizes:$("sizes").value.trim(),
+
+   colors:$("colors").value.trim(),
+
+   description:$("description").value.trim(),
+
+   images:[...uploadedImages],
+
+   created:new Date().toISOString()
+
+  };
+
+  publishing = true;
+
+  $("publish").disabled = true;
+
+  $("publish").textContent =
+
+   "Сабт шуда истодааст...";
+
+  try{
+
+   await storeProduct(product);
+
+   products = await loadProducts();
+
+   $("productForm").reset();
+
+   uploadedImages = [];
+
+   $("uploadStatus").textContent = "";
+
+   $("salePanel").classList.add("hidden");
+
+   renderPreview();
+
+   closeDialog("addDialog");
+
+   showAll();
+
+   toast("Маҳсулот бо аксҳояш сабт шуд!");
+
+  }catch(error){
+
+   console.error(error);
+
+   toast("Сабт нашуд. Хотираи браузерро санҷед.");
+
+  }finally{
+
+   publishing = false;
+
+   $("publish").disabled = false;
+
+   $("publish").textContent = "Нашри маҳсулот";
+
+  }
+
+ }
+
+);
+
+/* PRODUCT IMAGES */
 
 function safeImage(src){
 
@@ -1642,7 +2440,7 @@ function productImage(product){
 
 }
 
-/* PRODUCTS */
+/* RENDER PRODUCTS */
 
 function renderProducts(){
 
@@ -1734,9 +2532,17 @@ function renderProducts(){
 
  list.forEach(product=>{
 
-  const card = el("article",undefined,"product");
+  const card = el(
 
-  const photo = el("div",undefined,"photo");
+   "article",undefined,"product"
+
+  );
+
+  const photo = el(
+
+   "div",undefined,"photo"
+
+  );
 
   photo.appendChild(productImage(product));
 
@@ -1786,7 +2592,11 @@ function renderProducts(){
 
   photo.appendChild(heart);
 
-  const info = el("div",undefined,"product-info");
+  const info = el(
+
+   "div",undefined,"product-info"
+
+  );
 
   info.appendChild(
 
@@ -1924,385 +2734,13 @@ function focusSearch(){
 
 }
 
-/* UPLOAD 10 IMAGES */
-
-function openAdd(){
-
- $("addDialog").showModal();
-
-}
-
-function compressImage(file){
-
- return new Promise((resolve,reject)=>{
-
-  if(!file.type.startsWith("image/")
-
-  || file.size>15000000){
-
-   reject(new Error("Invalid image"));
-
-   return;
-
-  }
-
-  const image = new Image();
-
-  const url = URL.createObjectURL(file);
-
-  image.onload = ()=>{
-
-   try{
-
-    const ratio = Math.min(
-
-     1,700/Math.max(image.width,image.height)
-
-    );
-
-    const canvas = document.createElement("canvas");
-
-    canvas.width = Math.max(
-
-     1,Math.round(image.width*ratio)
-
-    );
-
-    canvas.height = Math.max(
-
-     1,Math.round(image.height*ratio)
-
-    );
-
-    const ctx = canvas.getContext("2d");
-
-    ctx.fillStyle = "#ffffff";
-
-    ctx.fillRect(
-
-     0,0,canvas.width,canvas.height
-
-    );
-
-    ctx.drawImage(
-
-     image,0,0,canvas.width,canvas.height
-
-    );
-
-    resolve(
-
-     canvas.toDataURL("image/jpeg",0.65)
-
-    );
-
-   }catch(error){
-
-    reject(error);
-
-   }finally{
-
-    URL.revokeObjectURL(url);
-
-   }
-
-  };
-
-  image.onerror = ()=>{
-
-   URL.revokeObjectURL(url);
-
-   reject(new Error("Image error"));
-
-  };
-
-  image.src = url;
-
- });
-
-}
-
-function renderPreview(){
-
- const root = $("preview");
-
- root.replaceChildren();
-
- $("imageCount").textContent =
-
-  uploadedImages.length+" / 10 акс";
-
- uploadedImages.forEach((source,index)=>{
-
-  const item = el(
-
-   "div",undefined,"preview-item"
-
-  );
-
-  const img = document.createElement("img");
-
-  img.src = source;
-
-  const remove = el("button","✕");
-
-  remove.type = "button";
-
-  remove.onclick = ()=>{
-
-   uploadedImages.splice(index,1);
-
-   renderPreview();
-
-  };
-
-  item.append(img,remove);
-
-  root.appendChild(item);
-
- });
-
-}
-
-$("images").addEventListener(
-
- "change",async event=>{
-
-  const remaining = 10-uploadedImages.length;
-
-  if(remaining<=0){
-
-   toast("Ҳадди аксар 10 акс.");
-
-   event.target.value = "";
-
-   return;
-
-  }
-
-  const files = [...event.target.files].slice(0,remaining);
-
-  const version = ++imageVersion;
-
-  processingImages = true;
-
-  $("publish").disabled = true;
-
-  $("images").disabled = true;
-
-  try{
-
-   const result = [];
-
-   for(const file of files){
-
-    result.push(await compressImage(file));
-
-   }
-
-   if(version!==imageVersion)return;
-
-   uploadedImages = [
-
-    ...uploadedImages,...result
-
-   ].slice(0,10);
-
-   renderPreview();
-
-  }catch{
-
-   toast("Яке аз аксҳо хонда нашуд.");
-
-  }finally{
-
-   if(version===imageVersion){
-
-    processingImages = false;
-
-    $("publish").disabled = false;
-
-    $("images").disabled = false;
-
-    event.target.value = "";
-
-   }
-
-  }
-
- }
-
-);
-
-/* PUBLISH PRODUCT */
-
-$("productForm").addEventListener(
-
- "submit",event=>{
-
-  event.preventDefault();
-
-  if(processingImages)return;
-
-  if(!uploadedImages.length){
-
-   toast("Ҳадди ақал як акс илова кунед.");
-
-   return;
-
-  }
-
-  const name = $("name").value.trim();
-
-  const price = Number($("price").value);
-
-  const stock = Number($("stock").value);
-
-  const phone = normalizePhone($("phone").value);
-
-  if(!phone){
-
-   toast("Рақами телефон нодуруст аст.");
-
-   return;
-
-  }
-
-  if(!name
-
-  || !Number.isFinite(price)
-
-  || price<=0
-
-  || !Number.isInteger(stock)
-
-  || stock<1){
-
-   toast("Маълумоти маҳсулотро санҷед.");
-
-   return;
-
-  }
-
-  let salePrice = null;
-
-  let saleStart = null;
-
-  let saleEnd = null;
-
-  if($("hasDiscount").checked){
-
-   salePrice = Number($("salePrice").value);
-
-   const start = new Date($("saleStart").value);
-
-   const end = new Date($("saleEnd").value);
-
-   if(!Number.isFinite(salePrice)
-
-   || salePrice<=0
-
-   || salePrice>=price){
-
-    toast("Нархи тахфифӣ бояд аз нархи асосӣ камтар бошад.");
-
-    return;
-
-   }
-
-   if(!Number.isFinite(start.getTime())
-
-   || !Number.isFinite(end.getTime())
-
-   || end<=start
-
-   || end.getTime()<=Date.now()){
-
-    toast("Муҳлати тахфифро дуруст интихоб кунед.");
-
-    return;
-
-   }
-
-   saleStart = start.toISOString();
-
-   saleEnd = end.toISOString();
-
-  }
-
-  const product = {
-
-   id:crypto.randomUUID(),
-
-   name,
-
-   price,
-
-   stock,
-
-   salePrice,
-
-   saleStart,
-
-   saleEnd,
-
-   category:$("category").value,
-
-   sellerName:$("sellerName").value.trim(),
-
-   phone,
-
-   city:$("city").value,
-
-   address:$("address").value.trim(),
-
-   brand:$("brand").value.trim(),
-
-   condition:$("condition").value,
-
-   sizes:$("sizes").value.trim(),
-
-   colors:$("colors").value.trim(),
-
-   description:$("description").value.trim(),
-
-   images:[...uploadedImages],
-
-   created:new Date().toISOString()
-
-  };
-
-  const next = [product,...products];
-
-  if(!save(PRODUCT_KEY,next))return;
-
-  products = next;
-
-  $("productForm").reset();
-
-  $("salePanel").classList.add("hidden");
-
-  uploadedImages = [];
-
-  renderPreview();
-
-  closeDialog("addDialog");
-
-  showAll();
-
-  toast("Маҳсулот нашр шуд!");
-
- }
-
-);
-
 /* PRODUCT DETAILS */
 
-function makeOptionSelect(labelText,values){
+function makeSelect(title,values){
 
  const box = el("div");
 
- const label = el("label",labelText);
+ const label = el("label",title);
 
  const select = document.createElement("select");
 
@@ -2328,7 +2766,11 @@ function makeOptionSelect(labelText,values){
 
 function openProduct(id){
 
- const product = products.find(item=>item.id===id);
+ const product = products.find(
+
+  item=>item.id===id
+
+ );
 
  if(!product)return;
 
@@ -2358,7 +2800,11 @@ function openProduct(id){
 
   img.src = source;
 
-  img.onclick = ()=>mainImage.src = source;
+  img.onclick = ()=>{
+
+   mainImage.src = source;
+
+  };
 
   thumbs.appendChild(img);
 
@@ -2424,7 +2870,7 @@ function openProduct(id){
 
  if(product.sizes){
 
-  const option = makeOptionSelect(
+  const option = makeSelect(
 
    "Андозаро интихоб кунед",
 
@@ -2440,7 +2886,7 @@ function openProduct(id){
 
  if(product.colors){
 
-  const option = makeOptionSelect(
+  const option = makeSelect(
 
    "Рангро интихоб кунед",
 
@@ -2542,7 +2988,11 @@ function updateCartCount(){
 
 function addToCart(id,size="",color="",selected=false){
 
- const product = products.find(item=>item.id===id);
+ const product = products.find(
+
+  item=>item.id===id
+
+ );
 
  if(!product)return;
 
@@ -2554,17 +3004,19 @@ function addToCart(id,size="",color="",selected=false){
 
  }
 
- const totalQuantity = cart.filter(
+ const quantity = cart.filter(
 
   item=>item.id===id
 
  ).reduce(
 
-  (sum,item)=>sum+item.quantity,0
+  (sum,item)=>sum+item.quantity,
+
+  0
 
  );
 
- if(totalQuantity>=Number(product.stock)){
+ if(quantity>=Number(product.stock)){
 
   toast("Маҳсулот дар анбор намерасад.");
 
@@ -2588,7 +3040,11 @@ function addToCart(id,size="",color="",selected=false){
 
  }else{
 
-  next.push({id,size,color,quantity:1});
+  next.push({
+
+   id,size,color,quantity:1
+
+  });
 
  }
 
@@ -2628,7 +3084,9 @@ function changeQuantity(key,change){
 
   ).reduce(
 
-   (sum,entry)=>sum+entry.quantity,0
+   (sum,entry)=>sum+entry.quantity,
+
+   0
 
   );
 
@@ -2696,9 +3154,17 @@ function renderCart(){
 
   );
 
-  const row = el("div",undefined,"cart-item");
+  const row = el(
 
-  const info = el("div",undefined,"cart-info");
+   "div",undefined,"cart-item"
+
+  );
+
+  const info = el(
+
+   "div",undefined,"cart-info"
+
+  );
 
   const key = itemKey(item);
 
@@ -2726,7 +3192,11 @@ function renderCart(){
 
   }
 
-  const quantity = el("div",undefined,"quantity");
+  const quantity = el(
+
+   "div",undefined,"quantity"
+
+  );
 
   const minus = el("button","−");
 
@@ -2830,11 +3300,17 @@ function openCheckout(){
 
 $("checkoutForm").addEventListener(
 
- "submit",event=>{
+ "submit",
+
+ event=>{
 
   event.preventDefault();
 
-  const phone = normalizePhone($("buyerPhone").value);
+  const phone = normalizePhone(
+
+   $("buyerPhone").value
+
+  );
 
   if(!phone){
 
@@ -2854,7 +3330,7 @@ $("checkoutForm").addEventListener(
 
     "Нархи нав: "+money(cartTotal());
 
-   toast("Нарх тағйир ёфт. Нархи навро санҷед ва боз тасдиқ кунед.");
+   toast("Нарх тағйир ёфт. Боз тасдиқ кунед.");
 
    return;
 
@@ -2950,7 +3426,7 @@ $("checkoutForm").addEventListener(
 
 );
 
-/* ORDER HISTORY */
+/* ORDERS */
 
 function openOrders(){
 
@@ -3026,7 +3502,7 @@ function clearOrders(){
 
 }
 
-/* LIVE DISCOUNT TIMER */
+/* DISCOUNT TIMER */
 
 let previousSaleState = "";
 
@@ -3042,7 +3518,9 @@ function saleState(){
 
 setInterval(()=>{
 
- document.querySelectorAll("[data-end]").forEach(timer=>{
+ document.querySelectorAll("[data-end]")
+
+ .forEach(timer=>{
 
   timer.textContent =
 
@@ -3068,7 +3546,7 @@ setInterval(()=>{
 
    closeDialog("detailDialog");
 
-   toast("Муҳлати тахфиф тағйир ёфт. Маҳсулотро боз кушоед.");
+   toast("Муҳлати тахфиф тағйир ёфт.");
 
   }
 
@@ -3076,27 +3554,43 @@ setInterval(()=>{
 
 },1000);
 
-/* START */
+/* START APPLICATION */
 
-$("search").addEventListener(
+async function start(){
 
- "input",renderProducts
+ renderCategories();
 
-);
+ renderPreview();
 
-$("sort").addEventListener(
+ updateCartCount();
 
- "change",renderProducts
+ try{
 
-);
+  db = await openDatabase();
 
-renderCategories();
+  products = await loadProducts();
 
-renderProducts();
+  await migrateProducts();
 
-updateCartCount();
+  renderProducts();
 
-previousSaleState = saleState();
+  previousSaleState = saleState();
+
+ }catch(error){
+
+  console.error(error);
+
+  toast("Базаи маълумот кушода нашуд.");
+
+ }
+
+}
+
+$("search").oninput = renderProducts;
+
+$("sort").onchange = renderProducts;
+
+start();
 
 </script>
 
