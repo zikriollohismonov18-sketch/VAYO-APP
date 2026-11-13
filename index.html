@@ -3,15 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>VAYO Marketplace</title>
+<meta name="theme-color" content="#ff6500">
+<title>VAYO Super App</title>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+ box-sizing:border-box;
+}
 
 :root{
  --orange:#ff6500;
  --dark:#202b3b;
- --gray:#7c8798;
+ --gray:#788396;
  --bg:#f5f6fa;
 }
 
@@ -22,14 +26,21 @@ body{
  font-family:Arial,sans-serif;
 }
 
-button,input,select,textarea{
+button,input{
  font:inherit;
 }
 
-button{cursor:pointer}
+button{
+ cursor:pointer;
+}
+
+a{
+ text-decoration:none;
+ color:inherit;
+}
 
 header{
- background:#fff;
+ background:white;
  padding:15px;
  position:sticky;
  top:0;
@@ -37,8 +48,8 @@ header{
  box-shadow:0 3px 15px #00000008;
 }
 
-.top{
- max-width:1200px;
+.header-inner{
+ max-width:1000px;
  margin:auto;
  display:flex;
  align-items:center;
@@ -46,181 +57,166 @@ header{
 }
 
 .logo{
- font-size:34px;
+ font-size:35px;
  font-weight:900;
+ letter-spacing:2px;
  color:var(--orange);
- letter-spacing:2px;
-}
-
-.logo small{
- display:block;
- font-size:10px;
- letter-spacing:2px;
 }
 
 .country{
  background:#fff0e5;
- padding:10px;
- border-radius:20px;
+ padding:10px 14px;
+ border-radius:25px;
  font-size:12px;
+}
+
+.menu-button{
+ border:0;
+ background:#f5f6fa;
+ border-radius:12px;
+ padding:10px 14px;
+ font-size:20px;
+}
+
+main{
+ max-width:1000px;
+ margin:auto;
+ padding:15px 12px 110px;
+}
+
+.hero{
+ position:relative;
+ overflow:hidden;
+ background:linear-gradient(135deg,#ff6500,#ff9d43);
+ color:white;
+ border-radius:25px;
+ padding:28px 22px;
+}
+
+.hero:after{
+ content:"";
+ position:absolute;
+ width:200px;
+ height:200px;
+ border:40px solid #ffffff20;
+ border-radius:50%;
+ right:-90px;
+ top:-70px;
+ pointer-events:none;
+}
+
+.hero small{
+ display:inline-block;
+ background:#ffffff30;
+ border-radius:20px;
+ padding:8px 12px;
+ font-weight:bold;
+}
+
+.hero h1{
+ font-size:45px;
+ letter-spacing:3px;
+ margin:15px 0 5px;
+}
+
+.hero h2{
+ font-size:23px;
+ margin:0 0 10px;
+}
+
+.hero p{
+ margin:0;
+ line-height:1.6;
+ font-size:14px;
 }
 
 .search{
  display:flex;
- max-width:1200px;
- margin:15px auto 0;
+ align-items:center;
+ gap:12px;
+ background:white;
  border:1px solid #eee;
- background:#f5f6fa;
- border-radius:14px;
- padding:5px;
+ padding:15px;
+ border-radius:15px;
+ margin:18px 0;
 }
 
 .search input{
- width:100%;
  border:0;
- background:none;
  outline:none;
- padding:12px;
+ width:100%;
+ background:none;
 }
 
-.search button{
- background:var(--orange);
- color:white;
- border:0;
- border-radius:10px;
- padding:12px 17px;
-}
-
-main{
- max-width:1200px;
- margin:auto;
- padding:15px 12px 100px;
-}
-
-.hero{
- display:flex;
- align-items:center;
- background:linear-gradient(135deg,#ff6500,#ffac5c);
- color:white;
- border-radius:24px;
- padding:25px;
- overflow:hidden;
-}
-
-.hero-text{flex:1}
-
-.hero h1{
- font-size:35px;
- margin:10px 0;
-}
-
-.hero p{
- font-size:14px;
- line-height:1.6;
-}
-
-.hero svg{
- width:45%;
- max-width:330px;
-}
-
-.hero button{
- background:white;
- color:var(--orange);
- border:0;
- padding:12px 15px;
- border-radius:12px;
- font-weight:bold;
-}
-
-.categories{
- display:flex;
- gap:10px;
- overflow:auto;
- padding:20px 0;
-}
-
-.category{
- border:1px solid #eee;
- background:white;
- padding:12px 18px;
- border-radius:30px;
- white-space:nowrap;
-}
-
-.category.active{
- background:var(--orange);
- color:white;
-}
-
-.toolbar{
+.section-title{
  display:flex;
  align-items:center;
  justify-content:space-between;
- gap:10px;
- margin:10px 0 18px;
+ margin:24px 0 15px;
 }
 
-.toolbar h2{
+.section-title h2{
  margin:0;
  font-size:22px;
 }
 
-.toolbar select{
- background:white;
- border:1px solid #ddd;
- border-radius:10px;
- padding:10px;
- max-width:145px;
+.section-title span{
+ font-size:12px;
+ color:var(--gray);
 }
 
-.products{
+.services{
  display:grid;
- grid-template-columns:repeat(4,minmax(0,1fr));
- gap:15px;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:16px;
 }
 
-.product{
- position:relative;
- border-radius:20px;
- overflow:hidden;
+.service{
  background:white;
  border:1px solid #eee;
- box-shadow:0 4px 15px #00000008;
+ border-radius:22px;
+ overflow:hidden;
+ box-shadow:0 5px 20px #00000009;
  display:flex;
  flex-direction:column;
+ transition:transform .2s;
 }
 
-.product img{
- width:100%;
- aspect-ratio:1;
- object-fit:cover;
- background:#eee;
- cursor:pointer;
+.service:hover{
+ transform:translateY(-3px);
 }
 
-.placeholder{
- aspect-ratio:1;
- background:#fff0e5;
- display:grid;
- place-items:center;
- font-size:65px;
+.art{
+ height:220px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ overflow:hidden;
 }
 
-.favorite{
- position:absolute;
- right:10px;
- top:10px;
- border:0;
- background:white;
- border-radius:50%;
- width:37px;
- height:37px;
- font-size:22px;
+.art svg{
+ width:95%;
+ height:95%;
+}
+
+.market{
+ background:linear-gradient(135deg,#ffe8c9,#ffb46c);
+}
+
+.taxi{
+ background:linear-gradient(135deg,#fff8c7,#ffdc57);
+}
+
+.food{
+ background:linear-gradient(135deg,#ffe1d7,#ffa98b);
+}
+
+.language{
+ background:linear-gradient(135deg,#eee3ff,#c2a9ff);
 }
 
 .info{
- padding:14px;
+ padding:18px;
  display:flex;
  flex-direction:column;
  flex:1;
@@ -228,60 +224,65 @@ main{
 
 .info h3{
  margin:0 0 8px;
- font-size:16px;
- overflow-wrap:anywhere;
+ font-size:21px;
 }
 
-.price{
- color:var(--orange);
- font-size:22px;
- font-weight:900;
- margin:8px 0;
-}
-
-.location{
+.info p{
+ margin:0 0 12px;
+ font-size:14px;
  color:var(--gray);
- font-size:12px;
- margin:5px 0;
+ line-height:1.5;
 }
 
-.stock{
- color:#159447;
- font-size:12px;
- margin:8px 0;
+.free{
+ display:inline-block;
+ background:#e8f9ef;
+ color:#168b48;
+ font-weight:bold;
+ font-size:11px;
+ border-radius:20px;
+ padding:7px 10px;
+ align-self:flex-start;
+ margin-bottom:14px;
 }
 
-.primary{
- display:block;
+.open{
+ border:0;
  background:var(--orange);
  color:white;
- border:0;
- border-radius:12px;
- padding:13px;
- width:100%;
  font-weight:bold;
-}
-
-.primary:disabled{
- background:#bbb;
- cursor:not-allowed;
-}
-
-.info .primary{
+ padding:13px;
+ border-radius:12px;
+ text-align:center;
+ width:100%;
  margin-top:auto;
 }
 
 .business{
- margin-top:25px;
  background:var(--dark);
  color:white;
  border-radius:22px;
- padding:25px;
+ padding:24px;
+ margin-top:25px;
+}
+
+.business h2{
+ margin:0 0 10px;
 }
 
 .business p{
- color:#d6dce6;
+ color:#d6deea;
+ font-size:14px;
  line-height:1.6;
+}
+
+.business button{
+ border:0;
+ border-radius:12px;
+ padding:13px 20px;
+ background:var(--orange);
+ color:white;
+ font-weight:bold;
 }
 
 .bottom{
@@ -289,27 +290,35 @@ main{
  bottom:0;
  left:0;
  right:0;
- z-index:200;
  background:white;
  border-top:1px solid #eee;
+ z-index:200;
  display:grid;
- grid-template-columns:repeat(5,1fr);
+ grid-template-columns:repeat(4,1fr);
  padding:12px 4px;
  padding-bottom:max(12px,env(safe-area-inset-bottom));
 }
 
 .bottom button{
- border:0;
- background:none;
- color:var(--gray);
  display:flex;
  flex-direction:column;
  align-items:center;
  gap:5px;
- font-size:11px;
+ border:0;
+ background:none;
+ color:var(--gray);
+ font-size:12px;
 }
 
-.bottom span{font-size:24px}
+.bottom svg{
+ width:25px;
+ height:25px;
+ fill:none;
+ stroke:currentColor;
+ stroke-width:1.8;
+ stroke-linecap:round;
+ stroke-linejoin:round;
+}
 
 .bottom .active{
  color:var(--orange);
@@ -317,12 +326,10 @@ main{
 }
 
 dialog{
+ width:min(420px,94%);
  border:0;
  border-radius:22px;
- padding:22px;
- width:min(500px,94%);
- max-height:90vh;
- overflow:auto;
+ padding:24px;
  color:var(--dark);
 }
 
@@ -330,210 +337,115 @@ dialog::backdrop{
  background:#0009;
 }
 
-.dialog-top{
+.dialog-title{
  display:flex;
  align-items:center;
  justify-content:space-between;
  gap:10px;
- margin-bottom:15px;
+ margin-bottom:20px;
 }
 
-.dialog-top h2{
- font-size:22px;
+.dialog-title h2{
  margin:0;
 }
 
 .close{
- background:#f1f2f5;
  border:0;
  border-radius:10px;
  padding:10px 14px;
+ background:#f1f2f5;
 }
 
-label{
+.menu-item{
  display:block;
- margin:15px 0 7px;
- font-weight:bold;
- font-size:13px;
-}
-
-.field{
  width:100%;
- border:1px solid #ddd;
- background:white;
- border-radius:11px;
- padding:13px;
- outline:none;
-}
-
-.field:focus{
- border-color:var(--orange);
-}
-
-textarea{
- resize:vertical;
- min-height:100px;
-}
-
-.preview{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:8px;
- margin:15px 0;
-}
-
-.preview img{
- width:100%;
- aspect-ratio:1;
- object-fit:cover;
- border-radius:10px;
-}
-
-.note{
- padding:13px;
- background:#fff0e5;
- color:#a45c15;
- border-radius:10px;
- font-size:12px;
- line-height:1.6;
- margin:15px 0;
-}
-
-.cart-item{
- display:flex;
- align-items:center;
- gap:12px;
- padding:14px 0;
- border-bottom:1px solid #eee;
-}
-
-.cart-item img{
- width:65px;
- height:65px;
- object-fit:cover;
- border-radius:10px;
-}
-
-.cart-info{
- flex:1;
- min-width:0;
- overflow-wrap:anywhere;
-}
-
-.quantity{
- display:flex;
- align-items:center;
- gap:10px;
- margin-top:10px;
-}
-
-.quantity button{
+ text-align:left;
  border:0;
- background:#fff0e5;
- color:var(--orange);
- border-radius:8px;
- width:32px;
- height:32px;
-}
-
-.remove{
- border:0;
- background:none;
- color:#e53935;
- font-size:20px;
-}
-
-.total{
- display:flex;
- justify-content:space-between;
- padding:20px 0;
- font-size:20px;
+ border-radius:12px;
+ padding:16px;
+ margin:8px 0;
+ background:#f5f6fa;
+ color:var(--dark);
  font-weight:bold;
 }
 
-.empty{
- padding:35px;
+.message{
  text-align:center;
- background:white;
- border-radius:18px;
+ line-height:1.6;
+}
+
+.message-icon{
+ font-size:60px;
+}
+
+.message p{
  color:var(--gray);
 }
 
-.toast{
- position:fixed;
- left:50%;
- bottom:90px;
- transform:translateX(-50%);
- background:var(--dark);
- color:white;
- border-radius:12px;
- padding:14px 20px;
- z-index:999;
- max-width:90%;
+footer{
  text-align:center;
+ padding:28px 0;
+ color:var(--gray);
+ font-size:12px;
+}
+
+.empty{
+ text-align:center;
+ background:white;
+ border-radius:15px;
+ padding:25px;
+ color:var(--gray);
 }
 
 .hidden{
  display:none!important;
 }
 
-footer{
- text-align:center;
- color:var(--gray);
- padding:25px;
- font-size:12px;
-}
-
-@media(max-width:850px){
- .products{
-  grid-template-columns:repeat(3,minmax(0,1fr));
- }
-}
-
 @media(max-width:600px){
 
- .products{
-  grid-template-columns:repeat(2,minmax(0,1fr));
+ .services{
   gap:10px;
  }
 
- .hero{
-  padding:20px 15px;
- }
-
- .hero h1{
-  font-size:24px;
- }
-
- .hero p{
-  font-size:12px;
- }
-
- .hero button{
-  font-size:11px;
+ .art{
+  height:150px;
  }
 
  .info{
-  padding:11px;
+  padding:12px;
  }
 
  .info h3{
-  font-size:14px;
+  font-size:16px;
  }
 
- .price{
-  font-size:18px;
+ .info p{
+  font-size:12px;
  }
 
- .info .primary{
-  font-size:11px;
+ .open{
+  font-size:12px;
+  padding:12px 5px;
  }
 
- .toolbar h2{
-  font-size:18px;
+ .hero h1{
+  font-size:38px;
+ }
+
+ .hero h2{
+  font-size:20px;
+ }
+
+ .section-title h2{
+  font-size:19px;
+ }
+
+ .free{
+  font-size:10px;
  }
 
 }
+
 </style>
 </head>
 
@@ -541,27 +453,19 @@ footer{
 
 <header>
 
- <div class="top">
+ <div class="header-inner">
 
-  <div class="logo">
+  <a href="./index.html" class="logo">
    VAYO
-   <small>MARKETPLACE</small>
-  </div>
+  </a>
 
   <div class="country">
    🇹🇯 Тоҷикистон
   </div>
 
- </div>
-
- <div class="search">
-
-  <input id="search"
-   type="search"
-   placeholder="Маҳсулотро ҷустуҷӯ кунед...">
-
-  <button onclick="renderProducts()">
-   🔍
+  <button class="menu-button"
+   onclick="openMenu()">
+   ☰
   </button>
 
  </div>
@@ -570,335 +474,617 @@ footer{
 
 <main>
 
+<!-- HERO -->
+
 <section class="hero">
 
- <div class="hero-text">
+ <small>VAYO SUPER APP</small>
 
-  <small>VAYO MARKETPLACE</small>
+ <h1>VAYO</h1>
 
-  <h1>Бозори VAYO</h1>
+ <h2>Ҳама чиз дар як барнома!</h2>
 
-  <p>
-   Харид ва фурӯши маҳсулот
-   дар Тоҷикистон.
-  </p>
+ <p>
+  Харид, таксӣ, хӯрок ва забономӯзӣ.
+ </p>
 
-  <button onclick="openAdd()">
-   + Эълон гузоштан
+</section>
+
+<!-- SEARCH -->
+
+<div class="search">
+
+ <span>🔍</span>
+
+ <input id="search"
+  type="search"
+  placeholder="Ҷустуҷӯ дар VAYO..."
+  autocomplete="off">
+
+</div>
+
+<div class="section-title">
+
+ <h2>Хизматрасониҳо</h2>
+
+ <span>4 хизматрасонӣ</span>
+
+</div>
+
+<div class="services" id="services">
+
+<!-- MARKETPLACE -->
+
+<article class="service"
+ data-name="маркетплейс бозор харид фурӯш marketplace market">
+
+ <div class="art market">
+
+  <svg viewBox="0 0 300 220">
+
+   <defs>
+    <linearGradient id="bag" x2="1" y2="1">
+     <stop stop-color="#ffac43"/>
+     <stop offset="1" stop-color="#ff6500"/>
+    </linearGradient>
+   </defs>
+
+   <ellipse cx="150" cy="195"
+    rx="120" ry="12" fill="#9b4b0025"/>
+
+   <rect x="140" y="22"
+    width="105" height="172"
+    rx="18" fill="#26354a"/>
+
+   <rect x="148" y="32"
+    width="89" height="150"
+    rx="11" fill="#ffffff"/>
+
+   <rect x="160" y="49"
+    width="65" height="57"
+    rx="10" fill="#ffe5cb"/>
+
+   <path d="M169 65 H178 L184 89
+    H211 L218 65 H178"
+    fill="none" stroke="#ff6500"
+    stroke-width="5"/>
+
+   <circle cx="187" cy="97"
+    r="4" fill="#ff6500"/>
+
+   <circle cx="207" cy="97"
+    r="4" fill="#ff6500"/>
+
+   <rect x="160" y="120"
+    width="65" height="8"
+    rx="4" fill="#dddddd"/>
+
+   <rect x="160" y="143"
+    width="65" height="25"
+    rx="8" fill="#ff6500"/>
+
+   <path d="M30 98 H130
+    L145 193 H15 Z"
+    fill="url(#bag)"/>
+
+   <path d="M54 100 V77
+    Q80 42 106 77 V100"
+    fill="none"
+    stroke="#a74c00"
+    stroke-width="8"/>
+
+   <path d="M82 128 H157
+    L170 195 H70 Z"
+    fill="#ffffff"/>
+
+   <path d="M98 130 V113
+    Q120 90 142 113 V130"
+    fill="none"
+    stroke="#ff6500"
+    stroke-width="6"/>
+
+   <text x="120" y="174"
+    text-anchor="middle"
+    font-size="30"
+    font-weight="bold"
+    fill="#ff6500">V</text>
+
+   <rect x="220" y="145"
+    width="60" height="48"
+    rx="5" fill="#ce8d48"/>
+
+   <rect x="243" y="145"
+    width="14" height="48"
+    fill="#ffe0a6"/>
+
+  </svg>
+
+ </div>
+
+ <div class="info">
+
+  <h3>Marketplace</h3>
+
+  <p>Харид ва фурӯши маҳсулот</p>
+
+  <span class="free">
+   Комиссия 0%
+  </span>
+
+  <button class="open"
+   onclick="openService('marketplace')">
+   Ба бозор →
   </button>
 
  </div>
 
- <svg viewBox="0 0 300 220">
+</article>
 
-  <ellipse cx="150" cy="195"
-   rx="120" ry="13"
-   fill="#00000015"/>
+<!-- TAXI -->
 
-  <rect x="140" y="20"
-   width="105" height="175"
-   rx="18" fill="#202b3b"/>
+<article class="service"
+ data-name="такси таксӣ taxi мошин роҳ сафар">
 
-  <rect x="148" y="30"
-   width="89" height="153"
-   rx="10" fill="white"/>
+ <div class="art taxi">
 
-  <rect x="159" y="48"
-   width="67" height="60"
-   rx="10" fill="#ffe4cc"/>
+  <svg viewBox="0 0 300 220">
 
-  <path d="M170 65 H179 L184 88
-   H211 L217 65 H179"
-   fill="none"
-   stroke="#ff6500"
-   stroke-width="5"/>
+   <defs>
+    <linearGradient id="car" x2="0" y2="1">
+     <stop stop-color="#ffe55c"/>
+     <stop offset="1" stop-color="#ffb900"/>
+    </linearGradient>
+   </defs>
 
-  <circle cx="187" cy="96"
-   r="4" fill="#ff6500"/>
+   <ellipse cx="150" cy="184"
+    rx="125" ry="13"
+    fill="#92750030"/>
 
-  <circle cx="208" cy="96"
-   r="4" fill="#ff6500"/>
+   <path d="M62 116 L91 66
+    Q101 52 120 52
+    H188 Q205 52 216 70
+    L244 116 Z"
+    fill="url(#car)"/>
 
-  <rect x="159" y="120"
-   width="67" height="9"
-   rx="4" fill="#ddd"/>
+   <path d="M83 108 L108 67
+    H145 V108 Z"
+    fill="#6685a5"/>
 
-  <rect x="159" y="143"
-   width="67" height="25"
-   rx="8" fill="#ff6500"/>
+   <path d="M155 67 H187
+    L220 108 H155 Z"
+    fill="#6685a5"/>
 
-  <path d="M30 100 H130
-   L145 193 H15 Z"
-   fill="#ffce78"/>
+   <path d="M113 69 L91 104"
+    stroke="#c4e6ff"
+    stroke-width="6"/>
 
-  <path d="M55 101 V78
-   Q80 45 105 78 V101"
-   stroke="#a65a00"
-   stroke-width="8"
-   fill="none"/>
+   <rect x="124" y="29"
+    width="63" height="25"
+    rx="7" fill="#ffffff"/>
 
-  <path d="M82 128 H157
-   L170 195 H70 Z"
-   fill="white"/>
+   <text x="155" y="46"
+    text-anchor="middle"
+    font-size="15"
+    font-weight="bold"
+    fill="#202b3b">TAXI</text>
 
-  <path d="M98 130 V114
-   Q120 90 142 114 V130"
-   fill="none"
-   stroke="#ff6500"
-   stroke-width="6"/>
+   <rect x="23" y="109"
+    width="254" height="59"
+    rx="23" fill="url(#car)"/>
 
-  <text x="120" y="174"
-   text-anchor="middle"
-   font-size="30"
-   font-weight="bold"
-   fill="#ff6500">V</text>
+   <rect x="26" y="126"
+    width="18" height="17"
+    rx="5" fill="#ef4444"/>
 
- </svg>
+   <rect x="251" y="125"
+    width="25" height="18"
+    rx="6" fill="#ffffff"/>
 
-</section>
+   <path d="M148 111 V165"
+    stroke="#d79c00"
+    stroke-width="2"/>
 
-<div class="categories" id="categories"></div>
+   <circle cx="77" cy="165"
+    r="26" fill="#253246"/>
 
-<div class="toolbar">
+   <circle cx="77" cy="165"
+    r="12" fill="#c5cfdb"/>
 
- <h2 id="catalogTitle">Маҳсулот</h2>
+   <circle cx="225" cy="165"
+    r="26" fill="#253246"/>
 
- <select id="sort">
-  <option value="new">Навтарин</option>
-  <option value="cheap">Арзонтарин</option>
-  <option value="expensive">Қиматтарин</option>
- </select>
+   <circle cx="225" cy="165"
+    r="12" fill="#c5cfdb"/>
+
+   <text x="151" y="141"
+    text-anchor="middle"
+    font-size="23"
+    font-weight="900"
+    fill="#202b3b">VAYO</text>
+
+  </svg>
+
+ </div>
+
+ <div class="info">
+
+  <h3>VAYO Taxi</h3>
+
+  <p>Фармоиши таксӣ дар шаҳр</p>
+
+  <span class="free">
+   Комиссия 0%
+  </span>
+
+  <button class="open"
+   onclick="openService('taxi')">
+   Таксӣ →
+  </button>
+
+ </div>
+
+</article>
+
+<!-- FOOD -->
+
+<article class="service"
+ data-name="хӯрок хурок food таом тарабхона доставка">
+
+ <div class="art food">
+
+  <svg viewBox="0 0 300 220">
+
+   <defs>
+    <linearGradient id="bread" x2="0" y2="1">
+     <stop stop-color="#ffd27d"/>
+     <stop offset="1" stop-color="#e89b36"/>
+    </linearGradient>
+   </defs>
+
+   <ellipse cx="150" cy="195"
+    rx="125" ry="12"
+    fill="#a93b2525"/>
+
+   <g stroke="#ffd45c"
+    stroke-width="13"
+    stroke-linecap="round">
+
+    <path d="M202 93 L194 25"/>
+    <path d="M217 92 L217 17"/>
+    <path d="M232 91 L242 25"/>
+    <path d="M247 94 L264 40"/>
+
+   </g>
+
+   <path d="M184 81 H267
+    L255 184 H197 Z"
+    fill="#ef4036"/>
+
+   <path d="M184 81 Q225 98 267 81"
+    fill="#ff7760"/>
+
+   <text x="225" y="145"
+    text-anchor="middle"
+    font-size="35"
+    font-weight="bold"
+    fill="white">V</text>
+
+   <path d="M24 94
+    Q24 32 104 32
+    Q184 32 184 94 Z"
+    fill="url(#bread)"/>
+
+   <g fill="#fff0c7">
+    <ellipse cx="64" cy="62"
+     rx="6" ry="2"/>
+    <ellipse cx="104" cy="48"
+     rx="6" ry="2"/>
+    <ellipse cx="142" cy="65"
+     rx="6" ry="2"/>
+    <ellipse cx="100" cy="77"
+     rx="6" ry="2"/>
+   </g>
+
+   <rect x="24" y="95"
+    width="160" height="12"
+    rx="6" fill="#f9c74f"/>
+
+   <path d="M23 111
+    Q40 100 56 111
+    T90 111 T125 111
+    T160 111 T185 111"
+    stroke="#42a84d"
+    stroke-width="15"
+    fill="none"/>
+
+   <rect x="24" y="122"
+    width="160" height="20"
+    rx="10" fill="#754126"/>
+
+   <rect x="24" y="144"
+    width="160" height="11"
+    rx="5" fill="#ef4438"/>
+
+   <path d="M25 158 H183
+    Q183 188 104 188
+    Q25 188 25 158 Z"
+    fill="url(#bread)"/>
+
+  </svg>
+
+ </div>
+
+ <div class="info">
+
+  <h3>VAYO Food</h3>
+
+  <p>Фармоиши хӯрок аз тарабхонаҳо</p>
+
+  <span class="free">
+   Комиссия 0%
+  </span>
+
+  <button class="open"
+   onclick="openService('food')">
+   Хӯрок →
+  </button>
+
+ </div>
+
+</article>
+
+<!-- LANGUAGE -->
+
+<article class="service"
+ data-name="забон забономӯзӣ омӯзиш language english deutsch англисӣ олмонӣ русӣ">
+
+ <div class="art language">
+
+  <svg viewBox="0 0 300 220">
+
+   <ellipse cx="150" cy="196"
+    rx="120" ry="12"
+    fill="#6940b830"/>
+
+   <path d="M25 109
+    Q88 83 150 119
+    Q212 83 275 109
+    V180
+    Q212 157 150 191
+    Q88 157 25 180 Z"
+    fill="#7851ce"/>
+
+   <path d="M37 95
+    Q94 77 150 111
+    V178
+    Q94 150 37 165 Z"
+    fill="#ffffff"/>
+
+   <path d="M150 111
+    Q206 77 263 95
+    V165
+    Q206 150 150 178 Z"
+    fill="#f7f2ff"/>
+
+   <path d="M56 116 L130 134
+    M56 132 L130 150
+    M56 148 L130 166"
+    stroke="#b8a5e7"
+    stroke-width="5"
+    stroke-linecap="round"/>
+
+   <path d="M170 134 L244 116
+    M170 150 L244 132
+    M170 166 L244 148"
+    stroke="#b8a5e7"
+    stroke-width="5"
+    stroke-linecap="round"/>
+
+   <rect x="18" y="18"
+    width="125" height="56"
+    rx="20" fill="#7851ce"/>
+
+   <path d="M89 65 L116 90 V65 Z"
+    fill="#7851ce"/>
+
+   <text x="81" y="53"
+    text-anchor="middle"
+    font-size="25"
+    font-weight="bold"
+    fill="#ffffff">Hello</text>
+
+   <rect x="158" y="12"
+    width="125" height="56"
+    rx="20" fill="#ff943b"/>
+
+   <path d="M182 60 V85 L210 60 Z"
+    fill="#ff943b"/>
+
+   <text x="220" y="47"
+    text-anchor="middle"
+    font-size="25"
+    font-weight="bold"
+    fill="#ffffff">Hallo</text>
+
+  </svg>
+
+ </div>
+
+ <div class="info">
+
+  <h3>Забономӯзӣ</h3>
+
+  <p>Олмонӣ, англисӣ ва русӣ</p>
+
+  <span class="free">
+   100% ройгон
+  </span>
+
+  <button class="open"
+   onclick="openService('language')">
+   Омӯзиш →
+  </button>
+
+ </div>
+
+</article>
 
 </div>
-
-<div id="products" class="products"></div>
 
 <div id="empty" class="empty hidden">
- 📦 Маҳсулот ёфт нашуд.
+ Хизматрасонӣ ёфт нашуд.
 </div>
+
+<!-- BUSINESS -->
 
 <section class="business">
 
  <h2>Бо VAYO тиҷорат кунед</h2>
 
  <p>
-  Маҳсулоти худро ройгон ҷойгир кунед.
-  Комиссияи пешбинишуда — 0%.
+  Маҳсулоти худро ҷойгир кунед,
+  тарабхонаи худро илова кунед
+  ё ронандаи VAYO шавед.
  </p>
 
- <button class="primary" onclick="openAdd()">
-  Фурӯшро оғоз кун
+ <button onclick="openMenu()">
+  Оғоз кардан →
  </button>
 
 </section>
 
 <footer>
 
- <strong>VAYO MARKETPLACE</strong>
+ <strong>VAYO SUPER APP</strong>
 
  <p>🇹🇯 Барои Тоҷикистон</p>
+
+ <p>© 2026 VAYO</p>
 
 </footer>
 
 </main>
 
+<!-- BOTTOM NAVIGATION -->
+
 <nav class="bottom">
 
- <button class="active" onclick="goHome()">
-  <span>🏠</span>
+ <button class="active"
+  onclick="goHome()">
+
+  <svg viewBox="0 0 24 24">
+   <path d="M3 10 L12 3 L21 10
+    V21 H15 V14 H9 V21 H3 Z"/>
+  </svg>
+
   Асосӣ
+
  </button>
 
  <button onclick="focusSearch()">
-  <span>🔍</span>
+
+  <svg viewBox="0 0 24 24">
+   <circle cx="10" cy="10" r="7"/>
+   <path d="M15 15 L21 21"/>
+  </svg>
+
   Ҷустуҷӯ
+
  </button>
 
- <button onclick="openAdd()">
-  <span>➕</span>
-  Эълон
+ <button onclick="openService('marketplace')">
+
+  <svg viewBox="0 0 24 24">
+   <path d="M2 3 H5 L8 16
+    H19 L22 7 H6"/>
+   <circle cx="9" cy="21" r="1"/>
+   <circle cx="19" cy="21" r="1"/>
+  </svg>
+
+  Бозор
+
  </button>
 
- <button onclick="showFavorites()">
-  <span>♡</span>
-  Дӯстдошта
- </button>
+ <button onclick="openAccount()">
 
- <button onclick="openCart()">
-  <span>🛒</span>
-  Сабад (<b id="cartCount">0</b>)
+  <svg viewBox="0 0 24 24">
+   <circle cx="12" cy="7" r="4"/>
+   <path d="M4 22 V19
+    Q4 13 12 13
+    Q20 13 20 19 V22"/>
+  </svg>
+
+  Ҳисоб
+
  </button>
 
 </nav>
 
-<!-- ADD PRODUCT -->
+<!-- MENU -->
 
-<dialog id="addDialog">
+<dialog id="menuDialog">
 
- <div class="dialog-top">
+ <div class="dialog-title">
 
-  <h2>Эълони нав</h2>
+  <h2>VAYO</h2>
 
   <button class="close"
-   onclick="closeDialog('addDialog')">
+   onclick="closeMenu()">
    ✕
   </button>
 
  </div>
 
- <form id="productForm">
+ <button class="menu-item"
+  onclick="openService('marketplace')">
+  🛍️ Marketplace
+ </button>
 
-  <label>Номи маҳсулот</label>
+ <button class="menu-item"
+  onclick="openService('taxi')">
+  🚕 VAYO Taxi
+ </button>
 
-  <input id="name" class="field"
-   maxlength="100" required>
+ <button class="menu-item"
+  onclick="openService('food')">
+  🍔 VAYO Food
+ </button>
 
-  <label>Нарх (сомонӣ)</label>
+ <button class="menu-item"
+  onclick="openService('language')">
+  📚 Забономӯзӣ
+ </button>
 
-  <input id="price" class="field"
-   type="number" min="0.01"
-   step="0.01" required>
+ <button class="menu-item"
+  onclick="openAccount()">
+  👤 Ҳисоби ман
+ </button>
 
-  <label>Категория</label>
+</dialog>
 
-  <select id="category" class="field">
-   <option>Либос</option>
-   <option>Телефон</option>
-   <option>Электроника</option>
-   <option>Пойафзол</option>
-   <option>Мошин</option>
-   <option>Хона</option>
-   <option>Кӯдакон</option>
-   <option>Дигар</option>
-  </select>
+<!-- MESSAGE -->
 
-  <label>Шаҳр</label>
+<dialog id="messageDialog">
 
-  <select id="city" class="field">
-   <option>Душанбе</option>
-   <option>Хуҷанд</option>
-   <option>Бохтар</option>
-   <option>Кӯлоб</option>
-   <option>Ҳисор</option>
-   <option>Данғара</option>
-   <option>Дигар</option>
-  </select>
+ <div class="message">
 
-  <label>Миқдор</label>
-
-  <input id="stock" class="field"
-   type="number" min="1"
-   max="10000" value="1" required>
-
-  <label>Тавсифи маҳсулот</label>
-
-  <textarea id="description"
-   class="field" maxlength="2000">
-  </textarea>
-
-  <label>Расмҳо — то 10 адад</label>
-
-  <input id="images" class="field"
-   type="file" accept="image/*" multiple>
-
-  <div id="preview" class="preview"></div>
-
-  <div class="note">
-   Ҳоло маҳсулот танҳо дар браузери
-   шумо нигоҳ дошта мешавад.
+  <div class="message-icon"
+   id="messageIcon">
+   🚀
   </div>
 
-  <button class="primary"
-   id="publish" type="submit">
-   Нашр кардан
-  </button>
+  <h2 id="messageTitle"></h2>
 
- </form>
+  <p id="messageText"></p>
 
-</dialog>
-
-<!-- DETAILS -->
-
-<dialog id="detailDialog">
-
- <div class="dialog-top">
-
-  <h2>Маҳсулот</h2>
-
-  <button class="close"
-   onclick="closeDialog('detailDialog')">
-   ✕
+  <button class="open"
+   onclick="closeMessage()">
+   Фаҳмо
   </button>
 
  </div>
 
- <div id="detailContent"></div>
-
 </dialog>
-
-<!-- CART -->
-
-<dialog id="cartDialog">
-
- <div class="dialog-top">
-
-  <h2>Сабади ман</h2>
-
-  <button class="close"
-   onclick="closeDialog('cartDialog')">
-   ✕
-  </button>
-
- </div>
-
- <div id="cartItems"></div>
-
- <div class="total">
-
-  <span>Ҳамагӣ:</span>
-
-  <span id="cartTotal">0 сомонӣ</span>
-
- </div>
-
- <button class="primary"
-  id="checkoutButton"
-  onclick="openCheckout()">
-  Фармоиш додан
- </button>
-
-</dialog>
-
-<!-- CHECKOUT -->
-
-<dialog id="checkoutDialog">
-
- <div class="dialog-top">
-
-  <h2>Фармоиш</h2>
-
-  <button class="close"
-   onclick="closeDialog('checkoutDialog')">
-   ✕
-  </button>
-
- </div>
-
- <div class="note">
-  Ин фармоиши озмоишӣ аст.
-  Ба фурӯшанда фиристода намешавад.
- </div>
-
- <p id="checkoutTotal"></p>
-
- <button class="primary"
-  onclick="submitOrder()">
-  Сабти фармоиши озмоишӣ
- </button>
-
-</dialog>
-
-<div id="toast" class="toast hidden"></div>
 
 <script>
 
@@ -906,344 +1092,172 @@ footer{
 
 const $ = id => document.getElementById(id);
 
-const PRODUCT_KEY = "vayo_new_products_v1";
-const CART_KEY = "vayo_new_cart_v1";
-const FAVORITE_KEY = "vayo_new_favorites_v1";
-const ORDER_KEY = "vayo_new_orders_v1";
-
-function read(key){
-
- try{
-
-  const data = JSON.parse(
-   localStorage.getItem(key) || "[]"
-  );
-
-  return Array.isArray(data) ? data : [];
-
- }catch{
-
-  return [];
-
- }
-
-}
-
-function save(key,value){
-
- try{
-
-  localStorage.setItem(
-   key,JSON.stringify(value)
-  );
-
-  return true;
-
- }catch{
-
-  toast("Ҷойи нигоҳдорӣ кофӣ нест.");
-
-  return false;
-
- }
-
-}
-
-let products = read(PRODUCT_KEY);
-let cart = read(CART_KEY);
-let favorites = read(FAVORITE_KEY);
-
-let images = [];
-let activeCategory = "Ҳама";
-let onlyFavorites = false;
-let imageTask = 0;
-let timer;
-
-const categories = [
-
- "Ҳама",
- "Либос",
- "Телефон",
- "Электроника",
- "Пойафзол",
- "Мошин",
- "Хона",
- "Кӯдакон",
- "Дигар"
-
+const cards = [
+ ...document.querySelectorAll(".service")
 ];
 
-function money(value){
+const services = {
 
- return Number(value).toFixed(2)
-  + " сомонӣ";
+ marketplace:{
+  title:"VAYO Marketplace",
+  icon:"🛍️",
+  url:"./marketplace.html"
+ },
 
-}
+ taxi:{
+  title:"VAYO Taxi",
+  icon:"🚕",
+  url:"./taxi.html"
+ },
 
-function el(tag,className,text){
+ food:{
+  title:"VAYO Food",
+  icon:"🍔",
+  url:"./food.html"
+ },
 
- const node = document.createElement(tag);
+ language:{
+  title:"VAYO Language",
+  icon:"📚",
+  url:"./language.html"
+ }
 
- if(className){
+};
 
-  node.className = className;
+function openMenu(){
+
+ if(!$("menuDialog").open){
+
+  $("menuDialog").showModal();
 
  }
 
- if(text!==undefined){
+}
 
-  node.textContent = text;
+function closeMenu(){
+
+ if($("menuDialog").open){
+
+  $("menuDialog").close();
 
  }
 
- return node;
+}
+
+function showMessage(icon,title,text){
+
+ closeMenu();
+
+ $("messageIcon").textContent = icon;
+
+ $("messageTitle").textContent = title;
+
+ $("messageText").textContent = text;
+
+ if(!$("messageDialog").open){
+
+  $("messageDialog").showModal();
+
+ }
 
 }
 
-function toast(message){
+function closeMessage(){
 
- $("toast").textContent = message;
-
- $("toast").classList.remove("hidden");
-
- clearTimeout(timer);
-
- timer = setTimeout(()=>{
-
-  $("toast").classList.add("hidden");
-
- },3000);
+ $("messageDialog").close();
 
 }
 
-function closeDialog(id){
+async function openService(id){
 
- $(id).close();
+ const service = services[id];
 
-}
+ if(!service)return;
 
-function renderCategories(){
+ closeMenu();
 
- $("categories").replaceChildren();
+ try{
 
- categories.forEach(category=>{
-
-  const button = el(
-   "button","category",category
+  const response = await fetch(
+   service.url,
+   {
+    method:"HEAD",
+    cache:"no-cache"
+   }
   );
 
-  if(activeCategory===category){
+  if(response.ok){
 
-   button.classList.add("active");
+   window.location.href = service.url;
+
+   return;
 
   }
 
-  button.onclick = ()=>{
+ }catch(error){
 
-   activeCategory = category;
-
-   onlyFavorites = false;
-
-   renderCategories();
-
-   renderProducts();
-
-  };
-
-  $("categories").appendChild(button);
-
- });
-
-}
-
-function productImage(product){
-
- if(!product.images?.length){
-
-  return el("div","placeholder","📦");
+  console.log(error);
 
  }
 
- const img = document.createElement("img");
+ showMessage(
 
- img.src = product.images[0];
+  service.icon,
 
- img.alt = product.name;
+  service.title,
 
- img.loading = "lazy";
+  "Ин хизматрасонӣ ҳоло дар ҳоли омодасозӣ аст."
 
- img.onerror = ()=>{
-
-  img.replaceWith(
-   el("div","placeholder","📦")
-  );
-
- };
-
- return img;
+ );
 
 }
 
-function renderProducts(){
+function openAccount(){
 
- const root = $("products");
+ showMessage(
 
- root.replaceChildren();
+  "👤",
+
+  "Ҳисоби VAYO",
+
+  "Бақайдгирӣ баъди пайваст кардани базаи маълумот фаъол мешавад."
+
+ );
+
+}
+
+function renderSearch(){
 
  const query = $("search").value
   .trim().toLowerCase();
 
- let list = products.filter(product=>{
+ let count = 0;
 
-  const text = [
-   product.name,
-   product.category,
-   product.city,
-   product.description
-  ].join(" ").toLowerCase();
+ cards.forEach(card=>{
 
-  return text.includes(query)
+  const match = card.dataset.name
+   .toLowerCase()
+   .includes(query);
 
-   && (
-    activeCategory==="Ҳама"
-    || product.category===activeCategory
-   )
+  card.classList.toggle(
+   "hidden",!match
+  );
 
-   && (
-    !onlyFavorites
-    || favorites.includes(product.id)
-   );
+  if(match)count++;
 
  });
-
- const sort = $("sort").value;
-
- if(sort==="cheap"){
-
-  list.sort((a,b)=>a.price-b.price);
-
- }else if(sort==="expensive"){
-
-  list.sort((a,b)=>b.price-a.price);
-
- }else{
-
-  list.sort((a,b)=>b.created-a.created);
-
- }
-
- $("catalogTitle").textContent =
-  onlyFavorites
-  ? "Дӯстдоштаҳо"
-  : "Маҳсулот ("+list.length+")";
 
  $("empty").classList.toggle(
-  "hidden",list.length>0
+  "hidden",count>0
  );
-
- list.forEach(product=>{
-
-  const card = el("article","product");
-
-  const img = productImage(product);
-
-  img.onclick = ()=>showDetails(product.id);
-
-  card.appendChild(img);
-
-  const heart = el(
-   "button","favorite",
-   favorites.includes(product.id)
-    ? "❤️" : "♡"
-  );
-
-  heart.onclick = ()=>toggleFavorite(product.id);
-
-  card.appendChild(heart);
-
-  const info = el("div","info");
-
-  const title = el("h3","",product.name);
-
-  title.onclick = ()=>showDetails(product.id);
-
-  info.appendChild(title);
-
-  info.appendChild(
-   el("div","price",money(product.price))
-  );
-
-  info.appendChild(
-   el("div","location","📍 "+product.city)
-  );
-
-  info.appendChild(
-   el("div","stock","Дар анбор: "+product.stock)
-  );
-
-  const button = el(
-   "button","primary","🛒 Ба сабад"
-  );
-
-  button.disabled = product.stock<=0;
-
-  button.onclick = ()=>addToCart(product.id);
-
-  info.appendChild(button);
-
-  card.appendChild(info);
-
-  root.appendChild(card);
-
- });
-
-}
-
-function toggleFavorite(id){
-
- const next = favorites.includes(id)
-  ? favorites.filter(x=>x!==id)
-  : [...favorites,id];
-
- if(save(FAVORITE_KEY,next)){
-
-  favorites = next;
-
-  renderProducts();
-
- }
-
-}
-
-function showFavorites(){
-
- onlyFavorites = true;
-
- activeCategory = "Ҳама";
-
- $("search").value = "";
-
- renderCategories();
-
- renderProducts();
-
- $("catalogTitle").scrollIntoView({
-  behavior:"smooth"
- });
 
 }
 
 function goHome(){
 
- onlyFavorites = false;
-
- activeCategory = "Ҳама";
-
  $("search").value = "";
 
- renderCategories();
-
- renderProducts();
+ renderSearch();
 
  window.scrollTo({
   top:0,
@@ -1254,614 +1268,22 @@ function goHome(){
 
 function focusSearch(){
 
- window.scrollTo({
-  top:0,
-  behavior:"smooth"
+ $("search").scrollIntoView({
+  behavior:"smooth",
+  block:"center"
  });
 
  $("search").focus();
 
 }
 
-function openAdd(){
-
- imageTask++;
-
- images = [];
-
- $("productForm").reset();
-
- $("preview").replaceChildren();
-
- $("publish").disabled = false;
-
- $("addDialog").showModal();
-
-}
-
-function compressImage(file){
-
- return new Promise((resolve,reject)=>{
-
-  const reader = new FileReader();
-
-  reader.onerror = reject;
-
-  reader.onload = ()=>{
-
-   const img = new Image();
-
-   img.onerror = reject;
-
-   img.onload = ()=>{
-
-    const scale = Math.min(
-     1,700/Math.max(img.width,img.height)
-    );
-
-    const canvas = document.createElement("canvas");
-
-    canvas.width = Math.max(
-     1,Math.round(img.width*scale)
-    );
-
-    canvas.height = Math.max(
-     1,Math.round(img.height*scale)
-    );
-
-    const ctx = canvas.getContext("2d");
-
-    ctx.fillStyle = "#ffffff";
-
-    ctx.fillRect(
-     0,0,canvas.width,canvas.height
-    );
-
-    ctx.drawImage(
-     img,0,0,canvas.width,canvas.height
-    );
-
-    resolve(
-     canvas.toDataURL("image/jpeg",0.65)
-    );
-
-   };
-
-   img.src = reader.result;
-
-  };
-
-  reader.readAsDataURL(file);
-
- });
-
-}
-
-$("images").onchange = async event=>{
-
- const task = ++imageTask;
-
- const files = [...event.target.files];
-
- images = [];
-
- $("preview").replaceChildren();
-
- $("publish").disabled = true;
-
- if(files.length>10){
-
-  toast("Танҳо 10 расм интихоб кунед.");
-
-  event.target.value = "";
-
-  $("publish").disabled = false;
-
-  return;
-
- }
-
- try{
-
-  const result = [];
-
-  for(const file of files){
-
-   if(!file.type.startsWith("image/")){
-
-    throw new Error("Invalid image");
-
-   }
-
-   if(file.size>15*1024*1024){
-
-    throw new Error("Image too large");
-
-   }
-
-   result.push(await compressImage(file));
-
-  }
-
-  if(task!==imageTask)return;
-
-  images = result;
-
-  images.forEach(src=>{
-
-   const img = document.createElement("img");
-
-   img.src = src;
-
-   $("preview").appendChild(img);
-
-  });
-
- }catch{
-
-  toast("Расмро хонда натавонист.");
-
- }finally{
-
-  if(task===imageTask){
-
-   $("publish").disabled = false;
-
-  }
-
- }
-
-};
-
-$("productForm").onsubmit = event=>{
-
- event.preventDefault();
-
- const name = $("name").value.trim();
-
- const price = Number($("price").value);
-
- const stock = Number($("stock").value);
-
- if(!name || !Number.isFinite(price)
-  || price<=0 || !Number.isInteger(stock)
-  || stock<=0 || stock>10000){
-
-  toast("Маълумотро дуруст ворид кунед.");
-
-  return;
-
- }
-
- const product = {
-
-  id:crypto.randomUUID(),
-
-  name,
-
-  price,
-
-  stock,
-
-  category:$("category").value,
-
-  city:$("city").value,
-
-  description:$("description").value.trim(),
-
-  images:[...images],
-
-  created:Date.now()
-
- };
-
- const next = [product,...products];
-
- if(!save(PRODUCT_KEY,next))return;
-
- products = next;
-
- closeDialog("addDialog");
-
- goHome();
-
- toast("Маҳсулот сабт шуд!");
-
-};
-
-function showDetails(id){
-
- const product = products.find(
-  p=>p.id===id
- );
-
- if(!product)return;
-
- const root = $("detailContent");
-
- root.replaceChildren();
-
- const img = productImage(product);
-
- img.style.width = "100%";
-
- img.style.borderRadius = "15px";
-
- root.appendChild(img);
-
- root.appendChild(
-  el("h2","",product.name)
- );
-
- root.appendChild(
-  el("div","price",money(product.price))
- );
-
- root.appendChild(
-  el("p","","📍 "+product.city)
- );
-
- root.appendChild(
-  el("p","",product.description)
- );
-
- const gallery = el("div","preview");
-
- (product.images||[]).slice(1).forEach(src=>{
-
-  const image = document.createElement("img");
-
-  image.src = src;
-
-  gallery.appendChild(image);
-
- });
-
- root.appendChild(gallery);
-
- const button = el(
-  "button","primary","Ба сабад илова кун"
- );
-
- button.disabled = product.stock<=0;
-
- button.onclick = ()=>addToCart(id);
-
- root.appendChild(button);
-
- $("detailDialog").showModal();
-
-}
-
-function updateCart(){
-
- $("cartCount").textContent = cart.reduce(
-  (sum,item)=>sum+item.quantity,0
- );
-
-}
-
-function addToCart(id){
-
- const product = products.find(
-  p=>p.id===id
- );
-
- if(!product || product.stock<=0){
-
-  toast("Маҳсулот дастрас нест.");
-
-  return;
-
- }
-
- const next = cart.map(item=>({...item}));
-
- const item = next.find(
-  item=>item.id===id
- );
-
- if(item){
-
-  if(item.quantity>=product.stock){
-
-   toast("Миқдори дастрас маҳдуд аст.");
-
-   return;
-
-  }
-
-  item.quantity++;
-
- }else{
-
-  next.push({id,quantity:1});
-
- }
-
- if(!save(CART_KEY,next))return;
-
- cart = next;
-
- updateCart();
-
- toast("Ба сабад илова шуд.");
-
-}
-
-function changeQuantity(id,amount){
-
- const product = products.find(
-  p=>p.id===id
- );
-
- let next = cart.map(item=>({...item}));
-
- const item = next.find(
-  item=>item.id===id
- );
-
- if(!item)return;
-
- if(amount>0 && (
-  !product || item.quantity>=product.stock
- )){
-
-  toast("Миқдори дастрас маҳдуд аст.");
-
-  return;
-
- }
-
- item.quantity += amount;
-
- next = next.filter(
-  item=>item.quantity>0
- );
-
- if(save(CART_KEY,next)){
-
-  cart = next;
-
-  updateCart();
-
-  renderCart();
-
- }
-
-}
-
-function removeItem(id){
-
- const next = cart.filter(
-  item=>item.id!==id
- );
-
- if(save(CART_KEY,next)){
-
-  cart = next;
-
-  updateCart();
-
-  renderCart();
-
- }
-
-}
-
-function getTotal(){
-
- return cart.reduce((sum,item)=>{
-
-  const product = products.find(
-   p=>p.id===item.id
-  );
-
-  return sum+(product
-   ? product.price*item.quantity
-   : 0);
-
- },0);
-
-}
-
-function validCart(){
-
- return cart.length>0 && cart.every(item=>{
-
-  const product = products.find(
-   p=>p.id===item.id
-  );
-
-  return product
-   && Number.isInteger(item.quantity)
-   && item.quantity>0
-   && item.quantity<=product.stock;
-
- });
-
-}
-
-function renderCart(){
-
- const root = $("cartItems");
-
- root.replaceChildren();
-
- if(!cart.length){
-
-  root.appendChild(
-   el("p","","Сабад холӣ аст.")
-  );
-
- }
-
- cart.forEach(item=>{
-
-  const product = products.find(
-   p=>p.id===item.id
-  );
-
-  const row = el("div","cart-item");
-
-  if(product?.images?.[0]){
-
-   const img = document.createElement("img");
-
-   img.src = product.images[0];
-
-   row.appendChild(img);
-
-  }
-
-  const info = el("div","cart-info");
-
-  info.appendChild(
-   el("strong","",
-    product ? product.name : "Дастрас нест"
-   )
-  );
-
-  if(product){
-
-   info.appendChild(
-    el("div","price",
-     money(product.price*item.quantity)
-    )
-   );
-
-  }
-
-  const quantity = el("div","quantity");
-
-  const minus = el("button","","−");
-
-  minus.onclick = ()=>changeQuantity(item.id,-1);
-
-  const plus = el("button","","+");
-
-  plus.onclick = ()=>changeQuantity(item.id,1);
-
-  quantity.append(
-   minus,
-   el("span","",item.quantity),
-   plus
-  );
-
-  info.appendChild(quantity);
-
-  row.appendChild(info);
-
-  const remove = el("button","remove","✕");
-
-  remove.onclick = ()=>removeItem(item.id);
-
-  row.appendChild(remove);
-
-  root.appendChild(row);
-
- });
-
- $("cartTotal").textContent = money(getTotal());
-
- $("checkoutButton").disabled = !validCart();
-
-}
-
-function openCart(){
-
- renderCart();
-
- $("cartDialog").showModal();
-
-}
-
-function openCheckout(){
-
- if(!validCart())return;
-
- $("cartDialog").close();
-
- $("checkoutTotal").textContent =
-  "Ҳамагӣ: "+money(getTotal());
-
- $("checkoutDialog").showModal();
-
-}
-
-function submitOrder(){
-
- if(!validCart()){
-
-  toast("Сабадро санҷед.");
-
-  return;
-
- }
-
- const order = {
-
-  id:crypto.randomUUID(),
-
-  items:cart.map(item=>{
-
-   const product = products.find(
-    p=>p.id===item.id
-   );
-
-   return {
-
-    product_id:item.id,
-
-    name:product.name,
-
-    price:product.price,
-
-    quantity:item.quantity
-
-   };
-
-  }),
-
-  total:getTotal(),
-
-  commission:0,
-
-  status:"demo",
-
-  created:Date.now()
-
- };
-
- const orders = read(ORDER_KEY);
-
- if(!save(ORDER_KEY,[order,...orders]))return;
-
- if(save(CART_KEY,[])){
-
-  cart = [];
-
- }
-
- updateCart();
-
- $("checkoutDialog").close();
-
- toast("Фармоиши озмоишӣ сабт шуд.");
-
-}
-
-$("search").oninput = renderProducts;
-
-$("sort").onchange = renderProducts;
-
-renderCategories();
-
-renderProducts();
-
-updateCart();
+$("search").addEventListener(
+ "input",renderSearch
+);
+
+renderSearch();
 
 </script>
 
 </body>
-</html>
+</html><!DOCTYPE html>
