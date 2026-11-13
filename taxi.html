@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="tg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VAYO Taxi</title>
+
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<style>
+
+*{
+ box-sizing:border-box;
+}
+
+:root{
+ --yellow:#ffcc00;
+ --orange:#ff6500;
+ --dark:#202b3b;
+ --gray:#788396;
+}
+
+body{
+ margin:0;
+ background:#f5f6fa;
+ font-family:Arial,sans-serif;
+ color:var(--dark);
+}
+
+button,input{
+ font:inherit;
+}
+
+button{
+ cursor:pointer;
+}
+
+header{
+ background:white;
+ padding:15px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ position:sticky;
+ top:0;
+ z-index:1000;
+ box-shadow:0 2px 15px #00000010;
+}
+
+.back{
+ text-decoration:none;
+ color:#222;
+ background:#f1f2f5;
+ padding:12px 16px;
+ border-radius:12px;
+}
+
+.logo{
+ font-size:26px;
+ font-weight:900;
+ color:#ff6500;
+}
+
+.country{
+ font-size:12px;
+}
+
+main{
+ max-width:850px;
+ margin:auto;
+ padding:12px 12px 100px;
+}
+
+.hero{
+ background:linear-gradient(135deg,#ffe873,#ffc400);
+ border-radius:24px;
+ padding:22px;
+ display:flex;
+ align-items:center;
+ overflow:hidden;
+ margin-bottom:15px;
+}
+
+.hero-text{
+ flex:1;
+}
+
+.hero h1{
+ font-size:32px;
+ margin:5px 0 10px;
+}
+
+.hero p{
+ font-size:13px;
+ line-height:1.5;
+}
+
+.hero svg{
+ width:48%;
+}
+
+.map-box{
+ position:relative;
+ background:white;
+ border-radius:20px;
+ overflow:hidden;
+ border:1px solid #eee;
+}
+
+#map{
+ height:330px;
+ width:100%;
+ z-index:1;
+}
+
+.gps{
+ position:absolute;
+ right:12px;
+ bottom:25px;
+ z-index:500;
+ background:white;
+ border:0;
+ width:48px;
+ height:48px;
+ border-radius:15px;
+ box-shadow:0 4px 15px #0003;
+ font-size:24px;
+}
+
+.panel{
+ background:white;
+ padding:18px;
+ border-radius:22px;
+ margin-top:15px;
+ box-shadow:0 3px 15px #00000008;
+}
+
+.panel h2{
+ margin:0 0 15px;
+ font-size:20px;
+}
+
+.address{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ background:#f5f6fa;
+ padding:13px;
+ border-radius:13px;
+ margin-bottom:12px;
+}
+
+.dot{
+ width:13px;
+ height:13px;
+ border-radius:50%;
+ flex-shrink:0;
+}
+
+.green{
+ background:#21b85c;
+}
+
+.red{
+ background:#f44336;
+}
+
+.address-info{
+ flex:1;
+ min-width:0;
+}
+
+.address label{
+ display:block;
+ font-size:11px;
+ color:var(--gray);
+ margin-bottom:5px;
+}
+
+.address input{
+ width:100%;
+ border:0;
+ background:none;
+ outline:none;
+ color:#222;
+}
+
+.pick{
+ background:white;
+ border:1px solid #ddd;
+ border-radius:10px;
+ padding:10px;
+ font-size:19px;
+}
+
+.hint{
+ font-size:12px;
+ line-height:1.5;
+ color:var(--gray);
+}
+
+.calculate{
+ width:100%;
+ padding:15px;
+ border:0;
+ border-radius:12px;
+ background:#202b3b;
+ color:white;
+ font-weight:bold;
+}
+
+.calculate:disabled{
+ opacity:.5;
+}
+
+.cars{
+ display:flex;
+ flex-direction:column;
+ gap:10px;
+}
+
+.car{
+ border:2px solid #eee;
+ border-radius:15px;
+ padding:12px;
+ display:flex;
+ align-items:center;
+ gap:12px;
+ background:white;
+ text-align:left;
+ width:100%;
+ color:var(--dark);
+}
+
+.car.active{
+ border-color:#ffcc00;
+ background:#fffbed;
+}
+
+.car svg{
+ width:90px;
+ flex-shrink:0;
+}
+
+.car-info{
+ flex:1;
+}
+
+.car-info strong{
+ font-size:17px;
+}
+
+.car-info p{
+ margin:5px 0;
+ color:var(--gray);
+ font-size:12px;
+}
+
+.car-price{
+ font-size:17px;
+ font-weight:900;
+ white-space:nowrap;
+}
+
+.summary{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:8px;
+ margin:15px 0;
+}
+
+.summary div{
+ background:#f5f6fa;
+ border-radius:13px;
+ padding:15px 5px;
+ text-align:center;
+}
+
+.summary small{
+ display:block;
+ color:var(--gray);
+ font-size:11px;
+ margin-bottom:7px;
+}
+
+.summary strong{
+ font-size:16px;
+}
+
+.payment{
+ background:#f5f6fa;
+ padding:15px;
+ border-radius:13px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+
+.order{
+ width:100%;
+ background:#ffcc00;
+ color:#202020;
+ border:0;
+ border-radius:15px;
+ padding:17px;
+ font-weight:900;
+ font-size:17px;
+ margin-top:15px;
+}
+
+.order:disabled{
+ opacity:.5;
+ cursor:not-allowed;
+}
+
+.notice{
+ background:#fff6d6;
+ color:#856400;
+ padding:12px;
+ border-radius:12px;
+ font-size:12px;
+ line-height:1.6;
+ margin-top:15px;
+}
+
+.bottom{
+ position:fixed;
+ bottom:0;
+ left:0;
+ right:0;
+ z-index:2000;
+ background:white;
+ border-top:1px solid #eee;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ padding:12px 4px;
+}
+
+.bottom a,.bottom button{
+ border:0;
+ background:none;
+ text-decoration:none;
+ color:#788396;
+ font-size:11px;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ gap:5px;
+}
+
+.bottom span{
+ font-size:24px;
+}
+
+.bottom .active{
+ color:#e5a900;
+ font-weight:bold;
+}
+
+dialog{
+ width:min(450px,94%);
+ max-height:85vh;
+ overflow:auto;
+ border:0;
+ border-radius:23px;
+ padding:24px;
+ color:var(--dark);
+}
+
+dialog::backdrop{
+ background:#0009;
+}
+
+.dialog-head{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:10px;
+}
+
+.dialog-head h2{
+ font-size:21px;
+}
+
+.close{
+ border:0;
+ border-radius:10px;
+ background:#eee;
+ padding:10px 14px;
+}
+
+.field{
+ width:100%;
+ padding:14px;
+ border:1px solid #ddd;
+ border-radius:12px;
+ margin:8px 0 15px;
+}
+
+label{
+ font-size:13px;
+}
+
+.history-item{
+ background:#f5f6fa;
+ padding:15px;
+ border-radius:13px;
+ margin:10px 0;
+ line-height:1.6;
+ font-size:13px;
+}
+
+.toast{
+ position:fixed;
+ bottom:90px;
+ left:50%;
+ transform:translateX(-50%);
+ background:#202b3b;
+ color:white;
+ padding:15px 20px;
+ border-radius:13px;
+ z-index:5000;
+ text-align:center;
+ max-width:90%;
+}
+
+.hidden{
+ display:none!important;
+}
+
+footer{
+ text-align:center;
+ color:var(--gray);
+ font-size:12px;
+ padding:25px;
+}
+
+@media(max-width:500px){
+
+ .hero h1{
+  font-size:25px;
+ }
+
+ .hero{
+  padding:17px;
+ }
+
+ #map{
+  height:300px;
+ }
+
+ .car svg{
+  width:75px;
+ }
+
+ .car-price{
+  font-size:14px;
+ }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+ <a href="./index.html" class="back">
+  ←
+ </a>
+
+ <div class="logo">
+  VAYO TAXI
+ </div>
+
+ <div class="country">
+  🇹🇯 Тоҷикистон
+ </div>
+
+</header>
+
+<main>
+
+<section class="hero">
+
+ <div class="hero-text">
+
+  <small>VAYO TAXI</small>
+
+  <h1>Таксӣ фармоиш диҳед</h1>
+
+  <p>
+   Сафар дар Тоҷикистон.
+   Осон ва бароҳат.
+  </p>
+
+ </div>
+
+ <svg viewBox="0 0 300 210">
+
+  <ellipse cx="150" cy="180"
+   rx="120" ry="12" fill="#a8870030"/>
+
+  <path d="M60 112 L90 62
+   Q100 48 120 48 H188
+   Q207 48 219 68 L245 112 Z"
+   fill="#ffb900"/>
+
+  <path d="M83 103 L108 64
+   H145 V103 Z" fill="#526d8d"/>
+
+  <path d="M155 64 H188
+   L221 103 H155 Z"
+   fill="#526d8d"/>
+
+  <rect x="123" y="26"
+   width="65" height="25"
+   rx="7" fill="white"/>
+
+  <text x="155" y="43"
+   text-anchor="middle"
+   font-size="15"
+   font-weight="bold">TAXI</text>
+
+  <rect x="22" y="108"
+   width="256" height="60"
+   rx="23" fill="#ffc400"/>
+
+  <circle cx="78" cy="165"
+   r="25" fill="#202b3b"/>
+
+  <circle cx="78" cy="165"
+   r="11" fill="#bfc9d5"/>
+
+  <circle cx="225" cy="165"
+   r="25" fill="#202b3b"/>
+
+  <circle cx="225" cy="165"
+   r="11" fill="#bfc9d5"/>
+
+  <rect x="251" y="123"
+   width="26" height="17"
+   rx="5" fill="white"/>
+
+  <rect x="22" y="123"
+   width="20" height="17"
+   rx="5" fill="#f44336"/>
+
+  <text x="150" y="141"
+   text-anchor="middle"
+   font-size="24"
+   font-weight="900">VAYO</text>
+
+ </svg>
+
+</section>
+
+<!-- MAP -->
+
+<div class="map-box">
+
+ <div id="map"></div>
+
+ <button class="gps"
+  onclick="getLocation()"
+  aria-label="Ҷойгиршавии ман">
+  📍
+ </button>
+
+</div>
+
+<!-- ADDRESS -->
+
+<section class="panel">
+
+ <h2>Масири сафар</h2>
+
+ <div class="address">
+
+  <div class="dot green"></div>
+
+  <div class="address-info">
+
+   <label>Аз куҷо?</label>
+
+   <input id="from"
+    placeholder="Нуқтаи оғоз"
+    readonly>
+
+  </div>
+
+  <button class="pick"
+   onclick="selectPoint('from')">
+   📍
+  </button>
+
+ </div>
+
+ <div class="address">
+
+  <div class="dot red"></div>
+
+  <div class="address-info">
+
+   <label>Ба куҷо?</label>
+
+   <input id="to"
+    placeholder="Нуқтаи таъинот"
+    readonly>
+
+  </div>
+
+  <button class="pick"
+   onclick="selectPoint('to')">
+   📍
+  </button>
+
+ </div>
+
+ <p class="hint" id="hint">
+  Нуқтаи оғоз ва таъинотро
+  дар харита интихоб кунед.
+ </p>
+
+ <button class="calculate"
+  id="calculate"
+  onclick="calculateRoute()">
+  Ҳисоб кардани масир
+ </button>
+
+</section>
+
+<!-- CAR TYPES -->
+
+<section class="panel">
+
+ <h2>Навъи мошин</h2>
+
+ <div class="cars">
+
+  <button class="car active"
+   data-type="economy"
+   onclick="chooseCar('economy')">
+
+   <svg viewBox="0 0 180 90">
+
+    <path d="M30 45 L52 15
+     H125 L151 45 Z"
+     fill="#e5e7eb"/>
+
+    <path d="M45 40 L60 22
+     H87 V40 Z"
+     fill="#64748b"/>
+
+    <path d="M95 22 H120
+     L138 40 H95 Z"
+     fill="#64748b"/>
+
+    <rect x="10" y="42"
+     width="160" height="32"
+     rx="12" fill="#f1f3f5"/>
+
+    <circle cx="42" cy="72"
+     r="15" fill="#202b3b"/>
+
+    <circle cx="139" cy="72"
+     r="15" fill="#202b3b"/>
+
+   </svg>
+
+   <div class="car-info">
+
+    <strong>Economy</strong>
+
+    <p>Таксии оддӣ · 4 ҷой</p>
+
+   </div>
+
+   <div class="car-price"
+    id="economyPrice">
+    —
+   </div>
+
+  </button>
+
+  <button class="car"
+   data-type="comfort"
+   onclick="chooseCar('comfort')">
+
+   <svg viewBox="0 0 180 90">
+
+    <path d="M30 45 L52 15
+     H125 L151 45 Z"
+     fill="#8795a5"/>
+
+    <path d="M45 40 L60 22
+     H87 V40 Z"
+     fill="#35465d"/>
+
+    <path d="M95 22 H120
+     L138 40 H95 Z"
+     fill="#35465d"/>
+
+    <rect x="10" y="42"
+     width="160" height="32"
+     rx="12" fill="#a6b2bf"/>
+
+    <circle cx="42" cy="72"
+     r="15" fill="#202b3b"/>
+
+    <circle cx="139" cy="72"
+     r="15" fill="#202b3b"/>
+
+   </svg>
+
+   <div class="car-info">
+
+    <strong>Comfort</strong>
+
+    <p>Мошини бароҳат · 4 ҷой</p>
+
+   </div>
+
+   <div class="car-price"
+    id="comfortPrice">
+    —
+   </div>
+
+  </button>
+
+  <button class="car"
+   data-type="business"
+   onclick="chooseCar('business')">
+
+   <svg viewBox="0 0 180 90">
+
+    <path d="M30 45 L52 15
+     H125 L151 45 Z"
+     fill="#202b3b"/>
+
+    <path d="M45 40 L60 22
+     H87 V40 Z"
+     fill="#70859f"/>
+
+    <path d="M95 22 H120
+     L138 40 H95 Z"
+     fill="#70859f"/>
+
+    <rect x="10" y="42"
+     width="160" height="32"
+     rx="12" fill="#111827"/>
+
+    <circle cx="42" cy="72"
+     r="15" fill="#374151"/>
+
+    <circle cx="139" cy="72"
+     r="15" fill="#374151"/>
+
+   </svg>
+
+   <div class="car-info">
+
+    <strong>Business</strong>
+
+    <p>Мошини дараҷаи олӣ</p>
+
+   </div>
+
+   <div class="car-price"
+    id="businessPrice">
+    —
+   </div>
+
+  </button>
+
+ </div>
+
+</section>
+
+<!-- ORDER -->
+
+<section class="panel">
+
+ <h2>Маълумоти сафар</h2>
+
+ <div class="summary">
+
+  <div>
+   <small>Масофа</small>
+   <strong id="distance">0 км</strong>
+  </div>
+
+  <div>
+   <small>Вақт</small>
+   <strong id="duration">0 дақ.</strong>
+  </div>
+
+  <div>
+   <small>Нархи тахминӣ</small>
+   <strong id="total">0 TJS</strong>
+  </div>
+
+ </div>
+
+ <div class="payment">
+
+  <span>💵 Пардохт</span>
+
+  <strong>Нақдӣ</strong>
+
+ </div>
+
+ <button class="order"
+  id="orderButton"
+  onclick="openOrder()"
+  disabled>
+
+  Фармоиши озмоишӣ
+
+ </button>
+
+ <div class="notice">
+
+  Комиссияи пешбинишудаи VAYO — 0%.
+  Нархҳо озмоишӣ мебошанд.
+  Ҳоло фармоиш ба ронандаи воқеӣ
+  фиристода намешавад.
+
+ </div>
+
+</section>
+
+<footer>
+
+ <strong>VAYO TAXI</strong>
+
+ <p>🇹🇯 Барои Тоҷикистон</p>
+
+</footer>
+
+</main>
+
+<!-- NAVIGATION -->
+
+<nav class="bottom">
+
+ <a href="./index.html">
+  <span>🏠</span>
+  Асосӣ
+ </a>
+
+ <button class="active"
+  onclick="window.scrollTo({
+   top:0,behavior:'smooth'
+  })">
+  <span>🚕</span>
+  Таксӣ
+ </button>
+
+ <button onclick="openHistory()">
+  <span>📋</span>
+  Фармоишҳо
+ </button>
+
+ <button onclick="openDriver()">
+  <span>👤</span>
+  Ронанда
+ </button>
+
+</nav>
+
+<!-- ORDER DIALOG -->
+
+<dialog id="orderDialog">
+
+ <div class="dialog-head">
+
+  <h2>Тасдиқи сафар</h2>
+
+  <button class="close"
+   onclick="closeDialog('orderDialog')">
+   ✕
+  </button>
+
+ </div>
+
+ <div id="orderDetails"></div>
+
+ <div class="notice">
+  Ин танҳо фармоиши озмоишӣ аст.
+  Мошин фиристода намешавад.
+ </div>
+
+ <button class="order"
+  onclick="submitOrder()">
+  Сабти фармоиш
+ </button>
+
+</dialog>
+
+<!-- HISTORY -->
+
+<dialog id="historyDialog">
+
+ <div class="dialog-head">
+
+  <h2>Фармоишҳои ман</h2>
+
+  <button class="close"
+   onclick="closeDialog('historyDialog')">
+   ✕
+  </button>
+
+ </div>
+
+ <div id="historyList"></div>
+
+</dialog>
+
+<!-- DRIVER -->
+
+<dialog id="driverDialog">
+
+ <div class="dialog-head">
+
+  <h2>VAYO Driver</h2>
+
+  <button class="close"
+   onclick="closeDialog('driverDialog')">
+   ✕
+  </button>
+
+ </div>
+
+ <p>
+  Панели ронанда баъди пайваст
+  кардани сервер ва бақайдгирӣ
+  фаъол мешавад.
+ </p>
+
+ <div class="notice">
+  Комиссияи пешбинишуда — 0%.
+  Ҳоло қабули фармоишҳои воқеӣ
+  дастрас нест.
+ </div>
+
+ <button class="order"
+  onclick="closeDialog('driverDialog')">
+  Фаҳмо
+ </button>
+
+</dialog>
+
+<div id="toast" class="toast hidden"></div>
+
+<script>
+
+"use strict";
+
+const $ = id => document.getElementById(id);
+
+let fromPoint = null;
+let toPoint = null;
+
+let fromMarker = null;
+let toMarker = null;
+let routeLine = null;
+
+let selecting = "from";
+
+let selectedCar = "economy";
+
+let distanceKm = 0;
+let durationMin = 0;
+
+let routeReady = false;
+let routeVersion = 0;
+let toastTimer;
+
+const tariffs = {
+
+ economy:{
+  name:"Economy",
+  base:5,
+  perKm:2.5
+ },
+
+ comfort:{
+  name:"Comfort",
+  base:8,
+  perKm:3.5
+ },
+
+ business:{
+  name:"Business",
+  base:12,
+  perKm:5
+ }
+
+};
+
+function toast(message){
+
+ $("toast").textContent = message;
+
+ $("toast").classList.remove("hidden");
+
+ clearTimeout(toastTimer);
+
+ toastTimer = setTimeout(()=>{
+
+  $("toast").classList.add("hidden");
+
+ },3500);
+
+}
+
+function closeDialog(id){
+
+ $(id).close();
+
+}
+
+/* MAP */
+
+const map = L.map("map").setView(
+ [38.5598,68.7870],13
+);
+
+L.tileLayer(
+
+ "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+
+ {
+  maxZoom:19,
+  attribution:"© OpenStreetMap contributors"
+ }
+
+).addTo(map);
+
+function makeIcon(color){
+
+ return L.divIcon({
+
+  className:"vayo-marker",
+
+  html:
+   '<div style="width:22px;height:22px;'+
+   'border:4px solid white;'+
+   'border-radius:50%;'+
+   'box-shadow:0 2px 8px #0006;'+
+   'background:'+color+'"></div>',
+
+  iconSize:[22,22],
+
+  iconAnchor:[11,11]
+
+ });
+
+}
+
+function resetRoute(){
+
+ routeVersion++;
+
+ routeReady = false;
+
+ distanceKm = 0;
+
+ durationMin = 0;
+
+ if(routeLine){
+
+  map.removeLayer(routeLine);
+
+  routeLine = null;
+
+ }
+
+ $("distance").textContent = "0 км";
+
+ $("duration").textContent = "0 дақ.";
+
+ $("total").textContent = "0 TJS";
+
+ $("economyPrice").textContent = "—";
+
+ $("comfortPrice").textContent = "—";
+
+ $("businessPrice").textContent = "—";
+
+ $("orderButton").disabled = true;
+
+ $("calculate").disabled = false;
+
+}
+
+function selectPoint(type){
+
+ selecting = type;
+
+ $("hint").textContent =
+  type==="from"
+   ? "Нуқтаи оғозро дар харита пахш кунед."
+   : "Нуқтаи таъинотро дар харита пахш кунед.";
+
+ $("map").scrollIntoView({
+
+  behavior:"smooth",
+
+  block:"center"
+
+ });
+
+}
+
+function setPoint(type,lat,lng){
+
+ resetRoute();
+
+ const point = {lat,lng};
+
+ const coordinates =
+  lat.toFixed(5)+", "+lng.toFixed(5);
+
+ if(type==="from"){
+
+  fromPoint = point;
+
+  if(fromMarker){
+
+   map.removeLayer(fromMarker);
+
+  }
+
+  fromMarker = L.marker(
+
+   [lat,lng],
+
+   {icon:makeIcon("#21b85c")}
+
+  ).addTo(map);
+
+  $("from").value = coordinates;
+
+  selecting = "to";
+
+  $("hint").textContent =
+   "Акнун нуқтаи таъинотро интихоб кунед.";
+
+ }else{
+
+  toPoint = point;
+
+  if(toMarker){
+
+   map.removeLayer(toMarker);
+
+  }
+
+  toMarker = L.marker(
+
+   [lat,lng],
+
+   {icon:makeIcon("#f44336")}
+
+  ).addTo(map);
+
+  $("to").value = coordinates;
+
+  $("hint").textContent =
+   "Барои ҳисоб кардани роҳ тугмаро пахш кунед.";
+
+ }
+
+}
+
+map.on("click",event=>{
+
+ setPoint(
+
+  selecting,
+
+  event.latlng.lat,
+
+  event.latlng.lng
+
+ );
+
+});
+
+/* GPS */
+
+function getLocation(){
+
+ if(!navigator.geolocation){
+
+  toast("GPS дастрас нест.");
+
+  return;
+
+ }
+
+ toast("Ҷойгиршавӣ муайян мешавад...");
+
+ navigator.geolocation.getCurrentPosition(
+
+  position=>{
+
+   const lat = position.coords.latitude;
+
+   const lng = position.coords.longitude;
+
+   setPoint("from",lat,lng);
+
+   map.setView([lat,lng],16);
+
+   toast("Ҷойгиршавӣ муайян шуд.");
+
+  },
+
+  ()=>{
+
+   toast("GPS дастрас нест. Иҷозатро санҷед.");
+
+  },
+
+  {
+
+   enableHighAccuracy:true,
+
+   timeout:15000,
+
+   maximumAge:0
+
+  }
+
+ );
+
+}
+
+/* ROUTE */
+
+async function calculateRoute(){
+
+ if(!fromPoint || !toPoint){
+
+  toast("Ҳар ду нуқтаро интихоб кунед.");
+
+  return;
+
+ }
+
+ resetRoute();
+
+ const version = routeVersion;
+
+ const start = {...fromPoint};
+
+ const end = {...toPoint};
+
+ $("calculate").disabled = true;
+
+ $("calculate").textContent =
+  "Ҳисоб шуда истодааст...";
+
+ const url =
+
+  "https://router.project-osrm.org/route/v1/driving/"
+
+  +start.lng+","+start.lat
+
+  +";"
+
+  +end.lng+","+end.lat
+
+  +"?overview=full&geometries=geojson";
+
+ try{
+
+  const response = await fetch(url);
+
+  if(!response.ok){
+
+   throw new Error("Route error");
+
+  }
+
+  const data = await response.json();
+
+  if(version!==routeVersion)return;
+
+  if(data.code!=="Ok" || !data.routes?.length){
+
+   throw new Error("No route");
+
+  }
+
+  const route = data.routes[0];
+
+  distanceKm = route.distance/1000;
+
+  durationMin = Math.max(
+   1,Math.round(route.duration/60)
+  );
+
+  routeLine = L.geoJSON(
+
+   route.geometry,
+
+   {
+
+    style:{
+
+     color:"#ff9900",
+
+     weight:6,
+
+     opacity:.9
+
+    }
+
+   }
+
+  ).addTo(map);
+
+  map.fitBounds(
+
+   routeLine.getBounds(),
+
+   {padding:[30,30]}
+
+  );
+
+  routeReady = true;
+
+  $("distance").textContent =
+   distanceKm.toFixed(1)+" км";
+
+  $("duration").textContent =
+   durationMin+" дақ.";
+
+  $("hint").textContent =
+   "Масир ҳисоб карда шуд.";
+
+  updatePrices();
+
+ }catch(error){
+
+  if(version===routeVersion){
+
+   toast("Масир ёфт нашуд. Боз кӯшиш кунед.");
+
+  }
+
+ }finally{
+
+  if(version===routeVersion){
+
+   $("calculate").disabled = false;
+
+   $("calculate").textContent =
+    "Ҳисоб кардани масир";
+
+  }
+
+ }
+
+}
+
+/* PRICES */
+
+function getPrice(type){
+
+ const tariff = tariffs[type];
+
+ return Math.ceil(
+
+  tariff.base + distanceKm*tariff.perKm
+
+ );
+
+}
+
+function updatePrices(){
+
+ if(!routeReady)return;
+
+ $("economyPrice").textContent =
+  getPrice("economy")+" TJS";
+
+ $("comfortPrice").textContent =
+  getPrice("comfort")+" TJS";
+
+ $("businessPrice").textContent =
+  getPrice("business")+" TJS";
+
+ $("total").textContent =
+  getPrice(selectedCar)+" TJS";
+
+ $("orderButton").disabled = false;
+
+}
+
+function chooseCar(type){
+
+ if(!tariffs[type])return;
+
+ selectedCar = type;
+
+ document.querySelectorAll(".car")
+ .forEach(card=>{
+
+  card.classList.toggle(
+
+   "active",
+
+   card.dataset.type===type
+
+  );
+
+ });
+
+ updatePrices();
+
+}
+
+/* ORDER */
+
+function openOrder(){
+
+ if(!routeReady){
+
+  toast("Аввал масирро ҳисоб кунед.");
+
+  return;
+
+ }
+
+ const root = $("orderDetails");
+
+ root.replaceChildren();
+
+ const details = [
+
+  "Аз: "+$("from").value,
+
+  "Ба: "+$("to").value,
+
+  "Мошин: "+tariffs[selectedCar].name,
+
+  "Масофа: "+distanceKm.toFixed(1)+" км",
+
+  "Вақт: "+durationMin+" дақиқа",
+
+  "Нарх: "+getPrice(selectedCar)+" сомонӣ"
+
+ ];
+
+ details.forEach(text=>{
+
+  const p = document.createElement("p");
+
+  p.textContent = text;
+
+  root.appendChild(p);
+
+ });
+
+ $("orderDialog").showModal();
+
+}
+
+function readOrders(){
+
+ try{
+
+  const data = JSON.parse(
+
+   localStorage.getItem(
+    "vayo_taxi_orders_v1"
+   ) || "[]"
+
+  );
+
+  return Array.isArray(data) ? data : [];
+
+ }catch{
+
+  return [];
+
+ }
+
+}
+
+function submitOrder(){
+
+ if(!routeReady)return;
+
+ const order = {
+
+  id:crypto.randomUUID(),
+
+  from:$("from").value,
+
+  to:$("to").value,
+
+  car:tariffs[selectedCar].name,
+
+  distance:distanceKm.toFixed(1),
+
+  duration:durationMin,
+
+  price:getPrice(selectedCar),
+
+  commission:0,
+
+  status:"demo",
+
+  created:new Date().toISOString()
+
+ };
+
+ const orders = readOrders();
+
+ orders.unshift(order);
+
+ try{
+
+  localStorage.setItem(
+
+   "vayo_taxi_orders_v1",
+
+   JSON.stringify(orders)
+
+  );
+
+ }catch{
+
+  toast("Фармоиш сабт нашуд.");
+
+  return;
+
+ }
+
+ $("orderDialog").close();
+
+ toast("Фармоиши озмоишӣ сабт шуд!");
+
+}
+
+/* HISTORY */
+
+function openHistory(){
+
+ const root = $("historyList");
+
+ root.replaceChildren();
+
+ const orders = readOrders();
+
+ if(!orders.length){
+
+  root.textContent =
+   "Ҳоло фармоиш нест.";
+
+ }
+
+ orders.forEach(order=>{
+
+  const item = document.createElement("div");
+
+  item.className = "history-item";
+
+  const lines = [
+
+   "🚕 "+order.car,
+
+   "Аз: "+order.from,
+
+   "Ба: "+order.to,
+
+   "Масофа: "+order.distance+" км",
+
+   "Нарх: "+order.price+" сомонӣ",
+
+   "Ҳолат: Озмоишӣ"
+
+  ];
+
+  lines.forEach(text=>{
+
+   const div = document.createElement("div");
+
+   div.textContent = text;
+
+   item.appendChild(div);
+
+  });
+
+  root.appendChild(item);
+
+ });
+
+ $("historyDialog").showModal();
+
+}
+
+function openDriver(){
+
+ $("driverDialog").showModal();
+
+}
+
+</script>
+
+</body>
+</html>
