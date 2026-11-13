@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="tg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VAYO Marketplace</title>
+
+<style>
+*{
+ box-sizing:border-box;
+}
+:root{
+ --orange:#ff6500;
+ --dark:#202b3b;
+ --gray:#7c8798;
+ --bg:#f5f6fa;
+}
+body{
+ margin:0;
+ background:var(--bg);
+ color:var(--dark);
+ font-family:Arial,sans-serif;
+}
+button,input,select,textarea{
+ font:inherit;
+}
+button{
+ cursor:pointer;
+}
+a{
+ color:inherit;
+ text-decoration:none;
+}
+header{
+ position:sticky;
+ top:0;
+ z-index:100;
+ padding:15px;
+ color:white;
+ background:linear-gradient(135deg,#ff6500,#ff9c45);
+}
+.top{
+ max-width:1200px;
+ margin:auto;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+}
+.logo{
+ font-size:32px;
+ font-weight:900;
+}
+.logo small{
+ display:block;
+ font-size:10px;
+ letter-spacing:2px;
+}
+.header-button{
+ background:#ffffff25;
+ color:white;
+ border:0;
+ padding:12px;
+ border-radius:12px;
+}
+.search{
+ max-width:1200px;
+ margin:15px auto 0;
+ display:flex;
+ background:white;
+ padding:5px;
+ border-radius:13px;
+}
+.search input{
+ flex:1;
+ width:100%;
+ min-width:0;
+ border:0;
+ outline:none;
+ padding:12px;
+}
+.search button{
+ background:#fff0e5;
+ color:var(--orange);
+ border:0;
+ border-radius:10px;
+ padding:12px;
+}
+main{
+ max-width:1200px;
+ margin:auto;
+ padding:15px 12px 110px;
+}
+.hero{
+ padding:25px;
+ border-radius:24px;
+ color:white;
+ background:linear-gradient(135deg,#ff6500,#ff9c45);
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:15px;
+}
+.hero h1{
+ margin:0 0 10px;
+ font-size:30px;
+}
+.hero p{
+ line-height:1.6;
+ font-size:14px;
+}
+.hero-icon{
+ font-size:75px;
+}
+.hero button{
+ border:0;
+ background:white;
+ color:var(--orange);
+ padding:12px 18px;
+ border-radius:12px;
+ font-weight:bold;
+}
+.categories{
+ display:flex;
+ gap:10px;
+ overflow:auto;
+ padding:20px 0;
+}
+.category{
+ white-space:nowrap;
+ border:1px solid #eee;
+ border-radius:25px;
+ background:white;
+ padding:12px 18px;
+}
+.category.active{
+ background:var(--orange);
+ color:white;
+}
+.toolbar{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:10px;
+ margin:10px 0 18px;
+}
+.toolbar h2{
+ margin:0;
+ font-size:23px;
+}
+.toolbar select{
+ border:1px solid #ddd;
+ padding:10px;
+ border-radius:10px;
+ background:white;
+ max-width:150px;
+}
+.products{
+ display:grid;
+ grid-template-columns:repeat(4,minmax(0,1fr));
+ gap:15px;
+}
+.product{
+ position:relative;
+ overflow:hidden;
+ background:white;
+ border-radius:18px;
+ border:1px solid #eee;
+ display:flex;
+ flex-direction:column;
+ box-shadow:0 4px 15px #00000008;
+}
+.product img{
+ width:100%;
+ aspect-ratio:1;
+ object-fit:cover;
+ background:#eee;
+}
+.placeholder{
+ aspect-ratio:1;
+ background:#fff0e5;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:65px;
+}
+.favorite{
+ position:absolute;
+ right:10px;
+ top:10px;
+ border:0;
+ border-radius:50%;
+ background:white;
+ width:36px;
+ height:36px;
+ font-size:20px;
+}
+.info{
+ padding:13px;
+ flex:1;
+ display:flex;
+ flex-direction:column;
+}
+.info h3{
+ font-size:16px;
+ margin:0 0 8px;
+ overflow-wrap:anywhere;
+}
+.price{
+ color:var(--orange);
+ font-size:22px;
+ font-weight:900;
+ margin:8px 0;
+}
+.location{
+ color:var(--gray);
+ font-size:12px;
+ margin:5px 0;
+}
+.stock{
+ color:#249650;
+ font-size:12px;
+ margin:5px 0 12px;
+}
+.primary{
+ display:block;
+ width:100%;
+ border:0;
+ border-radius:11px;
+ background:var(--orange);
+ color:white;
+ padding:13px;
+ font-weight:bold;
+ text-align:center;
+}
+.primary:disabled{
+ background:#ccc;
+}
+.add{
+ margin-top:auto;
+ font-size:13px;
+}
+.empty{
+ background:white;
+ border-radius:18px;
+ text-align:center;
+ padding:40px 20px;
+ color:var(--gray);
+}
+.empty span{
+ display:block;
+ font-size:55px;
+ margin-bottom:15px;
+}
+.business{
+ background:var(--dark);
+ color:white;
+ padding:24px;
+ margin-top:25px;
+ border-radius:22px;
+}
+.business p{
+ color:#d7deea;
+ line-height:1.7;
+ font-size:14px;
+}
+.bottom{
+ position:fixed;
+ bottom:0;
+ left:0;
+ right:0;
+ background:white;
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ padding:10px 3px;
+ padding-bottom:max(10px,env(safe-area-inset-bottom));
+ border-top:1px solid #eee;
+ z-index:150;
+}
+.bottom button,.bottom a{
+ background:none;
+ border:0;
+ color:var(--gray);
+ font-size:10px;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ gap:5px;
+}
+.bottom span{
+ font-size:24px;
+}
+.bottom .active{
+ color:var(--orange);
+ font-weight:bold;
+}
+dialog{
+ width:min(500px,94%);
+ max-height:90vh;
+ overflow:auto;
+ border:0;
+ border-radius:22px;
+ padding:22px;
+ color:var(--dark);
+}
+dialog::backdrop{
+ background:#0009;
+}
+.dialog-top{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:20px;
+}
+.dialog-top h2{
+ margin:0;
+ font-size:22px;
+}
+.close{
+ border:0;
+ background:#f0f2f5;
+ border-radius:10px;
+ padding:10px 14px;
+}
+label{
+ display:block;
+ font-weight:bold;
+ font-size:13px;
+ margin:15px 0 7px;
+}
+.field{
+ width:100%;
+ padding:13px;
+ border:1px solid #ddd;
+ border-radius:10px;
+ background:white;
+ outline:none;
+}
+.field:focus{
+ border-color:var(--orange);
+}
+textarea{
+ resize:vertical;
+ min-height:100px;
+}
+.preview{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:8px;
+ margin:12px 0;
+}
+.preview img{
+ width:100%;
+ aspect-ratio:1;
+ object-fit:cover;
+ border-radius:10px;
+}
+.note{
+ background:#fff2e5;
+ color:#a65a13;
+ padding:12px;
+ border-radius:10px;
+ font-size:12px;
+ line-height:1.6;
+ margin:15px 0;
+}
+.cart-item{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ border-bottom:1px solid #eee;
+ padding:14px 0;
+}
+.cart-item img{
+ width:65px;
+ height:65px;
+ border-radius:10px;
+ object-fit:cover;
+}
+.cart-info{
+ flex:1;
+ min-width:0;
+}
+.cart-info strong{
+ overflow-wrap:anywhere;
+}
+.quantity{
+ display:flex;
+ align-items:center;
+ gap:10px;
+ margin-top:10px;
+}
+.quantity button{
+ background:#fff0e5;
+ color:var(--orange);
+ border:0;
+ border-radius:8px;
+ width:30px;
+ height:30px;
+}
+.remove{
+ color:#e53935;
+ background:none;
+ border:0;
+ font-size:18px;
+}
+.total{
+ display:flex;
+ justify-content:space-between;
+ font-size:20px;
+ font-weight:bold;
+ padding:20px 0;
+}
+.toast{
+ position:fixed;
+ bottom:90px;
+ left:50%;
+ transform:translateX(-50%);
+ background:var(--dark);
+ color:white;
+ padding:14px 20px;
+ border-radius:12px;
+ z-index:999;
+ text-align:center;
+ max-width:90%;
+}
+.hidden{
+ display:none!important;
+}
+footer{
+ text-align:center;
+ color:var(--gray);
+ font-size:12px;
+ padding:30px 0;
+}
+@media(max-width:850px){
+ .products{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+ }
+}
+@media(max-width:600px){
+ .products{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+ }
+ .hero{
+  padding:20px 15px;
+ }
+ .hero h1{
+  font-size:23px;
+ }
+ .hero-icon{
+  font-size:50px;
+ }
+ .hero p{
+  font-size:12px;
+ }
+ .info{
+  padding:11px;
+ }
+ .info h3{
+  font-size:14px;
+ }
+ .price{
+  font-size:19px;
+ }
+ .add{
+  font-size:11px;
+ }
+ .toolbar h2{
+  font-size:19px;
+ }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="top">
+  <a href="./index.html" class="header-button">
+   ←
+  </a>
+
+  <div class="logo">
+   VAYO
+   <small>MARKETPLACE</small>
+  </div>
+
+  <button class="header-button" onclick="openCart()">
+   🛒 <span id="cartCount">0</span>
+  </button>
+ </div>
+
+ <div class="search">
+  <input id="search" type="search"
+   placeholder="Маҳсулотро ҷустуҷӯ кунед...">
+
+  <button onclick="renderProducts()">
+   🔍
+  </button>
+ </div>
+</header>
+
+<main>
+
+ <section class="hero">
+  <div>
+   <h1>VAYO Marketplace</h1>
+   <p>
+    Харид ва фурӯши маҳсулот
+    дар Тоҷикистон.
+   </p>
+
+   <button onclick="openAdd()">
+    + Маҳсулот илова кун
+   </button>
+  </div>
+
+  <div class="hero-icon">🛍️</div>
+ </section>
+
+ <div class="categories" id="categories"></div>
+
+ <section id="catalog">
+
+  <div class="toolbar">
+   <h2 id="catalogTitle">Маҳсулот</h2>
+
+   <select id="sort">
+    <option value="new">Навтарин</option>
+    <option value="cheap">Арзонтарин</option>
+    <option value="expensive">Қиматтарин</option>
+   </select>
+  </div>
+
+  <div class="products" id="products"></div>
+
+  <div id="empty" class="empty hidden">
+   <span>📦</span>
+   Маҳсулот ёфт нашуд.
+  </div>
+
+ </section>
+
+ <section class="business">
+  <h2>Бо VAYO тиҷорат кунед</h2>
+
+  <p>
+   Маҳсулоти худро ҷойгир кунед.
+   Комиссияи пешбинишудаи VAYO — 0%.
+  </p>
+
+  <button class="primary" onclick="openAdd()">
+   Фурӯшро оғоз кун
+  </button>
+ </section>
+
+ <footer>
+  <strong>VAYO MARKETPLACE</strong>
+  <p>🇹🇯 Барои Тоҷикистон</p>
+ </footer>
+
+</main>
+
+<nav class="bottom">
+
+ <a href="./index.html">
+  <span>🏠</span>
+  Асосӣ
+ </a>
+
+ <button class="active" onclick="showAll()">
+  <span>🛍️</span>
+  Бозор
+ </button>
+
+ <button onclick="openAdd()">
+  <span>➕</span>
+  Эълон
+ </button>
+
+ <button onclick="showFavorites()">
+  <span>♡</span>
+  Дӯстдошта
+ </button>
+
+ <button onclick="openCart()">
+  <span>🛒</span>
+  Сабад
+ </button>
+
+</nav>
+
+<!-- ADD PRODUCT -->
+
+<dialog id="addDialog">
+
+ <div class="dialog-top">
+  <h2>Маҳсулоти нав</h2>
+
+  <button class="close"
+   onclick="closeDialog('addDialog')">
+   ✕
+  </button>
+ </div>
+
+ <form id="productForm">
+
+  <label>Номи маҳсулот</label>
+
+  <input class="field" id="productName"
+   maxlength="100"
+   placeholder="Мисол: iPhone 15"
+   required>
+
+  <label>Нарх (сомонӣ)</label>
+
+  <input class="field" id="productPrice"
+   type="number" min="0.01" step="0.01"
+   required>
+
+  <label>Категория</label>
+
+  <select class="field" id="productCategory">
+   <option>Либос</option>
+   <option>Телефон</option>
+   <option>Электроника</option>
+   <option>Мошин</option>
+   <option>Хона</option>
+   <option>Пойафзол</option>
+   <option>Кӯдакон</option>
+   <option>Дигар</option>
+  </select>
+
+  <label>Шаҳр</label>
+
+  <select class="field" id="productCity">
+   <option>Душанбе</option>
+   <option>Хуҷанд</option>
+   <option>Бохтар</option>
+   <option>Кӯлоб</option>
+   <option>Ҳисор</option>
+   <option>Данғара</option>
+   <option>Дигар</option>
+  </select>
+
+  <label>Миқдори маҳсулот</label>
+
+  <input class="field" id="productStock"
+   type="number" min="1" max="10000"
+   value="1" required>
+
+  <label>Тавсифи маҳсулот</label>
+
+  <textarea class="field"
+   id="productDescription"
+   maxlength="2000"
+   placeholder="Маълумот дар бораи маҳсулот">
+  </textarea>
+
+  <label>Расмҳо (то 10 адад)</label>
+
+  <input class="field" id="productImages"
+   type="file" accept="image/*" multiple>
+
+  <div class="preview" id="preview"></div>
+
+  <div class="note">
+   Версияи аввал: маҳсулот дар ҳамин
+   браузер нигоҳ дошта мешавад.
+  </div>
+
+  <button class="primary" type="submit"
+   id="publishButton">
+   Нашр кардани маҳсулот
+  </button>
+
+ </form>
+
+</dialog>
+
+<!-- PRODUCT DETAILS -->
+
+<dialog id="detailDialog">
+
+ <div class="dialog-top">
+  <h2>Маълумоти маҳсулот</h2>
+
+  <button class="close"
+   onclick="closeDialog('detailDialog')">
+   ✕
+  </button>
+ </div>
+
+ <div id="detailContent"></div>
+
+</dialog>
+
+<!-- CART -->
+
+<dialog id="cartDialog">
+
+ <div class="dialog-top">
+  <h2>Сабади ман</h2>
+
+  <button class="close"
+   onclick="closeDialog('cartDialog')">
+   ✕
+  </button>
+ </div>
+
+ <div id="cartItems"></div>
+
+ <div class="total">
+  <span>Ҳамагӣ:</span>
+  <span id="cartTotal">0 сомонӣ</span>
+ </div>
+
+ <button class="primary"
+  id="checkoutButton"
+  onclick="openCheckout()">
+  Фармоиш додан
+ </button>
+
+</dialog>
+
+<!-- CHECKOUT -->
+
+<dialog id="checkoutDialog">
+
+ <div class="dialog-top">
+  <h2>Фармоиш</h2>
+
+  <button class="close"
+   onclick="closeDialog('checkoutDialog')">
+   ✕
+  </button>
+ </div>
+
+ <div class="note">
+  Ин ҳоло фармоиши озмоишӣ мебошад.
+  Ба фурӯшанда фиристода намешавад.
+ </div>
+
+ <form id="checkoutForm">
+
+  <label>Номи шумо</label>
+
+  <input class="field" id="customerName"
+   required>
+
+  <label>Рақами телефон</label>
+
+  <input class="field" id="customerPhone"
+   type="tel"
+   placeholder="+992..."
+   required>
+
+  <label>Суроға</label>
+
+  <textarea class="field"
+   id="customerAddress"
+   required></textarea>
+
+  <label>Пардохт</label>
+
+  <select class="field">
+   <option>Нақдӣ ҳангоми қабул</option>
+  </select>
+
+  <p id="checkoutTotal"></p>
+
+  <button class="primary" type="submit">
+   Сабти фармоиши озмоишӣ
+  </button>
+
+ </form>
+
+</dialog>
+
+<div id="toast" class="toast hidden"></div>
+
+<script>
+
+"use strict";
+
+const $ = id => document.getElementById(id);
+
+const PRODUCT_KEY = "vayo_new_products_v1";
+const CART_KEY = "vayo_new_cart_v1";
+const FAVORITE_KEY = "vayo_new_favorites_v1";
+const ORDER_KEY = "vayo_new_orders_v1";
+
+function read(key){
+
+ try{
+
+  const value = JSON.parse(
+   localStorage.getItem(key) || "[]"
+  );
+
+  return Array.isArray(value) ? value : [];
+
+ }catch{
+
+  return [];
+
+ }
+
+}
+
+function save(key,value){
+
+ try{
+
+  localStorage.setItem(
+   key,
+   JSON.stringify(value)
+  );
+
+  return true;
+
+ }catch{
+
+  toast("Ҷойи нигоҳдорӣ кофӣ нест.");
+
+  return false;
+
+ }
+
+}
+
+let products = read(PRODUCT_KEY);
+let cart = read(CART_KEY);
+let favorites = read(FAVORITE_KEY);
+let selectedImages = [];
+
+let activeCategory = "Ҳама";
+let onlyFavorites = false;
+let toastTimer;
+let imageTask = 0;
+
+const categories = [
+ "Ҳама",
+ "Либос",
+ "Телефон",
+ "Электроника",
+ "Мошин",
+ "Хона",
+ "Пойафзол",
+ "Кӯдакон",
+ "Дигар"
+];
+
+function money(value){
+
+ return Number(value).toFixed(2)
+  + " сомонӣ";
+
+}
+
+function toast(message){
+
+ $("toast").textContent = message;
+
+ $("toast").classList.remove("hidden");
+
+ clearTimeout(toastTimer);
+
+ toastTimer = setTimeout(()=>{
+
+  $("toast").classList.add("hidden");
+
+ },3000);
+
+}
+
+function closeDialog(id){
+
+ $(id).close();
+
+}
+
+function element(tag,className,text){
+
+ const node = document.createElement(tag);
+
+ if(className)node.className = className;
+
+ if(text !== undefined){
+
+  node.textContent = text;
+
+ }
+
+ return node;
+
+}
+
+function productImage(product){
+
+ if(!product.images || !product.images[0]){
+
+  return element(
+   "div","placeholder","📦"
+  );
+
+ }
+
+ const img = document.createElement("img");
+
+ img.src = product.images[0];
+
+ img.alt = product.name;
+
+ img.loading = "lazy";
+
+ img.onerror = ()=>{
+
+  img.replaceWith(
+   element("div","placeholder","📦")
+  );
+
+ };
+
+ return img;
+
+}
+
+function renderCategories(){
+
+ $("categories").replaceChildren();
+
+ categories.forEach(category=>{
+
+  const button = element(
+   "button","category",category
+  );
+
+  if(category===activeCategory){
+
+   button.classList.add("active");
+
+  }
+
+  button.onclick = ()=>{
+
+   activeCategory = category;
+
+   onlyFavorites = false;
+
+   renderCategories();
+
+   renderProducts();
+
+  };
+
+  $("categories").appendChild(button);
+
+ });
+
+}
+
+function renderProducts(){
+
+ const root = $("products");
+
+ root.replaceChildren();
+
+ const query = $("search").value
+  .trim().toLowerCase();
+
+ let list = products.filter(product=>{
+
+  const text = [
+   product.name,
+   product.category,
+   product.city,
+   product.description
+  ].join(" ").toLowerCase();
+
+  return text.includes(query)
+
+   && (
+    activeCategory==="Ҳама"
+    || product.category===activeCategory
+   )
+
+   && (
+    !onlyFavorites
+    || favorites.includes(product.id)
+   );
+
+ });
+
+ const sort = $("sort").value;
+
+ if(sort==="cheap"){
+
+  list.sort((a,b)=>a.price-b.price);
+
+ }else if(sort==="expensive"){
+
+  list.sort((a,b)=>b.price-a.price);
+
+ }else{
+
+  list.sort((a,b)=>b.created-a.created);
+
+ }
+
+ $("catalogTitle").textContent =
+  onlyFavorites
+  ? "Дӯстдоштаҳо"
+  : "Маҳсулот ("+list.length+")";
+
+ $("empty").classList.toggle(
+  "hidden",list.length>0
+ );
+
+ list.forEach(product=>{
+
+  const card = element("article","product");
+
+  const img = productImage(product);
+
+  img.onclick = ()=>showDetails(product.id);
+
+  card.appendChild(img);
+
+  const heart = element(
+   "button",
+   "favorite",
+   favorites.includes(product.id) ? "❤️" : "♡"
+  );
+
+  heart.onclick = ()=>toggleFavorite(product.id);
+
+  card.appendChild(heart);
+
+  const info = element("div","info");
+
+  const title = element(
+   "h3","",product.name
+  );
+
+  title.onclick = ()=>showDetails(product.id);
+
+  info.appendChild(title);
+
+  info.appendChild(
+   element("div","price",money(product.price))
+  );
+
+  info.appendChild(
+   element("div","location","📍 "+product.city)
+  );
+
+  info.appendChild(
+   element(
+    "div",
+    "stock",
+    "Дар анбор: "+product.stock
+   )
+  );
+
+  const add = element(
+   "button",
+   "primary add",
+   "🛒 Ба сабад"
+  );
+
+  add.disabled = product.stock<=0;
+
+  add.onclick = ()=>addToCart(product.id);
+
+  info.appendChild(add);
+
+  card.appendChild(info);
+
+  root.appendChild(card);
+
+ });
+
+}
+
+function toggleFavorite(id){
+
+ const next = favorites.includes(id)
+  ? favorites.filter(x=>x!==id)
+  : [...favorites,id];
+
+ if(save(FAVORITE_KEY,next)){
+
+  favorites = next;
+
+  renderProducts();
+
+ }
+
+}
+
+function showFavorites(){
+
+ onlyFavorites = true;
+
+ activeCategory = "Ҳама";
+
+ $("search").value = "";
+
+ renderCategories();
+
+ renderProducts();
+
+ $("catalog").scrollIntoView({
+  behavior:"smooth"
+ });
+
+}
+
+function showAll(){
+
+ onlyFavorites = false;
+
+ activeCategory = "Ҳама";
+
+ $("search").value = "";
+
+ renderCategories();
+
+ renderProducts();
+
+}
+
+function openAdd(){
+
+ imageTask++;
+
+ selectedImages = [];
+
+ $("productForm").reset();
+
+ $("preview").replaceChildren();
+
+ $("publishButton").disabled = false;
+
+ $("addDialog").showModal();
+
+}
+
+function compressImage(file){
+
+ return new Promise((resolve,reject)=>{
+
+  const reader = new FileReader();
+
+  reader.onerror = reject;
+
+  reader.onload = ()=>{
+
+   const img = new Image();
+
+   img.onerror = reject;
+
+   img.onload = ()=>{
+
+    const scale = Math.min(
+     1,700/Math.max(img.width,img.height)
+    );
+
+    const canvas = document.createElement("canvas");
+
+    canvas.width = Math.max(
+     1,Math.round(img.width*scale)
+    );
+
+    canvas.height = Math.max(
+     1,Math.round(img.height*scale)
+    );
+
+    const ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "#ffffff";
+
+    ctx.fillRect(
+     0,0,canvas.width,canvas.height
+    );
+
+    ctx.drawImage(
+     img,0,0,canvas.width,canvas.height
+    );
+
+    resolve(
+     canvas.toDataURL("image/jpeg",0.65)
+    );
+
+   };
+
+   img.src = reader.result;
+
+  };
+
+  reader.readAsDataURL(file);
+
+ });
+
+}
+
+$("productImages").onchange = async event=>{
+
+ const task = ++imageTask;
+
+ const files = [...event.target.files];
+
+ selectedImages = [];
+
+ $("preview").replaceChildren();
+
+ $("publishButton").disabled = true;
+
+ if(files.length>10){
+
+  toast("Танҳо 10 расм интихоб кунед.");
+
+  event.target.value = "";
+
+  $("publishButton").disabled = false;
+
+  return;
+
+ }
+
+ try{
+
+  const images = [];
+
+  for(const file of files){
+
+   if(!file.type.startsWith("image/")){
+
+    continue;
+
+   }
+
+   if(file.size>15*1024*1024){
+
+    throw new Error("Расм хеле калон аст.");
+
+   }
+
+   images.push(await compressImage(file));
+
+  }
+
+  if(task!==imageTask)return;
+
+  selectedImages = images;
+
+  images.forEach(src=>{
+
+   const img = document.createElement("img");
+
+   img.src = src;
+
+   $("preview").appendChild(img);
+
+  });
+
+ }catch{
+
+  toast("Расмро хонда натавонист.");
+
+ }finally{
+
+  if(task===imageTask){
+
+   $("publishButton").disabled = false;
+
+  }
+
+ }
+
+};
+
+$("productForm").onsubmit = event=>{
+
+ event.preventDefault();
+
+ const price = Number($("productPrice").value);
+
+ const stock = Number($("productStock").value);
+
+ const name = $("productName").value.trim();
+
+ if(!name || !Number.isFinite(price)
+  || price<=0 || !Number.isInteger(stock)
+  || stock<=0){
+
+  toast("Маълумотро дуруст ворид кунед.");
+
+  return;
+
+ }
+
+ const product = {
+
+  id:crypto.randomUUID(),
+
+  name,
+
+  price,
+
+  stock,
+
+  category:$("productCategory").value,
+
+  city:$("productCity").value,
+
+  description:$("productDescription").value.trim(),
+
+  images:[...selectedImages],
+
+  created:Date.now()
+
+ };
+
+ const next = [product,...products];
+
+ if(!save(PRODUCT_KEY,next))return;
+
+ products = next;
+
+ closeDialog("addDialog");
+
+ showAll();
+
+ toast("Маҳсулот дар браузер сабт шуд.");
+
+};
+
+function showDetails(id){
+
+ const product = products.find(
+  p=>p.id===id
+ );
+
+ if(!product)return;
+
+ const root = $("detailContent");
+
+ root.replaceChildren();
+
+ const img = productImage(product);
+
+ img.style.width = "100%";
+
+ img.style.borderRadius = "15px";
+
+ root.appendChild(img);
+
+ root.appendChild(
+  element("h2","",product.name)
+ );
+
+ root.appendChild(
+  element("div","price",money(product.price))
+ );
+
+ root.appendChild(
+  element("p","","📍 "+product.city)
+ );
+
+ root.appendChild(
+  element("p","",product.description)
+ );
+
+ const gallery = element("div","preview");
+
+ (product.images||[]).slice(1).forEach(src=>{
+
+  const image = document.createElement("img");
+
+  image.src = src;
+
+  gallery.appendChild(image);
+
+ });
+
+ root.appendChild(gallery);
+
+ const button = element(
+  "button","primary","Ба сабад илова кун"
+ );
+
+ button.disabled = product.stock<=0;
+
+ button.onclick = ()=>addToCart(product.id);
+
+ root.appendChild(button);
+
+ $("detailDialog").showModal();
+
+}
+
+function updateCartCount(){
+
+ $("cartCount").textContent = cart.reduce(
+  (sum,item)=>sum+item.quantity,0
+ );
+
+}
+
+function addToCart(id){
+
+ const product = products.find(
+  p=>p.id===id
+ );
+
+ if(!product || product.stock<=0){
+
+  toast("Маҳсулот дастрас нест.");
+
+  return;
+
+ }
+
+ const next = cart.map(item=>({...item}));
+
+ const item = next.find(
+  item=>item.id===id
+ );
+
+ if(item){
+
+  if(item.quantity>=product.stock){
+
+   toast("Миқдори дастрас маҳдуд аст.");
+
+   return;
+
+  }
+
+  item.quantity++;
+
+ }else{
+
+  next.push({id,quantity:1});
+
+ }
+
+ if(!save(CART_KEY,next))return;
+
+ cart = next;
+
+ updateCartCount();
+
+ toast("Ба сабад илова шуд.");
+
+}
+
+function changeQuantity(id,amount){
+
+ const product = products.find(
+  p=>p.id===id
+ );
+
+ let next = cart.map(item=>({...item}));
+
+ const item = next.find(
+  item=>item.id===id
+ );
+
+ if(!item)return;
+
+ if(amount>0 && (
+  !product || item.quantity>=product.stock
+ )){
+
+  toast("Миқдори дастрас маҳдуд аст.");
+
+  return;
+
+ }
+
+ item.quantity += amount;
+
+ next = next.filter(
+  item=>item.quantity>0
+ );
+
+ if(save(CART_KEY,next)){
+
+  cart = next;
+
+  updateCartCount();
+
+  renderCart();
+
+ }
+
+}
+
+function removeFromCart(id){
+
+ const next = cart.filter(
+  item=>item.id!==id
+ );
+
+ if(save(CART_KEY,next)){
+
+  cart = next;
+
+  updateCartCount();
+
+  renderCart();
+
+ }
+
+}
+
+function getTotal(){
+
+ return cart.reduce((sum,item)=>{
+
+  const product = products.find(
+   p=>p.id===item.id
+  );
+
+  return sum+(product
+   ? product.price*item.quantity
+   : 0);
+
+ },0);
+
+}
+
+function validCart(){
+
+ return cart.length>0 && cart.every(item=>{
+
+  const product = products.find(
+   p=>p.id===item.id
+  );
+
+  return product
+   && Number.isInteger(item.quantity)
+   && item.quantity>0
+   && item.quantity<=product.stock;
+
+ });
+
+}
+
+function renderCart(){
+
+ const root = $("cartItems");
+
+ root.replaceChildren();
+
+ if(!cart.length){
+
+  root.appendChild(
+   element("p","","Сабад холӣ аст.")
+  );
+
+ }
+
+ cart.forEach(item=>{
+
+  const product = products.find(
+   p=>p.id===item.id
+  );
+
+  const row = element("div","cart-item");
+
+  if(product && product.images?.[0]){
+
+   const img = document.createElement("img");
+
+   img.src = product.images[0];
+
+   row.appendChild(img);
+
+  }
+
+  const info = element("div","cart-info");
+
+  info.appendChild(
+   element(
+    "strong","",
+    product ? product.name : "Дастрас нест"
+   )
+  );
+
+  if(product){
+
+   info.appendChild(
+    element(
+     "div","price",
+     money(product.price*item.quantity)
+    )
+   );
+
+  }
+
+  const quantity = element("div","quantity");
+
+  const minus = element("button","","−");
+
+  minus.onclick = ()=>changeQuantity(item.id,-1);
+
+  const plus = element("button","","+");
+
+  plus.onclick = ()=>changeQuantity(item.id,1);
+
+  quantity.append(
+   minus,
+   element("span","",item.quantity),
+   plus
+  );
+
+  info.appendChild(quantity);
+
+  row.appendChild(info);
+
+  const remove = element(
+   "button","remove","✕"
+  );
+
+  remove.onclick = ()=>removeFromCart(item.id);
+
+  row.appendChild(remove);
+
+  root.appendChild(row);
+
+ });
+
+ $("cartTotal").textContent = money(getTotal());
+
+ $("checkoutButton").disabled = !validCart();
+
+}
+
+function openCart(){
+
+ renderCart();
+
+ $("cartDialog").showModal();
+
+}
+
+function openCheckout(){
+
+ if(!validCart())return;
+
+ $("cartDialog").close();
+
+ $("checkoutTotal").textContent =
+  "Ҳамагӣ: "+money(getTotal());
+
+ $("checkoutDialog").showModal();
+
+}
+
+$("checkoutForm").onsubmit = event=>{
+
+ event.preventDefault();
+
+ if(!validCart()){
+
+  toast("Сабадро санҷед.");
+
+  return;
+
+ }
+
+ const order = {
+
+  id:crypto.randomUUID(),
+
+  items:cart.map(item=>{
+
+   const product = products.find(
+    p=>p.id===item.id
+   );
+
+   return {
+
+    product_id:item.id,
+
+    name:product.name,
+
+    price:product.price,
+
+    quantity:item.quantity
+
+   };
+
+  }),
+
+  total:getTotal(),
+
+  commission:0,
+
+  status:"demo",
+
+  created:Date.now()
+
+ };
+
+ const orders = read(ORDER_KEY);
+
+ if(!save(ORDER_KEY,[order,...orders]))return;
+
+ // Маълумоти шахсӣ дар ин демо сабт намешавад.
+
+ if(save(CART_KEY,[])){
+
+  cart = [];
+
+ }
+
+ updateCartCount();
+
+ $("checkoutForm").reset();
+
+ $("checkoutDialog").close();
+
+ toast("Фармоиши озмоишӣ сабт шуд.");
+
+};
+
+$("search").oninput = renderProducts;
+
+$("sort").onchange = renderProducts;
+
+renderCategories();
+
+renderProducts();
+
+updateCartCount();
+
+</script>
+
+</body>
+</html># VAYO-APP
